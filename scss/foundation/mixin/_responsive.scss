@@ -1,0 +1,30 @@
+// Responsive
+
+@mixin responsive-min($class, $bp: $_breakpoints-map) {
+  #{$class} {
+    @content;
+  }
+
+  @each $suffix, $val in $bp {
+    @media screen and (min-width: em-calc($val)) {
+      #{$class}-#{$suffix} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin responsive-max($class, $bp: $_breakpoints-map) {
+  #{$class} {
+    @content;
+  }
+
+  @each $suffix, $val in $bp {
+    @media screen and (max-width: em-calc($val)) {
+      #{$class}-#{$suffix} {
+        @content;
+      }
+    }
+  }
+}
+

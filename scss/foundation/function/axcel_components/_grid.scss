@@ -1,0 +1,102 @@
+//Grid
+
+//shorthand for $set-prefix and $set-block
+$sh-modifier: unquote("#{$set-prefix}#{$set-block}");
+
+@mixin make-column($i, $columns: $total-columns) {
+  @if(0 < $i) {
+    width: percentage($i / $columns);
+  }
+  @else {
+    @warn 'Wrong syntax for make-column($i, $columns). Enter a number to $i.';
+    @warn '$i: #{$i} does not contain more than 1';
+  }
+}
+
+// alias for make-column
+@mixin make-col($columns: $total-columns, $modifier: $sh-modifier, $breakpoint: null) {
+  @for $i from 1 through $columns {
+    .#{$modifier}#{$breakpoint}-#{$i} {
+      @include make-column($i, $columns);
+    }
+  }
+}
+
+@mixin make-column-push($i, $columns: $total-columns) {
+  left: if(0 < $i, percentage($i / $columns), auto);
+}
+
+@mixin make-column-pull($i, $columns: $total-columns) {
+  right: if(0 < $i, percentage($i / $columns), auto);
+}
+
+@mixin make-column-offset($i, $columns: $total-columns) {
+  margin-left: percentage($i / $columns);
+}
+
+@mixin make-behavior-loop($i, $columns: $total-columns, $behavior: null) {
+  @if($behavior == push) {
+    @include make-column-push($i, $columns);
+  }
+  @else if($behavior == pull) {
+    @include make-column-pull($i, $columns);
+  }
+  @else if($behavior == offset and 0 < $i) {
+    @include make-column-offset($i, $columns);
+  }
+  @else if($behavior == offset and 0 == $i) {
+    // Offset 0 is complicated.
+  }
+  @else {
+    @warn 'Wrong syntax for make-behavior-loop($i, $columns: $total-columns, $behavior)';
+    @warn 'It is possible for wrong $i or $behavior variables ($i:#{$i}, $behavior:#{$behavior})';
+  }
+}
+
+// alias for make-behavior-loop
+@mixin make-behavior($columns: $total-columns, $modifier: $sh-modifier, $breakpoint: null, $behavior: null) {
+  @for $i from 0 through $columns {
+    .#{$modifier}#{$breakpoint}-#{$behavior}-#{$i} {
+      @include make-behavior-loop($i, $columns, $behavior);
+    }
+  }
+}
+
+// Making grid system automatically.
+@mixin setup-grid($gutter: $grid-gutter, $breakpoints: $breakpoints-map, $columns: $total-columns, $behavior: $behavior-map, $modifier: $sh-modifier) {
+  %grid-foundamental {
+    position: relative;
+    width: 100%;
+    padding-right: em-calc($gutter / 2);
+    padding-left: em-calc($gutter / 2);
+    float: left;
+  }
+
+  @if(0 < str-length($modifier)) {
+    [class^='#{$modifier}'] {
+      @extend %grid-foundamental;
+    }
+  }
+  @else {
+    .#{$set-common-class} {
+      @extend %grid-foundamental;
+    }
+  }
+
+  // Loops in breakpoints
+  @each $breakpoint in map-keys($breakpoints) {
+    // Make media query
+    @include make-media-breakpoint($breakpoint) {
+
+      // Make columns
+      @include make-col($breakpoint: $breakpoint);
+      
+      @each $key,$val in $behavior {
+        @if $val {
+          // Make offsets columns
+          @include make-behavior($breakpoint: $breakpoint, $behavior: $key);
+        }
+      }     
+    }
+  }
+}

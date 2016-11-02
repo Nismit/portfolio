@@ -1,0 +1,45 @@
+// Navigation
+.nav {
+  &__item {
+    display: block;
+    border-top: 1px solid #fff;
+  }
+}
+
+.nav--list {
+  display: none;
+}
+
+.nav--button {
+  display: inline-block;
+  padding: 0.5em;
+
+  &__trigger {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+  }
+}
+
+// Tablet
+@include getMediaQueryMin('.nav','sm') {
+  &__item {
+    display: inline-block;
+    border: none;
+
+    a {
+      display: inline-block;
+      color: #fff;
+      padding: 1em 1.5em;
+    }
+  }
+
+  &--list {
+    display: block;
+  }
+
+  &--button {
+    display: none;
+  }
+}
+

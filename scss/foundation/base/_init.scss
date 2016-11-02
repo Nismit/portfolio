@@ -1,0 +1,62 @@
+// Inital
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-size: ($_base-font-size * 1px);
+}
+
+body {
+  color: $_color-text;
+  background-color: $_color-bg;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  font-kerning: normal;
+  line-height: 150%;
+  font-family: $_custom-font-family;
+  font-weight: 300;
+}
+
+h1 {
+
+}
+
+h2 {
+  font-size: 28px;
+  font-family: 'Noto Serif', serif;
+  font-weight: 400;
+  line-height: 170%;
+  letter-spacing: 3px
+}
+
+h3 {
+  font-size: 22px;
+  font-family: 'Noto Serif', serif;
+  font-weight: 400;
+  line-height: 170%;
+  letter-spacing: 2px;
+}
+
+h4 {
+  
+}
+
+a {
+  text-decoration: $_link-default;
+
+  &:hover {
+    text-decoration: $_link-hover;
+  }
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+.clearfix {
+  @include clearfix();
+}

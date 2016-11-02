@@ -1,0 +1,5 @@
+// Get only the number
+// ex) strip-unit(18px) -> 18
+@function strip-unit($n) {
+  @return $n / ($n * 0 + 1);
+}

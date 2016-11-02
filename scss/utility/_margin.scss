@@ -1,0 +1,37 @@
+// Utility
+// margin
+
+// Margin-top
+.u-mt {
+  
+  &-70 {
+    margin-top: 70px;
+  }
+
+  &-50 {
+    margin-top: 50px;
+  }
+}
+
+// Margin-right
+.u-mr {
+
+}
+
+// Margin-bottom
+.u-mb {
+  &-70 {
+    margin-bottom: 70px;
+  }
+}
+
+// Margin-left
+.u-ml {
+
+}
+
+// Margin-left/right Auto
+.u-m-auto {
+  margin-left: auto;
+  margin-right: auto;
+}

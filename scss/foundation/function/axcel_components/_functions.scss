@@ -1,0 +1,25 @@
+//Functions
+
+//px to em converter
+@function em-calc($pixel, $base-size: $set-base-font-size) {
+  @return unquote("#{$pixel / $base-size}em");
+}
+
+// Media query
+@function get-breakpoint-next($name, $map: map-keys($breakpoints-map)) {
+  $n: index($map, $name);
+  @return if($n < length($map), nth($map, $n + 1), null);
+}
+
+@function get-min-breakpoint($map: map-keys($breakpoints-map)) {
+  @return nth($map, 1);
+}
+
+@function get-max-breakpoint($map: map-keys($breakpoints-map)) {
+  @return nth($map, length($map));
+}
+
+@function get-media-breakpoint($name, $map: $breakpoints-map) {
+  $width: map-get($map, $name);
+  @return if(0 < length($width), $width, null);
+}

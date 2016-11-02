@@ -1,0 +1,18 @@
+// Responsive
+
+@mixin getMediaQueryMin($class, $suffix, $bp: $_breakpoints-map) {
+  @media screen and (min-width: em-calc(map-get($bp, $suffix))) {
+    #{$class} {
+      @content;
+    }
+  }
+}
+
+@mixin getMediaQueryMax($class, $suffix, $bp: $_breakpoints-map) {
+  @media screen and (max-width: em-calc(map-get($bp, $suffix))) {
+    #{$class} {
+      @content;
+    }
+  }
+}
+

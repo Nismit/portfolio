@@ -1,0 +1,12 @@
+// Utility
+// Background Color
+
+.u-bg {
+  &-gray {
+    background-color: #eee;
+  }
+
+  &-black {
+    background-color: #000;
+  }
+}
