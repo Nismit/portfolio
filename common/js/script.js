@@ -33,6 +33,26 @@ function getElemOffset(elem) {
   }
 }
 
+// Menu
+var menuTrigger = getElem('.nav--button');
+
+var throttleFunc = (function() {
+  var interval = 1000;
+  var lastTime = new Date().getTime() - interval
+  return function() {
+    if ((lastTime + interval) <= new Date().getTime()) {
+      lastTime = new Date().getTime();
+      if(menuTrigger[0].classList.contains('close')) {
+        menuTrigger[0].classList.remove('close');
+      }else{
+        menuTrigger[0].classList.add('close');
+      }
+    }
+  };
+})();
+
+menuTrigger[0].addEventListener('click', throttleFunc, false);
+
 getElemOffset(getElem('.is-animation'));
 var animation = getElem('.is-animation');
 var heroParallax = getElem('.hero__parallax');
@@ -48,8 +68,8 @@ scrollTop = elScrollable.scrollTop;
   for(i = 0; i < offsetArray.length; i++) {
     if((offsetArray[i].top - 570) <= scrollTop) {
       //console.log("hit",offsetArray[i]);
-      if(animation[i].classList !== "fadeInUp") {
-        animation[i].classList.add("fadeInUp");
+      if(animation[i].classList !== 'fadeInUp') {
+        animation[i].classList.add('fadeInUp');
       }
     }
   }

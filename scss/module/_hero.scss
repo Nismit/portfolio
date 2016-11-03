@@ -21,10 +21,26 @@
     top: 0;
     left: 0;
     z-index: 1;
-    transform: translate(0, 0);
+    //transform: translate(0, 0);
 
     &--proj {
       height: 50vh;
+    }
+
+    &.emiac {
+      background-image: url(../../img/emiac/header.jpg);
+    }
+
+    &.ahl {
+      background-image: url(../../img/ahl/header.jpg);
+    }
+
+    &.rita {
+      background-image: url(../../img/rita/header.jpg);
+    }
+
+    &.osazen {
+      background-image: url(../../img/osazeb/header.jpg);
     }
   }
 
@@ -50,13 +66,8 @@
     font-size: 30px;
     letter-spacing: 2px;
     opacity: 0;
-    @include css3('animation-duration', 1.5s);
+    @include css3('animation-duration', 2.0s);
     @include css3('animation-fill-mode', both);
-    @include css3('transition-delay', 2.5s);
-    animation-name: c_fade;
-
-    &--desc {
-      font-size: 80%;
-    }
+    animation-name: hero_fade;
   }
 }

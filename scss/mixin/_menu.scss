@@ -1,0 +1,63 @@
+// Make a hamburger menu
+@mixin hamburger() {
+  display: inline-block;
+  position: relative;
+  z-index: 15;
+  width: 40px;
+  height: 40px;
+  
+  & > span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 28px;
+    height: 4px;
+    // margin-top = height/2
+    // margin-left = width/2
+    margin: -2px 0 0 -14px;
+    background: #fff;
+    transition: .2s;
+
+    &:before,&:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 28px;
+      height: 4px;
+      background: #fff;
+      transition: .3s;
+    }
+
+    &:before {
+      margin-top: -12px;
+    }
+
+    &:after {
+      margin-top: 8px;
+    }
+  }
+}
+
+@mixin hamburger_close() {
+  & > span {
+    background: transparent;
+
+    &:before,&:after {
+      margin-top: 0;
+    }
+
+    &:before {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+
+    &:after{
+      transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+    }
+  }
+}
+
