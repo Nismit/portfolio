@@ -3,14 +3,14 @@
 @include getMediaQueryMin('.l-section','sm') {
   .is-animation {
     opacity: 0;
-    @include css3('animation-duration', 1s);
-    @include css3('animation-fill-mode', both);
+    animation-duration: 1s;
+    animation-fill-mode: both;
   }
 
   .is-border {
-    @include css3('animation-duration', 1s);
-    @include css3('transition-delay', 1s);
-    @include css3('animation-fill-mode', both);
+    animation-duration: 1s;
+    transition-delay: 1s;
+    animation-fill-mode: both;
     border-bottom: 1px solid transparent;
   }
 
@@ -27,9 +27,9 @@
   }
 
   .fadeInUp .level__progress--percent {
-    @include css3('animation-duration', 3.5s);
-    @include css3('transition-delay', 600ms);
-    @include css3('animation-fill-mode', both);
+    animation-duration: 3.5s;
+    transition-delay: 600ms;
+    animation-fill-mode: both;
     animation-name: width;
   }
 }

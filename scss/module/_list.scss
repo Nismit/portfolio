@@ -1,0 +1,14 @@
+// List
+.list {
+
+  &__item {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+    }
+  }
+  
+}

@@ -1,0 +1,26 @@
+// Flexbox
+.flex {
+  @include flex();
+
+  &__item {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 48em) {
+    &__item {
+      width: calc(50% - 10px);
+    }
+
+    &__gutter {
+      margin-right: 10px;
+
+      &:nth-child(even) {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+
+

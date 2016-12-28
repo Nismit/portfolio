@@ -12,7 +12,7 @@
         cursor: pointer;
 
         .sns__icon {
-          @include css3('transition', 0.4s);
+          transition: 0.4s;
         }
 
         .sns_icon--twitter {

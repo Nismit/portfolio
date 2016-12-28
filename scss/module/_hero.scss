@@ -2,72 +2,39 @@
 .hero {
   width: 100%;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  &__proj {
-    height: 50vh;
-  }
+  @include flex();
+  
 
   &__parallax {
-    width: 100%;
-    height: 100vh;
-    background-image: url(../img/bg_1.png);
-    background-position: center top;
+    width: inherit;
+    height: inherit;
+    background: url(../img/bg.png);
+    background-position: 78% top;
     background-size: cover;
     position: fixed;
-    top: 0;
     left: 0;
+    top: 0;
     z-index: 1;
-    //transform: translate(0, 0);
-
-    &--proj {
-      height: 50vh;
-    }
-
-    &.emiac {
-      background-image: url(../../img/emiac/header.jpg);
-    }
-
-    &.ahl {
-      background-image: url(../../img/ahl/header.jpg);
-    }
-
-    &.rita {
-      background-image: url(../../img/rita/header.jpg);
-    }
-
-    &.osazen {
-      background-image: url(../../img/osazeb/header.jpg);
-    }
   }
 
   &__inner {
-    width: 95%;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 $_section-padding;
     position: relative;
-    z-index: 2;
+    z-index: 5;
   }
 
-  &__sub {
-    font-size: 18px;
-    letter-spacing: 2px;
+  &__title {
+    line-height: 35px;
+    letter-spacing: 0.025em;
 
-    &--desc {
-      font-size: 80%;
+    & > em {
+      display: block;
     }
   }
-}
 
-@include getMediaQueryMin('.hero','sm') {
-  &__sub {
-    font-size: 30px;
-    letter-spacing: 2px;
-    opacity: 0;
-    @include css3('animation-duration', 2.0s);
-    @include css3('animation-fill-mode', both);
-    animation-name: hero_fade;
+  &__text {
+    font-size: 14px;
+    line-height: 16px;
   }
 }

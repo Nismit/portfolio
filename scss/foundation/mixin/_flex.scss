@@ -1,0 +1,25 @@
+// Responsive
+
+@mixin flex() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__direction--column {
+    flex-direction: column;
+  }
+
+  &__direction--row {
+    flex-direction: row;
+  }
+
+  &__wrap {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+
+
+

@@ -1,5 +1,5 @@
-// Skill Level
-.level {
+// Skill
+.skill {
   width: 100%;
   padding-bottom: 15px;
 
@@ -7,7 +7,7 @@
     width: 100%;
     height: 4px;
     margin-top: 5px;
-    background-color: $_color-bg;
+    //background-color: $_color-bg;
 
     &--percent {
       //width: 95%;
@@ -19,15 +19,9 @@
     }
   }
 
-  &__text {
-    float: right;
-  }
-
   &__parallax {
     background-image: url("../img/bg_2.png");
     background-position: center top;
     background-size: cover;
   }
-
-  @include clearfix();
 }

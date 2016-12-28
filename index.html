@@ -7,45 +7,159 @@
 <title>Michinobu Nishimoto | Web Developer/Designer</title>
 <meta name="description" content="">
 <meta name="author" content="Michinobu Nishimoto(Nismit)">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:700" rel="stylesheet">
+<link rel="stylesheet" href="common/css/style.css">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700|Open+Sans:300" rel="stylesheet">
-<link rel="stylesheet" href="common/css/style.css">
 <!-- Social Meta -->
 </head>
 <body>
-<header class="l-header clearfix">
-	<h1 class="u-float-left"><a href="/" class="logo"><svg class="logo__svg"><use xlink:href="#mn_logo"/></svg></a></h1>
+<!--header class="l-header">
+	<a href="/" class="logo"><svg class="logo__svg"><use xlink:href="#mn_logo"/></svg></a>
 
-	<nav class="nav u-float-right">
-		<a href="#none" class="nav--button"><span></span></a>
+	<nav class="nav">
 		<ul class="nav--list">
-			<li class="nav__item"><a href="#about">ABOUT</a></li>
-			<li class="nav__item"><a href="#works">WORKS</a></li>
+			<li class="nav__item"><a href="#portfolio">PORTFOLIO</a></li>
 			<li class="nav__item"><a href="#skills">SKILLS</a></li>
-			<li class="nav__item"><a href="#contact">CONTACT</a></li>
+			<li class="nav__item"><a href="#resume">RESUME</a></li>
+			<li class="nav__item"><a href="#about">ABOUT</a></li>
+      <li class="nav__item"><a href="#contact">CONTACT</a></li>
 		</ul>
 	</nav>
-</header>
+</header-->
 
-<div class="hero">
-	<div class="hero__parallax"></div>
+<div class="hero hero__direction--column">
+  <div class="hero__parallax"></div>
 	<div class="hero__inner">
-		<h2 class="hero__sub u-text-center u-text-color-white">Hi,I'm Michinobu Nishimoto<br><span class="hero__sub--desc">Web Developer/Designer</span></h2>
+		<h1 class="hero__title u-text-color-white">WEB DEVELOPER<em>&</em>DESIGNER</h1>
+    <p class="hero__text u-mt-5 u-text-color-white">I’m Michinobu Nishimoto and based in Vancouver.<em>Have experience of 3 years+ in web development.</em></p>
 	</div>
 </div>
 
 <div class="l-wrapper">
 	<main class="l-main">
+    <section id="portfolio" class="l-section">
+      <h2>PORTFOLIO</h2>
+
+      <div class="flex flex__wrap">
+        <div class="flex__item flex__gutter u-mb-20">
+          <a href="emiacworks.html" class="portfolio">
+            <p class="portfolio__inner"><img src="common/img/thumb-emiac.png" srcset="common/img/thumb-emiac.png 1x,common/img/thumb-emiac@2x.png 2x" width="100%" class="portfolio__img" alt="EMiAC-Works">
+            <span><strong>EMiAC-Works</strong><br>Personal Blog | Development / Design</span></p>
+          </a>
+        </div>
+        <div class="flex__item flex__gutter u-mb-20">
+          <a href="rita.html" class="portfolio">
+            <p class="portfolio__inner"><img src="common/img/thumb-rita.png" srcset="common/img/thumb-rita.png 1x,common/img/thumb-rita@2x.png 2x" width="100%" class="portfolio__img" alt="Rita">
+            <span><strong>Rita</strong><br>WordPress Development</span></p>
+          </a>
+        </div>
+        <div class="flex__item flex__gutter u-mb-20">
+          <a href="osazen.html" class="portfolio">
+            <p class="portfolio__inner"><img src="common/img/thumb-osazen.png" srcset="common/img/thumb-osazen.png 1x,common/img/thumb-osazen@2x.png 2x" width="100%" class="portfolio__img" alt="Osazen">
+            <span><strong>Osazen</strong><br>WordPress Development</span></p>
+          </a>
+        </div>
+        <div class="flex__item flex__gutter u-mb-20">
+          <a href="highland.html" class="portfolio">
+            <p class="portfolio__inner"><img src="common/img/thumb-ahl.png" srcset="common/img/thumb-ahl.png 1x,common/img/thumb-ahl@2x.png 2x" width="100%" class="portfolio__img" alt="KYOTO AREAHIGHLAND">
+            <span><strong>KYOTO AREAHIGHLAND</strong><br>Website Design/WordPress Development</span></p>
+          </a>
+        </div>
+      </div><!-- /.flex -->
+    </section>
+
+    <section id="skills" class="l-section">
+      <h2>SKILLS</h2>
+
+      <div class="skill">
+        <p class="">HTML5 <em class="skill__text">95%</em></p>
+        <div class="skill__progress">
+          <div class="skill__progress--percent" data-skill-skill="95"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p class="">CSS3 <em class="skill__text">90%</em></p>
+        <div class="skill__progress">
+          <div class="skill__progress--percent" data-skill-skill="90"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p class="">Javascript/jQuery <em class="skill__text">60%</em></p>
+        <div class="skill__progress">
+          <div class="skill__progress--percent" data-skill-skill="60"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p class="">PHP <em class="skill__text">80%</em></p>
+        <div class="skill__progress">
+          <div class="skill__progress--percent" data-skill-skill="80"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p class="">Sass <em class="skill__text">70%</em></p>
+        <div class="skill__progress">
+          <div class="skill__progress--percent" data-skill-skill="70"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p class="">WordPress <em class="skill__text">70%</em></p>
+        <div class="skill__progress">
+          <div class="skill__progress--percent" data-skill-skill="70"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="resume" class="l-section">
+      <h2>RESUME</h2>
+      
+      <div class="flex flex__wrap">
+    
+      <div class="flex__item u-mb-50">
+        <h3>WORK EXPERIENCE</h3>
+
+        <ul class="list">
+          <li class="list__item">
+            <p class="list__title"><strong>Freelance at Web Developer</strong><br>2015-Present</p>
+          </li>
+          <li class="list__item">
+            <p class="list__title"><strong>Web Developer</strong><br>Asuka Design Agency<br>
+            2012-2015</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex__item u-mb-50">
+        <h3>EDUCATION</h3>
+
+        <ul class="list">
+          <li class="list__item">
+              <p class="list__title"><strong>Web And Mobile Application Development Diploma</strong><br>Cornerstone College<br>
+              2016-Present</p>
+          </li>
+          <li class="list__item">
+            <p class="list__title"><strong>Bachelor of Computer Sciences & Engineering</strong><br>Kyoto Sangyo University<br>
+            2009-2013</p>
+          </li>
+        </ul>
+      </div>
+
+      </div><!-- /.flex -->
+
+      <a href="#" class="button">DOWNLOAD CV</a>
+    </section>
+
+
 		<section id="about" class="l-section">
-			<div class="u-pt-70">
-				<h2 class="u-text-center is-animation">ABOUT</h2>
+				<h2>ABOUT</h2>
 
-				<div class="hexagon--outer is-animation">
-					<div class="hexagon"><div class="hexTop"></div><div class="hexBottom"></div><p class="u-display-none">Michinobu Nishimoto(NISMIT)</p></div>
-				</div>
-
-				<div class="is-animation">
+				<div>
 					<p>I am a Web Developer and Designer with 3+ years of experience in small and large websites development, currently living in Vancouver. I am passionate about good code, security and performance.</p>
 					<p>Basically, I keep clean code because the code is kind of design. </p>
 					<p>Now,I am looking for a job for web design or development.</p>
@@ -53,141 +167,18 @@
 					<p>On a daily basis, I catch up latest web technology and cool web designs. While I enjoy learing with new framework/library and design.<br>
 					I am enthusiastic about music,especially 90s HipHop, and coffee. These are a part of my life.</p>
 				</div>
-
-				<div class="resume u-pt-70 is-animation">
-					<h3 class="u-text-center">Work Experience</h3>
-
-					<ul class="resume__list">
-						<li class="resume__list--item">
-							<p class="resume__list--title">Freelance at Web Developer</p>
-							<p class="resume__list--desc">2015-Present</p>
-						</li>
-						<li class="resume__list--item">
-							<p class="resume__list--title">Web Developer</p>
-							<p class="resume__list--desc">Asuka Design Agency<br>
-							2012-2015</p>
-						</li>
-					</ul>
-				</div>
-
-				<div class="resume u-pt-40 resume--right is-animation">
-					<h3 class="u-text-center">Education</h3>
-
-					<ul class="resume__list">
-						<li class="resume__list--item">
-								<p class="resume__list--title">Web And Mobile Application Development Diploma</p>
-								<p class="resume__list--desc">Cornerstone College<br>
-								2016-Present</p>
-						</li>
-						<li class="resume__list--item">
-							<p class="resume__list--title">Bachelor of Computer Sciences & Engineering</p>
-							<p class="resume__list--desc">Kyoto Sangyo University<br>
-							2009-2013</p>
-						</li>
-					</ul>
-				</div>
-
-				<a href="#" class="button u-display-block u-mt-50 is-animation">DOWNLOAD MY CV</a>
-			</div>
 		</section>
 
-		<section id="works" class="l-section proj--outer">
-			<div class="u-pt-70 u-pb-20">
-				<h2 class="u-text-center u-pb-20 is-animation">WORKS</h2>
+		<section id="contact" class="l-section u-pb-50">
+				<h2>SAY HELLO</h2>
 
-				<!--div class="proj is-animation is-border">
-					<a href="#" class="proj__link">
-						<img src="http://placehold.it/200x120" alt="" class="proj__img">
-						<p class="proj__description"><small class="u-display-inline-block">Oct 2016</small><br>
-						<strong>Portfolio</strong><br>
-						Website Design/Development</p>
-					</a>
-				</div-->
-
-				<div class="proj is-animation is-border">
-					<a href="emiacworks.html" class="proj__link">
-						<img src="common/img/thumb-em@2x.png" alt="EMiAC-Works" width="200" height="120" class="proj__img">
-						<p class="proj__description"><small class="u-display-inline-block">Apr 2015</small><br>
-						<strong>EMiAC-Works</strong><br>
-						Website Design/WordPress Development</p>
-					</a>
-				</div>
-
-				<div class="proj is-animation is-border">
-					<a href="rita.html" class="proj__link">
-						<img src="common/img/thumb-rita@2x.png" alt="Rita Hair Salon" width="200" height="120" class="proj__img">
-						<p class="proj__description"><small class="u-display-inline-block">Oct 2014</small><br>
-						<strong>Rita Hair Salon</strong><br>
-						Website Development/WordPress</p>
-					</a>
-				</div>
-
-				<div class="proj is-animation is-border">
-					<a href="osazen.html" class="proj__link">
-						<img src="common/img/thumb-osazen@2x.png" alt="Osazen Farm" width="200" height="120" class="proj__img">
-						<p class="proj__description"><small class="u-display-inline-block">Apr 2015</small><br>
-						<strong>Osazen Farm</strong><br>
-						WordPress Development</p>
-					</a>
-				</div>
-
-				<div class="proj is-animation is-border">
-					<a href="highland.html" class="proj__link">
-						<img src="common/img/thumb-ahl@2x.png" alt="Kyoto Area Highland" width="200" height="120" class="proj__img">
-						<p class="proj__description"><small class="u-display-inline-block">Apr 2014</small><br>
-						<strong>Kyoto Area Highland</strong><br>
-						WordPress Development</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-		<section id="skills" class="l-section level__parallax">
-			<div class="u-pt-40 u-pb-40">
-				<h2 class="u-text-center u-text-color-white u-pb-20 is-animation">SKILLS</h2>
-
-				<div class="level is-animation">
-					<p class="u-text-color-white">HTML5 <em class="level__text">95%</em></p>
-					<div class="level__progress"><div class="level__progress--percent" data-skill-level="95"></div></div>
-				</div>
-
-				<div class="level is-animation">
-					<p class="u-text-color-white">CSS3 <em class="level__text">90%</em></p>
-					<div class="level__progress"><div class="level__progress--percent" data-skill-level="90"></div></div>
-				</div>
-
-				<div class="level is-animation">
-					<p class="u-text-color-white">Javascript/jQuery <em class="level__text">60%</em></p>
-					<div class="level__progress"><div class="level__progress--percent" data-skill-level="60"></div></div>
-				</div>
-
-				<div class="level is-animation">
-					<p class="u-text-color-white">PHP <em class="level__text">80%</em></p>
-					<div class="level__progress"><div class="level__progress--percent" data-skill-level="80"></div></div>
-				</div>
-
-				<div class="level is-animation">
-					<p class="u-text-color-white">Sass <em class="level__text">70%</em></p>
-					<div class="level__progress"><div class="level__progress--percent" data-skill-level="70"></div></div>
-				</div>
-
-				<div class="level is-animation">
-					<p class="u-text-color-white">WordPress <em class="level__text">70%</em></p>
-					<div class="level__progress"><div class="level__progress--percent" data-skill-level="70"></div></div>
-				</div>
-			</div>
-		</section>
-
-		<section id="contact" class="l-section">
-			<div class="u-pt-70 u-pb-70">
-				<h2 class="u-text-center u-pb-20 is-animation">SAY HELLO</h2>
-
-				<p class="u-text-center is-animation">Thank you for visiting, I hope you enjoyed a short scroll trip.<br>
+				<p class="u-text-center u-mb-30">Thank you for visiting, I hope you enjoyed a short scroll trip.<br>
 				Feel free to drop me a line, just say hi and let me know you.</p>
 
-				<a href="mailto:nismit.dev@gmail.com?subject=hello Mitch" class="button u-display-block u-mt-50 is-animation">SEND MESSAGE</a>
+				<a href="mailto:nismit.dev@gmail.com?subject=hello Mitch" class="button">SEND MESSAGE</a>
 			</div>
 		</section>
+
 	</main>
 </div><!-- /.l-wrapper -->
 
@@ -252,7 +243,7 @@
 </svg>
 <!-- End of SVG -->
 <!-- Load Javascript -->
-<script src="common/js/script.js"></script>
+<!--script src="common/js/script.js"></script-->
 <!-- End of Javascript -->
 </body>
 </html>

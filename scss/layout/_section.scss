@@ -6,10 +6,6 @@
   margin-left: auto;
   margin-right: auto;
   background-color: $_color-bg;
-
-  &:last-child {
-    background-color: #eee;
-  }
 }
 
 // Tablet
@@ -26,6 +22,6 @@
 
 // Wide PC
 @include getMediaQueryMin('.l-section','lg') {
-  padding-left: 15em;
-  padding-right: 15em;
+  padding-left: 13em;
+  padding-right: 13em;
 }
