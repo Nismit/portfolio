@@ -97,7 +97,7 @@ body {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 41px;
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
 }
@@ -109,15 +109,28 @@ h2 {
   line-height: 170%;
   letter-spacing: 0.08em;
   text-align: center;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  position: relative;
+}
+h2:after {
+  content: "";
+  width: 80px;
+  height: 5px;
+  background-color: #333;
+  position: absolute;
+  bottom: 90px;
+  left: calc(50% - 40px);
+}
+h2.inverse:after {
+  background-color: #fff;
 }
 
 h3 {
   font-size: 22px;
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  line-height: 13px;
+  line-height: 20px;
   letter-spacing: 0.05em;
   margin-bottom: 30px;
 }
@@ -490,6 +503,17 @@ fileoverview comment
     width: 0;
   }
 }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
 .u-bg-gray {
   background-color: #eee;
 }
@@ -499,11 +523,25 @@ fileoverview comment
 
 .l-header {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   position: fixed;
-  z-index: 5;
+  z-index: 10;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
+@media screen and (min-width: 48em) {
+  .l-header {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+}
+@media screen and (min-width: 64em) {
+  .l-header {
+    padding-left: 8em;
+    padding-right: 8em;
+  }
+}
 .l-wrapper {
   width: 100%;
   position: relative;
@@ -516,7 +554,19 @@ fileoverview comment
   padding-right: 1em;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 40px;
+  padding-bottom: 100px;
   background-color: #fff;
+}
+
+.gray-section {
+  background-color: #f5f5fa;
+}
+
+.bg-section {
+  background-image: url("../img/bg_2.png");
+  background-position: center top;
+  background-size: cover;
 }
 
 @media screen and (min-width: 48em) {
@@ -531,12 +581,11 @@ fileoverview comment
     padding-right: 8em;
   }
 }
-@media screen and (min-width: 75em) {
-  .l-section {
-    padding-left: 13em;
-    padding-right: 13em;
-  }
-}
+/*// Wide PC
+@include getMediaQueryMin('.l-section','lg') {
+  padding-left: 13em;
+  padding-right: 13em;
+}*/
 .l-footer {
   width: 100%;
   background-color: #000;
@@ -545,12 +594,18 @@ fileoverview comment
   padding: 1.8em 0;
 }
 
+.nav {
+  float: right;
+  margin-top: .7em;
+}
 .nav__item {
   display: block;
+  text-align: center;
   padding: 1em 0;
 }
 .nav__item a {
   display: inline-block;
+  padding: .5em 0;
   color: #fff;
 }
 .nav--list {
@@ -564,33 +619,33 @@ fileoverview comment
 }
 
 .nav--button {
-  margin: 0.5em 1em 0 0;
   display: inline-block;
+  cursor: pointer;
   position: relative;
   z-index: 15;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 38px;
 }
 .nav--button > span {
   display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 28px;
+  top: 46%;
+  left: 45%;
+  width: 32px;
   height: 4px;
   margin: -2px 0 0 -14px;
-  background: #fff;
+  background: #ccc;
   transition: .2s;
 }
 .nav--button > span:before, .nav--button > span:after {
   display: block;
   content: "";
   position: absolute;
-  top: 50%;
+  top: 51%;
   left: 0;
-  width: 28px;
+  width: 32px;
   height: 4px;
-  background: #fff;
+  background: #ccc;
   transition: .3s;
 }
 .nav--button > span:before {
@@ -626,25 +681,30 @@ fileoverview comment
 }
 
 @media screen and (min-width: 48em) {
-  .nav__item {
+  .nav {
+  /*&__item {
     display: inline-block;
     border: none;
     padding: 0;
     text-align: left;
+
+    a {
+      display: inline-block;
+      color: #fff;
+      padding: 1em 1.5em;
+    }
   }
-  .nav__item a {
-    display: inline-block;
-    color: #fff;
-    padding: 1em 1.5em;
-  }
-  .nav--list {
-    display: block;
+
+  &--list {
+    display: none;
     height: 100%;
     position: static;
     background: none;
   }
-  .nav--button {
-    display: none;
+
+  &--button {
+    display: inline-block;
+  }*/
   }
 }
 svg {
@@ -652,12 +712,29 @@ svg {
   background: none;
 }
 
+.logo {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin-top: .7em;
+}
+.logo__inner {
+  width: inherit;
+  height: inherit;
+  fill: #ccc;
+  width: 37px;
+  height: 37px;
+}
+
 .hero {
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+}
+.hero__a-items {
+  align-items: center;
 }
 .hero__direction--column {
   flex-direction: column;
@@ -672,7 +749,7 @@ svg {
   width: inherit;
   height: inherit;
   background: url(../img/bg.png);
-  background-position: 70% top;
+  background-position: 78% top;
   background-size: cover;
   position: fixed;
   left: 0;
@@ -686,17 +763,64 @@ svg {
   z-index: 5;
 }
 .hero__title {
-  line-height: 35px;
+  line-height: 43px;
   letter-spacing: 0.025em;
 }
 .hero__title > em {
   display: block;
 }
 .hero__text {
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 15px;
+  line-height: 17px;
+}
+.hero__text > em {
+  display: inline-block;
+}
+.hero__anime {
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% - 15px);
+  z-index: 5;
+}
+.hero__arrow {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 16px;
+  color: #000;
+  vertical-align: middle;
+  text-decoration: none;
+  animation: bounce 2s infinite;
+}
+.hero__arrow:before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  position: absolute;
+  top: 0;
+  left: 3px;
 }
 
+@media screen and (min-width: 48em) {
+  .hero__inner {
+    padding: 0 3em;
+  }
+  .hero__title > em {
+    display: inline-block;
+    padding: 0 .3em;
+  }
+  .hero__text > em {
+    display: block;
+  }
+}
+@media screen and (min-width: 64em) {
+  .hero__inner {
+    padding: 0 8em;
+  }
+}
 .hexagon {
   /*@include hexagon(200, #333);
   margin-left: auto;
@@ -711,7 +835,7 @@ svg {
   width: 250px;
   height: 144.34px;
   margin: 72.17px auto;
-  background-image: url(../img/profile500.png);
+  background-image: url(../img/min-profile2.png);
   background-size: auto 288.6751px;
   background-position: center;
 }
@@ -797,35 +921,44 @@ svg {
   background-color: #fff;
 }
 
-.level {
+.skill {
   width: 100%;
+  color: #fff;
   padding-bottom: 15px;
 }
-.level__progress {
+.skill__text {
+  float: right;
+}
+.skill__progress {
   width: 100%;
   height: 4px;
   margin-top: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
 }
-.level__progress--percent {
+.skill__progress--percent {
+  width: 85%;
   height: 4px;
   background: -webkit-linear-gradient(left, #10817b 0%, #0cac94 50%, #66f5ed 100%);
   background: -o-linear-gradient(left, #10817b 0%, #0cac94 50%, #66f5ed 100%);
   background: linear-gradient(to right, #10817b 0%, #0cac94 50%, #66f5ed 100%);
   /*background-size: 200% 200%;*/
 }
-.level__parallax {
-  background-image: url("../img/bg_2.png");
-  background-position: center top;
-  background-size: cover;
-}
 
 .sns {
   padding: 1.5em 0 1em 0;
+}
+.sns--about {
+  padding: 1em 0 0 0;
 }
 .sns__item {
   display: inline-block;
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+.sns__item--about {
+  display: inline-block;
+  padding-left: 0;
+  padding-right: 1em;
 }
 .sns__item--link:hover {
   cursor: pointer;
@@ -854,6 +987,11 @@ svg {
 .sns__icon {
   width: 25px;
   height: 25px;
+}
+.sns__icon--about {
+  width: 25px;
+  height: 25px;
+  fill: #333;
 }
 
 @media screen and (min-width: 48em) {
@@ -886,8 +1024,11 @@ svg {
 }
 .flex {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+}
+.flex__a-items {
+  align-items: center;
 }
 .flex__direction--column {
   flex-direction: column;
@@ -898,7 +1039,7 @@ svg {
 .flex__wrap {
   flex-wrap: wrap;
 }
-.flex__item {
+.flex__item, .flex__item--30 {
   width: 100%;
 }
 @media screen and (min-width: 48em) {
@@ -911,6 +1052,16 @@ svg {
   .flex__gutter:nth-child(even) {
     margin-right: 0;
     margin-left: 10px;
+  }
+  .flex__item--30 {
+    width: calc(50% - 30px);
+  }
+  .flex__gutter--30 {
+    margin-right: 30px;
+  }
+  .flex__gutter--30:nth-child(even) {
+    margin-right: 0;
+    margin-left: 30px;
   }
 }
 
@@ -926,7 +1077,8 @@ svg {
   height: 15px;
   position: absolute;
   z-index: 1;
-  background-color: #FC9A4D;
+  background-color: #333;
+  transition: 0.4s;
 }
 .portfolio:before {
   left: -5px;
@@ -945,7 +1097,7 @@ svg {
   height: 15px;
   position: absolute;
   z-index: 1;
-  background-color: #FC9A4D;
+  background-color: #333;
 }
 .portfolio__inner:before {
   left: -5px;
@@ -959,7 +1111,7 @@ svg {
   display: none;
   width: 100%;
   height: 100%;
-  padding: 28% 0;
+  padding: 18% 0;
   line-height: 180%;
   letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.7);
@@ -970,17 +1122,39 @@ svg {
   z-index: 10;
   text-align: center;
 }
-.portfolio:hover:before, .portfolio:hover:after {
+.portfolio.js-hover:before, .portfolio.js-hover:after, .portfolio:hover:before, .portfolio:hover:after {
   width: 100%;
   height: 100%;
+  transition: 0.8s;
 }
-.portfolio:hover span {
+.portfolio.js-hover span, .portfolio:hover span {
   display: inline-block;
 }
 .portfolio__img {
   display: block;
   position: relative;
   z-index: 5;
+}
+
+@media screen and (min-width: 64em) {
+  .portfolio__inner span {
+    padding: 28% 0;
+  }
+}
+.portfolio--ew:before, .portfolio--ew:after {
+  background-color: #fc9a4d;
+}
+
+.portfolio--rita:before, .portfolio--rita:after {
+  background-color: #e1d2a9;
+}
+
+.portfolio--osazen:before, .portfolio--osazen:after {
+  background-color: #73cad8;
+}
+
+.portfolio--ahl:before, .portfolio--ahl:after {
+  background-color: #698759;
 }
 
 .list__item {
@@ -990,4 +1164,24 @@ svg {
   margin-bottom: 0;
   padding-top: 10px;
   border-top: 1px solid #ccc;
+}
+
+.about__me--img {
+  width: 100%;
+}
+.about__link {
+  display: inline-block;
+  padding-top: 1em;
+  padding-right: .5em;
+}
+.about__link--item {
+  width: 25px;
+  height: 25px;
+  fill: #333;
+}
+
+@media screen and (min-width: 48em) {
+  .about__me--img {
+    width: 50%;
+  }
 }

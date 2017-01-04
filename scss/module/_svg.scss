@@ -3,3 +3,18 @@ svg {
   fill: #fff;
   background: none;
 }
+
+.logo {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin-top: .7em;
+
+  &__inner {
+    width: inherit;
+    height: inherit;
+    fill: #ccc;
+    width: 37px;
+    height: 37px;
+  }
+}

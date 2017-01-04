@@ -24,7 +24,7 @@ function styleSkillLevel(elem) {
   }
 }
 
-styleSkillLevel(getElem('.level__progress--percent'));
+styleSkillLevel(getElem('.skill__progress--percent'));
 
 function getElemOffset(elem) {
   for(i = 0; i < elem.length; i++){
@@ -53,33 +53,5 @@ var throttleFunc = (function() {
 
 menuTrigger[0].addEventListener('click', throttleFunc, false);
 
-getElemOffset(getElem('.is-animation'));
-var animation = getElem('.is-animation');
-var heroParallax = getElem('.hero__parallax');
-var leveParallax = getElem('.level__parallax');
-var diffPos = 0;
-
-//for(i=0;i < offsetArray.length; i++){
-  //console.log(offsetArray[i]);
-//}
-
 window.onscroll = function() {
-scrollTop = elScrollable.scrollTop;
-  for(i = 0; i < offsetArray.length; i++) {
-    if((offsetArray[i].top - 570) <= scrollTop) {
-      //console.log("hit",offsetArray[i]);
-      if(animation[i].classList !== 'fadeInUp') {
-        animation[i].classList.add('fadeInUp');
-      }
-    }
-  }
-/*var currentPos = scrollTop;
-if(currentPos > diffPos) {
-  //console.log("+++", currentPos);
-  heroParallax[0].style.transform = 'translate(0,'+ (currentPos - diffPos) +'px)';
-}else{
-  console.log("---", currentPos);
-  heroParallax[0].style.transform = 'translate(0,'+ (currentPos + diffPos) +'px)';
-}
-diffPos = currentPos;*/
 }

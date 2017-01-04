@@ -2,7 +2,7 @@
 .flex {
   @include flex();
 
-  &__item {
+  &__item, &__item--30 {
     width: 100%;
   }
 
@@ -17,6 +17,19 @@
       &:nth-child(even) {
         margin-right: 0;
         margin-left: 10px;
+      }
+    }
+
+    &__item--30 {
+      width: calc(50% - 30px);
+    }
+
+    &__gutter--30 {
+      margin-right: 30px;
+
+      &:nth-child(even) {
+        margin-right: 0;
+        margin-left: 30px;
       }
     }
   }

@@ -1,0 +1,30 @@
+// About
+.about {
+  &__me {
+
+    &--img {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-top: 1em;
+    padding-right: .5em;
+
+    &--item {
+      width: 25px;
+      height: 25px;
+      fill: #333;
+    }
+  }
+}
+
+// Tablet
+@include getMediaQueryMin('.about','sm') {
+  &__me {
+    &--img {
+      width: 50%;
+    }
+  }
+}
