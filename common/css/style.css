@@ -745,6 +745,9 @@ svg {
 .hero__wrap {
   flex-wrap: wrap;
 }
+.hero__proj {
+  height: 50vh;
+}
 .hero__parallax {
   width: inherit;
   height: inherit;
@@ -755,6 +758,10 @@ svg {
   left: 0;
   top: 0;
   z-index: 1;
+}
+.hero__parallax--proj {
+  background-image: url(../img/header.jpg);
+  background-position: center top;
 }
 .hero__inner {
   width: 100%;
@@ -1042,6 +1049,9 @@ svg {
 .flex__item, .flex__item--30 {
   width: 100%;
 }
+.flex__item--half {
+  width: 50%;
+}
 @media screen and (min-width: 48em) {
   .flex__item {
     width: calc(50% - 10px);
@@ -1087,6 +1097,9 @@ svg {
 .portfolio:after {
   right: -5px;
   bottom: -5px;
+}
+.portfolio__proj {
+  border: 5px solid #333;
 }
 .portfolio__inner {
   position: relative;
@@ -1184,4 +1197,11 @@ svg {
   .about__me--img {
     width: 50%;
   }
+}
+.text__custom > a {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 20px;
+  color: #333;
 }
