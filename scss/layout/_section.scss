@@ -5,11 +5,19 @@
   padding-right: $_section-padding;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 40px;
+  padding-bottom: 100px;
   background-color: $_color-bg;
+}
 
-  &:last-child {
-    background-color: #eee;
-  }
+.gray-section {
+  background-color: #f5f5fa;
+}
+
+.bg-section {
+  background-image: url("../img/bg_2.png");
+  background-position: center top;
+  background-size: cover;
 }
 
 // Tablet
@@ -24,8 +32,8 @@
   padding-right: 8em;
 }
 
-// Wide PC
+/*// Wide PC
 @include getMediaQueryMin('.l-section','lg') {
-  padding-left: 15em;
-  padding-right: 15em;
-}
+  padding-left: 13em;
+  padding-right: 13em;
+}*/

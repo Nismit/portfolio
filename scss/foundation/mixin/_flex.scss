@@ -1,0 +1,29 @@
+// Responsive
+
+@mixin flex() {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+
+  &__a-items {
+    align-items: center;
+  }
+
+  &__direction--column {
+    flex-direction: column;
+  }
+
+  &__direction--row {
+    flex-direction: row;
+  }
+
+  &__wrap {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+
+
+

@@ -18,31 +18,50 @@ body {
   font-kerning: normal;
   line-height: 150%;
   font-family: $_custom-font-family;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 h1 {
-
+  font-size: 41px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
 }
 
 h2 {
   font-size: 28px;
-  font-family: 'Noto Serif', serif;
-  font-weight: 400;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
   line-height: 170%;
-  letter-spacing: 3px
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 80px;
+    height: 5px;
+    background-color: #333;
+    position: absolute;
+    bottom: 90px;
+    left: calc(50% - 40px);
+  }
+
+  &.inverse {
+    &:after {
+      background-color: #fff;
+    }
+  }
 }
 
 h3 {
   font-size: 22px;
-  font-family: 'Noto Serif', serif;
-  font-weight: 400;
-  line-height: 170%;
-  letter-spacing: 2px;
-}
-
-h4 {
-  
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 30px;
 }
 
 a {

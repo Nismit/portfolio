@@ -1,11 +1,16 @@
 // Navigation
 .nav {
+  float: right;
+  margin-top: .7em;
+
   &__item {
     display: block;
+    text-align: center;
     padding: 1em 0;
 
     a {
       display: inline-block;
+      padding: .5em 0;
       color: #fff;
     }
   }
@@ -22,7 +27,6 @@
 }
 
 .nav--button {
-  margin: 0.5em 1em 0 0;
   @include hamburger();
 }
 
@@ -35,14 +39,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  @include css3('animation-duration', 1.5s);
-  @include css3('animation-fill-mode', both);
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
   animation-name: c_fade;
 }
 
 // Tablet
 @include getMediaQueryMin('.nav','sm') {
-  &__item {
+  /*&__item {
     display: inline-block;
     border: none;
     padding: 0;
@@ -56,14 +60,14 @@
   }
 
   &--list {
-    display: block;
+    display: none;
     height: 100%;
     position: static;
     background: none;
   }
 
   &--button {
-    display: none;
-  }
+    display: inline-block;
+  }*/
 }
 

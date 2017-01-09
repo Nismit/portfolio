@@ -18,9 +18,9 @@
 // Mixins
 @import 'foundation/mixin/clearfix';
 @import 'foundation/mixin/font-size';
-@import 'foundation/mixin/css3-prefix';
 @import 'foundation/mixin/responsive';
 @import 'foundation/mixin/mediaquery';
+@import 'foundation/mixin/flex';
 
 // Above files are defined for SASS
 
@@ -46,20 +46,20 @@
 // Layout
 @import 'layout/header';
 @import 'layout/wrapper';
-@import 'layout/main';
 @import 'layout/section';
-@import 'layout/content';
 @import 'layout/footer';
 
 // Modules
-@import 'module/logo';
 @import 'module/nav';
 @import 'module/svg';
 @import 'module/hero';
 @import 'module/hexagon';
-@import 'module/resume';
 @import 'module/button';
-@import 'module/proj';
-@import 'module/level';
+@import 'module/skill';
 @import 'module/sns';
 @import 'module/animation';
+@import 'module/flex';
+@import 'module/portfolio';
+@import 'module/list';
+@import 'module/about';
+@import 'module/text';
