@@ -41,33 +41,7 @@
   flex-direction: column;
   animation-duration: 1.5s;
   animation-fill-mode: both;
-  animation-name: c_fade;
+  animation-name: fadeIn;
 }
 
-// Tablet
-@include getMediaQueryMin('.nav','sm') {
-  /*&__item {
-    display: inline-block;
-    border: none;
-    padding: 0;
-    text-align: left;
-
-    a {
-      display: inline-block;
-      color: #fff;
-      padding: 1em 1.5em;
-    }
-  }
-
-  &--list {
-    display: none;
-    height: 100%;
-    position: static;
-    background: none;
-  }
-
-  &--button {
-    display: inline-block;
-  }*/
-}
 

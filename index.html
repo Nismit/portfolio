@@ -14,6 +14,9 @@
 <!-- Social Meta -->
 </head>
 <body>
+
+<div class="load"></div>
+
 <header class="l-header">
 	<a href="/" class="logo"><svg class="logo__inner"><use xlink:href="#svg--logo"/></svg></a>
 
@@ -45,27 +48,27 @@
       <h2>PORTFOLIO</h2>
 
       <div class="flex flex__a-items flex__wrap">
-        <div class="flex__item flex__gutter u-mb-20">
+        <div class="flex__item flex__gutter u-mb-20 js slideSide">
           <a href="emiacworks.html" class="portfolio portfolio--ew">
-            <p class="portfolio__inner portfolio--ew"><img src="common/img/thumb-emiac.jpg" srcset="common/img/thumb-emiac.jpg 640w, common/img/thumb-emiac@2x.jpg 1200w" width="100%" class="portfolio__img" alt="EMiAC-Works">
+            <p class="portfolio__inner portfolio--ew"><img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" width="100%" class="portfolio__img" data-src="common/img/thumb-emiac.jpg" data-srcset="common/img/thumb-emiac.jpg 640w, common/img/thumb-emiac@2x.jpg 1200w" alt="EMiAC-Works">
             <span><strong>EMiAC-Works</strong><br>Personal Blog | Design / Development</span></p>
           </a>
         </div>
-        <div class="flex__item flex__gutter u-mb-20">
+        <div class="flex__item flex__gutter u-mb-20 js slideSide">
           <a href="rita.html" class="portfolio portfolio--rita">
-            <p class="portfolio__inner portfolio--rita"><img src="common/img/thumb-rita.jpg" srcset="common/img/thumb-rita.jpg 640w, common/img/thumb-rita@2x.jpg 1200w" width="100%" class="portfolio__img" alt="Rita">
+            <p class="portfolio__inner portfolio--rita"><img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" width="100%" class="portfolio__img" data-src="common/img/thumb-rita.jpg" data-srcset="common/img/thumb-rita.jpg 640w, common/img/thumb-rita@2x.jpg 1200w" alt="Rita">
             <span><strong>Rita</strong><br>Website | WordPress Development</span></p>
           </a>
         </div>
-        <div class="flex__item flex__gutter u-mb-20">
+        <div class="flex__item flex__gutter u-mb-20 js slideSide">
           <a href="osazen.html" class="portfolio portfolio--osazen">
-            <p class="portfolio__inner portfolio--osazen"><img src="common/img/thumb-osazen.jpg" srcset="common/img/thumb-osazen.jpg 640w, common/img/thumb-osazen@2x.jpg 1200w" width="100%" class="portfolio__img" alt="Osazen">
+            <p class="portfolio__inner portfolio--osazen"><img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" width="100%" class="portfolio__img" data-src="common/img/thumb-osazen.jpg" data-srcset="common/img/thumb-osazen.jpg 640w, common/img/thumb-osazen@2x.jpg 1200w" alt="Osazen">
             <span><strong>Osazen</strong><br>Website | WordPress Development</span></p>
           </a>
         </div>
-        <div class="flex__item flex__gutter u-mb-20">
+        <div class="flex__item flex__gutter u-mb-20 js slideSide">
           <a href="highland.html" class="portfolio portfolio--ahl">
-            <p class="portfolio__inner portfolio--ahl"><img src="common/img/thumb-ahl.jpg" srcset="common/img/thumb-ahl.jpg 640w, common/img/thumb-ahl@2x.jpg 1200w" width="100%" class="portfolio__img" alt="KYOTO AREAHIGHLAND">
+            <p class="portfolio__inner portfolio--ahl"><img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" width="100%" class="portfolio__img" data-src="common/img/thumb-ahl.jpg" data-srcset="common/img/thumb-ahl.jpg 640w, common/img/thumb-ahl@2x.jpg 1200w" alt="KYOTO AREAHIGHLAND">
             <span><strong>KYOTO AREAHIGHLAND</strong><br>Website | Design / WordPress Development</span></p>
           </a>
         </div>
@@ -76,7 +79,7 @@
       <h2 class="u-text-color-white inverse">SKILLS</h2>
 
       <div class="flex flex__wrap">
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
           <div class="skill">
             <p><strong>HTML5<span class="skill__text">95%</span></strong></p>
             <div class="skill__progress">
@@ -85,7 +88,7 @@
           </div>
         </div>
 
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
           <div class="skill">
             <p><strong>CSS3<span class="skill__text">90%</span></strong></p>
             <div class="skill__progress">
@@ -94,7 +97,7 @@
           </div>
         </div>
 
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
           <div class="skill">
             <p><strong>Javascript/jQuery<span class="skill__text">60%</span></strong></p>
             <div class="skill__progress">
@@ -103,7 +106,7 @@
           </div>
         </div>
 
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
           <div class="skill">
             <p><strong>PHP<span class="skill__text">80%</span></strong></p>
             <div class="skill__progress">
@@ -112,7 +115,7 @@
           </div>
         </div>
 
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
           <div class="skill">
             <p><strong>Sass<span class="skill__text">70%</span></strong></p>
             <div class="skill__progress">
@@ -121,11 +124,47 @@
           </div>
         </div>
 
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
           <div class="skill">
-            <p><strong>WordPress<span class="skill__text">70%</span></strong></p>
+            <p><strong>WordPress<span class="skill__text">80%</span></strong></p>
+            <div class="skill__progress">
+              <div class="skill__progress--percent" data-skill-level="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
+          <div class="skill">
+            <p><strong>Apache<span class="skill__text">50%</span></strong></p>
+            <div class="skill__progress">
+              <div class="skill__progress--percent" data-skill-level="50"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
+          <div class="skill">
+            <p><strong>Photoshop<span class="skill__text">70%</span></strong></p>
             <div class="skill__progress">
               <div class="skill__progress--percent" data-skill-level="70"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
+          <div class="skill">
+            <p><strong>Illustrator<span class="skill__text">70%</span></strong></p>
+            <div class="skill__progress">
+              <div class="skill__progress--percent" data-skill-level="70"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex__item--30 flex__gutter--30  js slideUp">
+          <div class="skill">
+            <p><strong>After Effects<span class="skill__text">40%</span></strong></p>
+            <div class="skill__progress">
+              <div class="skill__progress--percent" data-skill-level="40"></div>
             </div>
           </div>
         </div>
@@ -139,7 +178,7 @@
       
       <div class="flex flex__wrap">
     
-      <div class="flex__item--30 flex__gutter--30 u-mb-50">
+      <div class="flex__item--30 flex__gutter--30 u-mb-50 js slideSide">
         <h3>WORK EXPERIENCE</h3>
 
         <ul class="list">
@@ -153,7 +192,7 @@
         </ul>
       </div>
 
-      <div class="flex__item--30 flex__gutter--30 u-mb-50">
+      <div class="flex__item--30 flex__gutter--30 u-mb-50 js slideSide">
         <h3>EDUCATION</h3>
 
         <ul class="list">
@@ -170,7 +209,7 @@
 
       </div><!-- /.flex -->
 
-      <a href="#" class="button">DOWNLOAD CV</a>
+      <a href="#" class="button js slideUp">DOWNLOAD CV</a>
     </section>
 
 
@@ -178,11 +217,11 @@
 			<h2>ABOUT</h2>
 
       <div class="flex flex__wrap">
-        <div class="flex__item--30 flex__gutter--30">
-          <p class="about__me u-text-center"><img src="common/img/hex_profile.png" width="100%" alt="Michinobu Nishimoto" class="about__me--img"></p>
+        <div class="flex__item--30 flex__gutter--30 js slideSide">
+          <p class="about__me u-text-center"><img src="common/img/hex_profile.png" width="100%" alt="Michinobu Nishimoto" data-srcset="common/img/hex_profile.png" class="about__me--img"></p>
         </div>
 
-        <div class="flex__item--30 flex__gutter--30">
+        <div class="flex__item--30 flex__gutter--30 js slideSide">
           <p>I am a Web Developer and Designer with 3+ years of experience in small and large websites development, currently living in Vancouver. I am passionate about good code, security and performance.</p>
           <p>Basically, I keep clean code because the code is kind of design. </p>
           <p>Now,I am looking for a job for web design or development.</p>
@@ -201,12 +240,12 @@
 		</section>
 
 		<section id="contact" class="l-section u-pb-50">
-				<h2>SAY HELLO</h2>
+				<h2 class="js slideUp">SAY HELLO</h2>
 
-				<p class="u-text-center u-mb-50">Thank you for visiting, I hope you enjoyed a short scroll trip.<br>
+				<p class="u-text-center u-mb-50 js slideUp">Thank you for visiting, I hope you enjoyed a short scroll trip.<br>
 				Feel free to drop me a line, just say hi and let me know you.</p>
 
-				<a href="mailto:nismit.dev@gmail.com?subject=hello Mitch" class="button">SEND MESSAGE</a>
+				<a href="mailto:nismit.dev@gmail.com?subject=hello Mitch" class="button js slideUp">SEND MESSAGE</a>
 			</div>
 		</section>
 

@@ -7,7 +7,6 @@
   &__proj {
     height: 50vh;
   }
-  
 
   &__parallax {
     width: inherit;
@@ -65,7 +64,7 @@
     color: #000;
     vertical-align: middle;
     text-decoration: none;
-    animation: bounce 2s infinite;
+    animation: bounce 1.8s infinite;
 
     &:before {
       content: "";

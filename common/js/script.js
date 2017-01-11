@@ -1,16 +1,26 @@
-var elScrollable;
-if(navigator.userAgent.indexOf('WebKit') < 0) {
-  elScrollable = document.documentElement;
-}else {
-  elScrollable = document.body;
+const elImages = document.querySelectorAll('img[data-srcset]');
+
+// Count loaded images
+let numOfLoaded = 0;
+const numOfImages = elImages.length;
+function onLoad(event) {
+  numOfLoaded++;
+  if (numOfLoaded >= numOfImages) {
+    console.log('Done.');
+  }
 }
 
-var offsetArray = [];
-var scrollTop = elScrollable.scrollTop;
+// start loading
+for (let i = 0; i < numOfImages; i++ ) {
+  const elImage = elImages[i];
+  elImage.addEventListener('load', onLoad);
+  elImage.srcset = elImage.getAttribute('data-srcset');
+  elImage.src = elImage.getAttribute('data-src');
+}
 
-// Skill Level Indicator
+
 function getElem(elem) {
-  var elements = document.querySelectorAll(elem);
+  const elements = document.querySelectorAll(elem);
   if(elements.length === 0)
     return false;
   else
@@ -26,19 +36,12 @@ function styleSkillLevel(elem) {
 
 styleSkillLevel(getElem('.skill__progress--percent'));
 
-function getElemOffset(elem) {
-  for(i = 0; i < elem.length; i++){
-    offsetArray[i] = elem[i].getBoundingClientRect();
-    //offsetArray[i] = (Math.ceil(offsetArray[i].top) -200);
-  }
-}
-
 // Menu
-var menuTrigger = getElem('.nav--button');
+const menuTrigger = getElem('.nav--button');
 
-var throttleFunc = (function() {
-  var interval = 1000;
-  var lastTime = new Date().getTime() - interval
+const throttleFunc = (function() {
+  const interval = 1000;
+  let lastTime = new Date().getTime() - interval;
   return function() {
     if ((lastTime + interval) <= new Date().getTime()) {
       lastTime = new Date().getTime();
@@ -52,6 +55,3 @@ var throttleFunc = (function() {
 })();
 
 menuTrigger[0].addEventListener('click', throttleFunc, false);
-
-window.onscroll = function() {
-}

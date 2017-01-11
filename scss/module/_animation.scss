@@ -1,36 +1,16 @@
 // CSS3 Animation
-// Mobile will not work
-@include getMediaQueryMin('.l-section','sm') {
-  .is-animation {
-    opacity: 0;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+.js {
+  &.slideSide {
+    animation: fadeSlideLeft 1.3s;
+
+    &:nth-child(even) {
+      animation: fadeSlideRight 1.3s;
+    }
   }
 
-  .is-border {
-    animation-duration: 1s;
-    transition-delay: 1s;
-    animation-fill-mode: both;
-    border-bottom: 1px solid transparent;
-  }
-
-  .fadeInUp {
-    animation-name: fadeInUp;
-  }
-
-  .proj.fadeInUp {
-    animation-name: c_fadeInUp;
-  }
-
-  .fadeInUp.is-border {
-    border-bottom: 1px solid #eee;
-  }
-
-  .fadeInUp .level__progress--percent {
-    animation-duration: 3.5s;
-    transition-delay: 600ms;
-    animation-fill-mode: both;
-    animation-name: width;
+  &.slideUp {
+    animation: fadeSlideUp 1s;
   }
 }
+
 

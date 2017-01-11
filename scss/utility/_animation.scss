@@ -1,8 +1,18 @@
 // Animation
-@keyframes fadeInUp {
+@keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
   }
 
   100% {
@@ -11,30 +21,10 @@
   }
 }
 
-@keyframes c_fade {
+@keyframes fadeSlideRight {
   0% {
     opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hero_fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes c_fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(100%, 0, 0);
   }
 
   100% {
@@ -43,11 +33,24 @@
   }
 }
 
-@keyframes width {
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 130%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes widthUp {
   0% {
     width: 0;
   }
 }
+
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {

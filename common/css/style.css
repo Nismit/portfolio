@@ -462,43 +462,45 @@ fileoverview comment
   float: right;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
   }
   100% {
     opacity: 1;
     transform: none;
   }
 }
-@keyframes c_fade {
+@keyframes fadeSlideRight {
   0% {
     opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes hero_fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes c_fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(100%, 0, 0);
   }
   100% {
     opacity: 1;
     transform: none;
   }
 }
-@keyframes width {
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 130%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes widthUp {
   0% {
     width: 0;
   }
@@ -677,36 +679,9 @@ fileoverview comment
   flex-direction: column;
   animation-duration: 1.5s;
   animation-fill-mode: both;
-  animation-name: c_fade;
+  animation-name: fadeIn;
 }
 
-@media screen and (min-width: 48em) {
-  .nav {
-  /*&__item {
-    display: inline-block;
-    border: none;
-    padding: 0;
-    text-align: left;
-
-    a {
-      display: inline-block;
-      color: #fff;
-      padding: 1em 1.5em;
-    }
-  }
-
-  &--list {
-    display: none;
-    height: 100%;
-    position: static;
-    background: none;
-  }
-
-  &--button {
-    display: inline-block;
-  }*/
-  }
-}
 svg {
   fill: #fff;
   background: none;
@@ -796,7 +771,7 @@ svg {
   color: #000;
   vertical-align: middle;
   text-decoration: none;
-  animation: bounce 2s infinite;
+  animation: bounce 1.8s infinite;
 }
 .hero__arrow:before {
   content: "";
@@ -948,7 +923,7 @@ svg {
   background: -webkit-linear-gradient(left, #10817b 0%, #0cac94 50%, #66f5ed 100%);
   background: -o-linear-gradient(left, #10817b 0%, #0cac94 50%, #66f5ed 100%);
   background: linear-gradient(to right, #10817b 0%, #0cac94 50%, #66f5ed 100%);
-  /*background-size: 200% 200%;*/
+  animation: widthUp 2.5s .5s;
 }
 
 .sns {
@@ -1001,34 +976,16 @@ svg {
   fill: #333;
 }
 
-@media screen and (min-width: 48em) {
-  .l-section .is-animation {
-    opacity: 0;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-  }
-  .l-section .is-border {
-    animation-duration: 1s;
-    transition-delay: 1s;
-    animation-fill-mode: both;
-    border-bottom: 1px solid transparent;
-  }
-  .l-section .fadeInUp {
-    animation-name: fadeInUp;
-  }
-  .l-section .proj.fadeInUp {
-    animation-name: c_fadeInUp;
-  }
-  .l-section .fadeInUp.is-border {
-    border-bottom: 1px solid #eee;
-  }
-  .l-section .fadeInUp .level__progress--percent {
-    animation-duration: 3.5s;
-    transition-delay: 600ms;
-    animation-fill-mode: both;
-    animation-name: width;
-  }
+.js.slideSide {
+  animation: fadeSlideLeft 1.3s;
 }
+.js.slideSide:nth-child(even) {
+  animation: fadeSlideRight 1.3s;
+}
+.js.slideUp {
+  animation: fadeSlideUp 1s;
+}
+
 .flex {
   display: flex;
   align-items: stretch;
@@ -1052,6 +1009,7 @@ svg {
 .flex__item--half {
   width: 50%;
 }
+
 @media screen and (min-width: 48em) {
   .flex__item {
     width: calc(50% - 10px);
@@ -1074,7 +1032,6 @@ svg {
     margin-left: 30px;
   }
 }
-
 .portfolio {
   display: block;
   border: 5px solid transparent;
