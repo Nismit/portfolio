@@ -15,7 +15,13 @@
 </head>
 <body>
 
-<div class="load"></div>
+<div class="loader">
+  <svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="width: 40px; height: 40px;" viewBox="0 0 50 50" xml:space="preserve">
+    <path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+      <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+    </path>
+  </svg>
+</div>
 
 <header class="l-header">
 	<a href="/" class="logo"><svg class="logo__inner"><use xlink:href="#svg--logo"/></svg></a>
@@ -34,7 +40,7 @@
 
 <div class="hero hero__direction--column">
   <div class="hero__parallax"></div>
-	<div class="hero__inner">
+	<div class="hero__inner slideUp">
 		<h1 class="hero__title u-text-color-white">WEB DEVELOPER<em>&</em>DESIGNER</h1>
     <p class="hero__text u-mt-10 u-text-color-white">I’m Michinobu Nishimoto and based in Vancouver.<em>Have experience of 3 years+ in web development.</em></p>
 	</div>

@@ -1,4 +1,6 @@
 const elImages = document.querySelectorAll('img[data-srcset]');
+let loader = getElem('.loader');
+let hero = getElem('.hero__inner');
 
 // Count loaded images
 let numOfLoaded = 0;
@@ -7,6 +9,8 @@ function onLoad(event) {
   numOfLoaded++;
   if (numOfLoaded >= numOfImages) {
     console.log('Done.');
+    loader[0].classList.add('js-hidden');
+    setTimeout(hero[0].classList.add('js'), 3500);
   }
 }
 
@@ -17,7 +21,6 @@ for (let i = 0; i < numOfImages; i++ ) {
   elImage.srcset = elImage.getAttribute('data-srcset');
   elImage.src = elImage.getAttribute('data-src');
 }
-
 
 function getElem(elem) {
   const elements = document.querySelectorAll(elem);

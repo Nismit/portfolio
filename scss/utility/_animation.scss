@@ -51,6 +51,24 @@
   }
 }
 
+@keyframes hiddenElement {
+  0% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+    height: 100vh;
+    width: 100%;
+  }
+
+  100% {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+}
+
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {

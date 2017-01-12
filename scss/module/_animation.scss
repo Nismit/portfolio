@@ -9,7 +9,11 @@
   }
 
   &.slideUp {
-    animation: fadeSlideUp 1s;
+    animation: fadeSlideUp 1.5s;
+  }
+
+  &.fadeIn {
+    animation: fadeIn 1s;
   }
 }
 
