@@ -1,29 +1,31 @@
-const elImages = document.querySelectorAll('img[data-srcset]');
-let loader = getElem('.loader');
-let hero = getElem('.hero__inner');
+var elImages = document.querySelectorAll('img[data-src]');
+var loader = getElem('.loader');
+var hero = getElem('.hero__inner');
 
 // Count loaded images
-let numOfLoaded = 0;
-const numOfImages = elImages.length;
+var numOfLoaded = 0;
+var numOfImages = elImages.length;
 function onLoad(event) {
   numOfLoaded++;
   if (numOfLoaded >= numOfImages) {
     console.log('Done.');
     loader[0].classList.add('js-hidden');
-    setTimeout(hero[0].classList.add('js'), 3500);
+    setTimeout(hero[0].classList.add('js'), 2000);
   }
 }
 
 // start loading
-for (let i = 0; i < numOfImages; i++ ) {
-  const elImage = elImages[i];
+for (var i = 0; i < numOfImages; i++ ) {
+  var elImage = elImages[i];
   elImage.addEventListener('load', onLoad);
-  elImage.srcset = elImage.getAttribute('data-srcset');
+  if(elImage.getAttribute('data-srcset') != null) {
+    elImage.srcset = elImage.getAttribute('data-srcset');
+  }
   elImage.src = elImage.getAttribute('data-src');
 }
 
 function getElem(elem) {
-  const elements = document.querySelectorAll(elem);
+  var elements = document.querySelectorAll(elem);
   if(elements.length === 0)
     return false;
   else
@@ -31,7 +33,7 @@ function getElem(elem) {
 }
 
 function styleSkillLevel(elem) {
-  for(i = 0; i < elem.length; i++){
+  for(var i = 0; i < elem.length; i++){
     //console.log(elem[i]);
     elem[i].style.width = elem[i].dataset.skillLevel+'%';
   }
@@ -40,11 +42,11 @@ function styleSkillLevel(elem) {
 styleSkillLevel(getElem('.skill__progress--percent'));
 
 // Menu
-const menuTrigger = getElem('.nav--button');
+var menuTrigger = getElem('.nav--button');
 
-const throttleFunc = (function() {
-  const interval = 1000;
-  let lastTime = new Date().getTime() - interval;
+var throttleFunc = (function() {
+  var interval = 1000;
+  var lastTime = new Date().getTime() - interval;
   return function() {
     if ((lastTime + interval) <= new Date().getTime()) {
       lastTime = new Date().getTime();

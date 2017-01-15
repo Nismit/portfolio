@@ -5,13 +5,17 @@
   position: absolute;
   z-index: 100;
   background-color: #000;
+  @include flex();
 
-  svg {
-    fill: #fff;
-    position: relative;
-    left: calc(50% - 40px);
-    top: calc(50% - 40px);
-  }
+  &__spin {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+    border: .25rem solid rgba(255, 255, 255, .2);
+    border-top-color: #fff;
+    animation: spin 1s infinite linear;
+  }  
 
   &.js-hidden {
     animation: hiddenElement 1s forwards;

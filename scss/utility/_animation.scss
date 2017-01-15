@@ -69,6 +69,15 @@
   }
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {

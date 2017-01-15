@@ -15,13 +15,7 @@
 </head>
 <body>
 
-<div class="loader">
-  <svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="width: 40px; height: 40px;" viewBox="0 0 50 50" xml:space="preserve">
-    <path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
-      <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
-    </path>
-  </svg>
-</div>
+<div class="loader loader__direction--column"><div class="loader__spin"></div></div>
 
 <header class="l-header">
 	<a href="/" class="logo"><svg class="logo__inner"><use xlink:href="#svg--logo"/></svg></a>
@@ -224,7 +218,7 @@
 
       <div class="flex flex__wrap">
         <div class="flex__item--30 flex__gutter--30 js slideSide">
-          <p class="about__me u-text-center"><img src="common/img/hex_profile.png" width="100%" alt="Michinobu Nishimoto" data-srcset="common/img/hex_profile.png" class="about__me--img"></p>
+          <p class="about__me u-text-center"><img src="common/img/dummy.jpg" data-src="common/img/hex_profile.png" width="100%" alt="Michinobu Nishimoto" class="about__me--img"></p>
         </div>
 
         <div class="flex__item--30 flex__gutter--30 js slideSide">
@@ -270,6 +264,10 @@
 
 	<p class="u-text-color-white u-text-center u-text-extra-small">Copyright &copy; 2016 Michinobu Nishimoto(NISMIT), All Rights Reserved.</p>
 </footer>
+
+<img src="common/img/dummy.jpg" data-src="common/img/bg.jpg" width="0" height="0" alt="Background Image for preloading">
+
+<img src="common/img/dummy.jpg" data-src="common/img/bg_2.png" width="0" height="0" alt="Background Image for preloading">
 
 <!-- SVG Splite -->
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
