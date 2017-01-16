@@ -1,6 +1,10 @@
 var elImages = document.querySelectorAll('img[data-src]');
 var loader = getElem('.loader');
 var hero = getElem('.hero__inner');
+var anim = getElem('.slideUp, .slideSide');
+var offsetArray = [];
+var setFunc = null;
+var elScrollable;
 
 // Count loaded images
 var numOfLoaded = 0;
@@ -10,7 +14,7 @@ function onLoad(event) {
   if (numOfLoaded >= numOfImages) {
     console.log('Done.');
     loader[0].classList.add('js-hidden');
-    setTimeout(hero[0].classList.add('js'), 2000);
+    setTimeout(hero[0].classList.add('js'), 2500);
   }
 }
 
@@ -34,7 +38,6 @@ function getElem(elem) {
 
 function styleSkillLevel(elem) {
   for(var i = 0; i < elem.length; i++){
-    //console.log(elem[i]);
     elem[i].style.width = elem[i].dataset.skillLevel+'%';
   }
 }
@@ -60,3 +63,37 @@ var throttleFunc = (function() {
 })();
 
 menuTrigger[0].addEventListener('click', throttleFunc, false);
+
+function getElemOffset(elem) {
+  for(i = 0; i < elem.length; i++){
+    offsetArray[i] = elem[i].getBoundingClientRect();
+    //console.log(offsetArray[i]);
+  }
+}
+
+getElemOffset(getElem('.slideUp, .slideSide'));
+
+if(navigator.userAgent.indexOf('WebKit') < 0) {
+  elScrollable = document.documentElement;
+}else {
+  elScrollable = document.body;
+}
+var scrollTop = elScrollable.scrollTop;
+
+window.addEventListener('scroll', function() {
+  if(setFunc) {
+    return false;
+  }
+
+  setFunc = setTimeout(function() {
+    scrollTop = elScrollable.scrollTop;
+    //console.log("scroll",scrollTop);
+    /*for(i = 0; i < offsetArray.length; i++) {
+      if((offsetArray[i].top - 570) <= scrollTop) {
+          animation[i].classList.add('js');
+        }
+      }
+    }*/
+    setFunc = null;
+  }, 250);
+});

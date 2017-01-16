@@ -783,7 +783,7 @@ svg {
 }
 .hero__anime {
   position: absolute;
-  bottom: 50px;
+  bottom: 7%;
   left: calc(50% - 15px);
   z-index: 5;
 }
