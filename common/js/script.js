@@ -1,9 +1,7 @@
-var elImages = document.querySelectorAll('img[data-src]');
-var loader = getElem('.loader');
-var hero = getElem('.hero__inner');
+var elImages = getElem('img[data-src]');
 var anim = getElem('.slideUp, .slideSide');
-var offsetArray = [];
 var setFunc = null;
+var offsetArray = [];
 var elScrollable;
 
 // Count loaded images
@@ -13,13 +11,16 @@ function onLoad(event) {
   numOfLoaded++;
   if (numOfLoaded >= numOfImages) {
     console.log('Done.');
+    var loader = getElem('.loader');
     loader[0].classList.add('js-hidden');
+    var hero = getElem('.hero__intro');
+    setOffset(anim);
     setTimeout(hero[0].classList.add('js'), 2500);
   }
 }
 
 // start loading
-for (var i = 0; i < numOfImages; i++ ) {
+for (var i = 0; i < numOfImages; i++) {
   var elImage = elImages[i];
   elImage.addEventListener('load', onLoad);
   if(elImage.getAttribute('data-srcset') != null) {
@@ -39,6 +40,13 @@ function getElem(elem) {
 function styleSkillLevel(elem) {
   for(var i = 0; i < elem.length; i++){
     elem[i].style.width = elem[i].dataset.skillLevel+'%';
+  }
+}
+
+function setOffset(elem) {
+  for (var i = 0; i < elem.length; i++) {
+    offsetArray[i] = elem[i].getBoundingClientRect().top;
+    //console.log(offsetArray[i]+'px');
   }
 }
 
@@ -64,15 +72,6 @@ var throttleFunc = (function() {
 
 menuTrigger[0].addEventListener('click', throttleFunc, false);
 
-function getElemOffset(elem) {
-  for(i = 0; i < elem.length; i++){
-    offsetArray[i] = elem[i].getBoundingClientRect();
-    //console.log(offsetArray[i]);
-  }
-}
-
-getElemOffset(getElem('.slideUp, .slideSide'));
-
 if(navigator.userAgent.indexOf('WebKit') < 0) {
   elScrollable = document.documentElement;
 }else {
@@ -87,13 +86,15 @@ window.addEventListener('scroll', function() {
 
   setFunc = setTimeout(function() {
     scrollTop = elScrollable.scrollTop;
-    //console.log("scroll",scrollTop);
-    /*for(i = 0; i < offsetArray.length; i++) {
-      if((offsetArray[i].top - 570) <= scrollTop) {
-          animation[i].classList.add('js');
+    console.log("scroll",scrollTop);
+    for(i = 0; i < offsetArray.length; i++) {
+      if((offsetArray[i] - (window.innerHeight / 1.15)) <= scrollTop) {
+          //console.log(offsetArray[i]);
+        if(anim[i].classList != 'js') {
+          anim[i].classList.add('js');
         }
       }
-    }*/
+    }
     setFunc = null;
-  }, 250);
+  }, 200);
 });
