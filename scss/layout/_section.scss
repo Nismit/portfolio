@@ -1,6 +1,7 @@
 // Section
 .l-section {
   width: 100%;
+  overflow-x: hidden;
   padding-left: $_section-padding;
   padding-right: $_section-padding;
   margin-left: auto;

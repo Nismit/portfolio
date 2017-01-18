@@ -1,15 +1,7 @@
 // CSS3 Animation
-/*.slideSide {
+.slideSide, .slideUp, .fadeIn {
   opacity: 0;
 }
-
-.slideUp {
-  opacity: 0;
-}
-
-.fadeIn {
-  opacity: 0;
-}*/
 
 .js {
   &.slideSide {
@@ -19,8 +11,6 @@
 
     &:nth-child(even) {
       animation-name: fadeSlideRight;
-      animation-duration: 1.3s;
-      animation-fill-mode: both;
     }
   }
 

@@ -46,7 +46,7 @@ function styleSkillLevel(elem) {
 function setOffset(elem) {
   for (var i = 0; i < elem.length; i++) {
     offsetArray[i] = elem[i].getBoundingClientRect().top;
-    //console.log(offsetArray[i]+'px');
+    //console.log("offset"+offsetArray[i]+'px');
   }
 }
 
@@ -86,15 +86,20 @@ window.addEventListener('scroll', function() {
 
   setFunc = setTimeout(function() {
     scrollTop = elScrollable.scrollTop;
-    console.log("scroll",scrollTop);
+    //console.log("scroll",scrollTop);
     for(i = 0; i < offsetArray.length; i++) {
       if((offsetArray[i] - (window.innerHeight / 1.15)) <= scrollTop) {
           //console.log(offsetArray[i]);
-        if(anim[i].classList != 'js') {
+        if(!anim[i].classList.contains('js')) {
           anim[i].classList.add('js');
         }
       }
     }
     setFunc = null;
   }, 200);
+});
+
+window.addEventListener('resize', function() {
+  setOffset(anim);
+  console.log("resize");
 });

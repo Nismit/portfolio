@@ -15,12 +15,15 @@
     background-color: rgba(255,255,255, .3);
 
     &--percent {
-      width: 85%;
+      width: 0;
       height: 4px;
       background: -webkit-linear-gradient(left, #10817b 0%, #0cac94 50%, #66f5ed 100%);
       background: -o-linear-gradient(left, #10817b 0%, #0cac94 50%, #66f5ed 100%);
       background: linear-gradient(to right, #10817b 0%, #0cac94 50%, #66f5ed 100%);
-      animation: widthUp 2.5s .5s;
     }
   }
+}
+
+.js .skill__progress--percent {
+  animation: widthUp 2.5s both;
 }

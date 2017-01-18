@@ -21,7 +21,7 @@
 }
 
 // Tablet
-@include getMediaQueryMin('.about','sm') {
+@include getMediaQueryMin('.about','lg') {
   &__me {
     &--img {
       width: 50%;
