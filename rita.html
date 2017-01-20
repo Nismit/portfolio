@@ -8,13 +8,15 @@
 <meta name="description" content="">
 <meta name="author" content="Michinobu Nishimoto(Nismit)">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:700" rel="stylesheet">
 <link rel="stylesheet" href="common/css/style.css">
 <!-- Social Meta -->
 </head>
 <body>
-<header class="l-header clearfix">
+
+<div class="loader loader__direction--column"><div class="loader__spin"></div></div>
+
+<header class="l-header">
 	<a href="/" class="logo"><svg class="logo__inner"><use xlink:href="#svg--logo"/></svg></a>
 </header>
 
@@ -31,28 +33,30 @@
 		<section id="summary" class="l-section">
 				<h2>SUMMARY</h2>
 
-				<p>Rita is a hair salon in Kyoto Japan.</p>
+				<p>Rita is a hair salon in Kyoto Japan. I implemented WordPress for a blog and HTML which included jQuery slider. CSS was made by SCSS. It was my first time to implement CSS by SCSS and was a big challenge for me. I learnt SCSS in the work and recognized that SCSS is really good for CSS coding.</p>
 
-				<ul>
-					<li>WordPress</li>
-					<li>SCSS</li>
-					<li>jQuery</li>
+				<ul class="tags">
+					<li class="tags__item tags__item--html">HTML5</li>
+					<li class="tags__item tags__item--css3">CSS3</li>
+					<li class="tags__item tags__item--js">jQuery</li>
+					<li class="tags__item tags__item--scss">SCSS</li>
+					<li class="tags__item tags__item--wp">WordPress</li>
 				</ul>
 		</section>
 
 		<section id="works" class="l-section">
 				<h2>PORTFOLIO</h2>
 
-				<img src="img/rita/ov4-rita.jpg" srcset="img/rita/ov4-rita.jpg 640w,img/rita/ov4-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Smartphone">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/rita/ov4-rita.jpg" data-srcset="img/rita/ov4-rita.jpg 640w,img/rita/ov4-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Smartphone">
 				<p class="u-mb-40">Smartphone</p>
 
-				<img src="img/rita/ov1-rita.jpg" srcset="img/rita/ov1-rita.jpg 640w, img/rita/ov1-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Salon Page">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/rita/ov1-rita.jpg" data-srcset="img/rita/ov1-rita.jpg 640w, img/rita/ov1-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Salon Page">
 				<p class="u-mb-40">Salon Page</p>
 
-				<img src="img/rita/ov2-rita.jpg" srcset="img/rita/ov2-rita.jpg 640w,img/rita/ov2-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="About Page">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/rita/ov2-rita.jpg" data-srcset="img/rita/ov2-rita.jpg 640w,img/rita/ov2-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="About Page">
 				<p class="u-mb-40">About Page</p>
 
-				<img src="img/rita/ov3-rita.jpg" srcset="img/rita/ov3-rita.jpg 640w,img/rita/ov3-rita@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Catalog Page">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/rita/ov3-rita.jpg" data-srcset="img/rita/ov3-rita.jpg 640w,img/rita/ov3-rita@2x.jpg 1200w"" width="100%" class="portfolio__proj" alt="Catalog Page">
 				<p class="u-mb-40">Catalog Page</p>
 
 				<ul class="flex">
@@ -70,7 +74,7 @@
 		<li class="sns__item"><a href="https://github.com/Nismit" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--github"><use xlink:href="#svg--github"/></svg></a></li>
 		<li class="sns__item"><a href="https://ca.linkedin.com/in/nismit" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--linkedin"><use xlink:href="#svg--linkedin"/></svg></a></li>
 		<li class="sns__item"><a href="https://www.pinterest.com/nismit_/" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--pinterest"><use xlink:href="#svg--pinterest"/></svg></a></li>
-		<li class="sns__item"><a href="#" class="sns__item--link"><svg class="sns__icon sns_icon--spotify"><use xlink:href="#svg--spotify"/></svg></a></li>
+		<li class="sns__item"><a href="https://play.spotify.com/user/nismit" class="sns__item--link"><svg class="sns__icon sns_icon--spotify"><use xlink:href="#svg--spotify"/></svg></a></li>
 	</ul>
 
 	<p class="u-text-color-white u-text-center u-text-extra-small">Copyright &copy; 2016 Michinobu Nishimoto(NISMIT), All Rights Reserved.</p>
@@ -123,6 +127,7 @@
 </svg>
 <!-- End of SVG -->
 <!-- Load Javascript -->
+<script src="common/js/under.min.js"></script>
 <!-- End of Javascript -->
 </body>
 </html>

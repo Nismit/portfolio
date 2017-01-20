@@ -8,12 +8,14 @@
 <meta name="description" content="">
 <meta name="author" content="Michinobu Nishimoto(Nismit)">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:700" rel="stylesheet">
 <link rel="stylesheet" href="common/css/style.css">
 <!-- Social Meta -->
 </head>
 <body>
+
+<div class="loader loader__direction--column"><div class="loader__spin"></div></div>
+
 <header class="l-header">
 	<a href="/" class="logo"><svg class="logo__inner"><use xlink:href="#svg--logo"/></svg></a>
 </header>
@@ -34,28 +36,31 @@
 				<p>EMiAC-Works, this is my freelance name, and I worked for over 1 year in Japan. I decided to make a logo and web site. I created a logo and implemented a blog using WordPress. The blog is written about tips for WordPress, Web server and jQuery. Firstly, I was thinking the logo and making a lot of logos (made over 20 type of logo). Hexagon stands for perfection.<br>
 				Secondly, I designed the blog for responsive design, it took about one month but was good challenge for me. Finally, the blog css was implemented by Sass. And icons are using SVG. In WordPress, I would not like install too much plugins because of performance in WordPress, so I chose a few plugins carefully. Plus, I devied theme which was PC, iPad and Smartphone. It was working on a hosting server. Currently, it is still working on a virtual private server.</p>
 
-				<ul>
-					<li>Making Logo</li>
-					<li>Web Design</li>
-					<li>WordPress</li>
-					<li>SCSS</li>
-					<li>jQuery</li>
+				<ul class="tags">
+					<li class="tags__item tags__item--other">Making Logo</li>
+					<li class="tags__item tags__item--other">Web Design</li>
+					<li class="tags__item tags__item--html">HTML5</li>
+					<li class="tags__item tags__item--css3">CSS3</li>
+					<li class="tags__item tags__item--scss">SCSS</li>
+					<li class="tags__item tags__item--js">jQuery</li>
+					<li class="tags__item tags__item--wp">WordPress</li>
+					<li class="tags__item tags__item--php">PHP</li>
 				</ul>
 		</section>
 
 		<section id="works" class="l-section">
 				<h2>PORTFOLIO</h2>
 
-				<img src="img/emiac/ew-logo.jpg" srcset="img/emiac/ew-logo.jpg 640w, img/emiac/ew-logo@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Logo">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/emiac/ew-logo.jpg" data-srcset="img/emiac/ew-logo.jpg 640w, img/emiac/ew-logo@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Logo">
 				<p class="u-mb-40">Logo</p>
 
-				<img src="img/emiac/ov2-ew.jpg" srcset="img/emiac/ov2-ew.jpg 640w,img/emiac/ov2-ew@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview /w Responsive">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/emiac/ov2-ew.jpg" data-srcset="img/emiac/ov2-ew.jpg 640w,img/emiac/ov2-ew@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview /w Responsive">
 				<p class="u-mb-40">Overview /w Responsive</p>
 
-				<img src="img/emiac/ov-ew.jpg" srcset="img/emiac/ov-ew.jpg 640w,img/emiac/ov-ew@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview Toppage">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/emiac/ov-ew.jpg" data-srcset="img/emiac/ov-ew.jpg 640w,img/emiac/ov-ew@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview Toppage">
 				<p class="u-mb-40">Overview Toppage</p>
 
-				<img src="img/emiac/ew-sp.jpg" srcset="img/emiac/ew-sp.jpg 640w,img/emiac/ew-sp@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Smartphone">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/emiac/ew-sp.jpg" data-srcset="img/emiac/ew-sp.jpg 640w,img/emiac/ew-sp@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Smartphone">
 				<p class="u-mb-40">Smartphone</p>
 
 				<ul class="flex">
@@ -73,7 +78,7 @@
 		<li class="sns__item"><a href="https://github.com/Nismit" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--github"><use xlink:href="#svg--github"/></svg></a></li>
 		<li class="sns__item"><a href="https://ca.linkedin.com/in/nismit" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--linkedin"><use xlink:href="#svg--linkedin"/></svg></a></li>
 		<li class="sns__item"><a href="https://www.pinterest.com/nismit_/" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--pinterest"><use xlink:href="#svg--pinterest"/></svg></a></li>
-		<li class="sns__item"><a href="#" class="sns__item--link"><svg class="sns__icon sns_icon--spotify"><use xlink:href="#svg--spotify"/></svg></a></li>
+		<li class="sns__item"><a href="https://play.spotify.com/user/nismit" class="sns__item--link"><svg class="sns__icon sns_icon--spotify"><use xlink:href="#svg--spotify"/></svg></a></li>
 	</ul>
 
 	<p class="u-text-color-white u-text-center u-text-extra-small">Copyright &copy; 2016 Michinobu Nishimoto(NISMIT), All Rights Reserved.</p>
@@ -126,6 +131,7 @@
 </svg>
 <!-- End of SVG -->
 <!-- Load Javascript -->
+<script src="common/js/under.min.js"></script>
 <!-- End of Javascript -->
 </body>
 </html>

@@ -10,7 +10,7 @@ var numOfImages = elImages.length;
 function onLoad(event) {
   numOfLoaded++;
   if (numOfLoaded >= numOfImages) {
-    console.log('Done.');
+    //console.log('Done.');
     var loader = getElem('.loader');
     loader[0].classList.add('js-hidden');
     var hero = getElem('.hero__intro');
@@ -88,7 +88,7 @@ window.addEventListener('scroll', function() {
     scrollTop = elScrollable.scrollTop;
     //console.log("scroll",scrollTop);
     for(i = 0; i < offsetArray.length; i++) {
-      if((offsetArray[i] - (window.innerHeight / 1.15)) <= scrollTop) {
+      if((offsetArray[i] - (window.innerHeight / 1.7)) <= scrollTop) {
           //console.log(offsetArray[i]);
         if(!anim[i].classList.contains('js')) {
           anim[i].classList.add('js');
@@ -101,5 +101,5 @@ window.addEventListener('scroll', function() {
 
 window.addEventListener('resize', function() {
   setOffset(anim);
-  console.log("resize");
+  //console.log("resize");
 });

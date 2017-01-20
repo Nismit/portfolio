@@ -91,6 +91,22 @@
   }
 }
 
+@include getMediaQueryMin('.portfolio','xs') {
+  &__inner {
+    span {
+      padding: 25% 0;
+    }
+  }
+}
+
+@include getMediaQueryMin('.portfolio','sm') {
+  &__inner {
+    span {
+      padding: 21% 0;
+    }
+  }
+}
+
 @include getMediaQueryMin('.portfolio','md') {
   &__inner {
     span {

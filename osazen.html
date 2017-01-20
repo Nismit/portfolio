@@ -8,13 +8,15 @@
 <meta name="description" content="">
 <meta name="author" content="Michinobu Nishimoto(Nismit)">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:700" rel="stylesheet">
 <link rel="stylesheet" href="common/css/style.css">
 <!-- Social Meta -->
 </head>
 <body>
-<header class="l-header clearfix">
+
+<div class="loader loader__direction--column"><div class="loader__spin"></div></div>
+
+<header class="l-header">
 	<a href="/" class="logo"><svg class="logo__inner"><use xlink:href="#svg--logo"/></svg></a>
 </header>
 
@@ -31,24 +33,27 @@
 		<section id="summary" class="l-section">
 				<h2>SUMMARY</h2>
 
-				<p>Osazen is a farm in Kyoto Japan, and grows strawberry. They also make strawberry jam which is famous for the farm. I made a blog which introduce to the life in the farm and choose WordPress. I implemented a jQuery image slider and WordPress theme.</p>
+				<p>Osazen is a farm in Kyoto Japan, and grows strawberry. They also make strawberry jam which is famous in the farm. I made a blog which introduce to the life of the farm and choose WordPress. I implemented a jQuery image slider and WordPress theme. <br>
+				I created how to use WordPress manual for them and taught how it use.</p>
 
-				<ul>
-					<li>WordPress</li>
-					<li>jQuery</li>
+				<ul class="tags">
+					<li class="tags__item tags__item--html">HTML5</li>
+					<li class="tags__item tags__item--css3">CSS3</li>
+					<li class="tags__item tags__item--js">jQuery</li>
+					<li class="tags__item tags__item--wp">WordPress</li>
 				</ul>
 		</section>
 
 		<section id="works" class="l-section">
 				<h2>PORTFOLIO</h2>
 
-				<img src="img/osazen/ov1-osazen.jpg" srcset="img/osazen/ov1-osazen.jpg 640w, img/osazen/ov1-osazen@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview Toppage">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/osazen/ov1-osazen.jpg" data-srcset="img/osazen/ov1-osazen.jpg 640w, img/osazen/ov1-osazen@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview Toppage">
 				<p class="u-mb-40">Overview Toppage</p>
 
-				<img src="img/osazen/ov2-osazen.jpg" srcset="img/osazen/ov2-osazen.jpg 640w,img/osazen/ov2-osazen@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview About page">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/osazen/ov2-osazen.jpg" data-srcset="img/osazen/ov2-osazen.jpg 640w, img/osazen/ov2-osazen@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview About page">
 				<p class="u-mb-40">Overview About page</p>
 
-				<img src="img/osazen/ov3-osazen.jpg" srcset="img/osazen/ov3-osazen.jpg 640w,img/osazen/ov3-osazen@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview About page">
+				<img src="common/img/dummy.jpg" srcset="common/img/dummy.jpg" data-src="img/osazen/ov3-osazen.jpg" data-srcset="img/osazen/ov3-osazen.jpg 640w, img/osazen/ov3-osazen@2x.jpg 1200w" width="100%" class="portfolio__proj" alt="Overview About page">
 				<p class="u-mb-40">Overview About page</p>
 
 				<ul class="flex">
@@ -66,7 +71,7 @@
 		<li class="sns__item"><a href="https://github.com/Nismit" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--github"><use xlink:href="#svg--github"/></svg></a></li>
 		<li class="sns__item"><a href="https://ca.linkedin.com/in/nismit" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--linkedin"><use xlink:href="#svg--linkedin"/></svg></a></li>
 		<li class="sns__item"><a href="https://www.pinterest.com/nismit_/" target="_blank" class="sns__item--link"><svg class="sns__icon sns_icon--pinterest"><use xlink:href="#svg--pinterest"/></svg></a></li>
-		<li class="sns__item"><a href="#" class="sns__item--link"><svg class="sns__icon sns_icon--spotify"><use xlink:href="#svg--spotify"/></svg></a></li>
+		<li class="sns__item"><a href="https://play.spotify.com/user/nismit" class="sns__item--link"><svg class="sns__icon sns_icon--spotify"><use xlink:href="#svg--spotify"/></svg></a></li>
 	</ul>
 
 	<p class="u-text-color-white u-text-center u-text-extra-small">Copyright &copy; 2016 Michinobu Nishimoto(NISMIT), All Rights Reserved.</p>
@@ -119,6 +124,7 @@
 </svg>
 <!-- End of SVG -->
 <!-- Load Javascript -->
+<script src="common/js/under.min.js"></script>
 <!-- End of Javascript -->
 </body>
 </html>
