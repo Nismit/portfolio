@@ -88,7 +88,7 @@ window.addEventListener('scroll', function() {
     scrollTop = elScrollable.scrollTop;
     //console.log("scroll",scrollTop);
     for(i = 0; i < offsetArray.length; i++) {
-      if((offsetArray[i] - (window.innerHeight / 1.7)) <= scrollTop) {
+      if((offsetArray[i] - (window.innerHeight / 1.6)) <= scrollTop) {
           //console.log(offsetArray[i]);
         if(!anim[i].classList.contains('js')) {
           anim[i].classList.add('js');
