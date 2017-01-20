@@ -9,9 +9,8 @@ function onLoad(event) {
     //console.log('Done.');
     var loader = getElem('.loader');
     loader[0].classList.add('js-hidden');
-    var hero = getElem('.hero__intro');
-    setOffset(anim);
-    setTimeout(hero[0].classList.add('js'), 2500);
+    //var hero = getElem('.hero__intro');
+    //setTimeout(hero[0].classList.add('js'), 2500);
   }
 }
 
