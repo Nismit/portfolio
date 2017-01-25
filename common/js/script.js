@@ -1,5 +1,6 @@
 var elImages = getElem('img[data-src]');
 var anim = getElem('.slideUp, .slideSide');
+var navLink = getElem('.nav__item a');
 var setFunc = null;
 var offsetArray = [];
 var elScrollable;
@@ -44,7 +45,7 @@ function styleSkillLevel(elem) {
 }
 
 function setOffset(elem) {
-  for (var i = 0; i < elem.length; i++) {
+  for(var i = 0; i < elem.length; i++) {
     offsetArray[i] = elem[i].getBoundingClientRect().top;
     //console.log("offset"+offsetArray[i]+'px');
   }
@@ -71,6 +72,10 @@ var throttleFunc = (function() {
 })();
 
 menuTrigger[0].addEventListener('click', throttleFunc, false);
+
+for(var i = 0; i < navLink.length; i++) {
+  navLink[i].addEventListener('click', throttleFunc, false);
+}
 
 if(navigator.userAgent.indexOf('WebKit') < 0) {
   elScrollable = document.documentElement;
