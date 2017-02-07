@@ -1,12 +1,11 @@
 @charset "utf-8";
 
 // Variables
+@import 'foundation/variable/breakpoints';
 @import 'foundation/variable/color';
 @import 'foundation/variable/easing';
-@import 'foundation/variable/font-size';
-@import 'foundation/variable/font-family';
-@import 'foundation/variable/link';
-@import 'foundation/variable/breakpoints';
+@import 'foundation/variable/font';
+@import 'foundation/variable/others';
 
 // Custom Variables
 @import 'foundation/variable/custom';
@@ -31,13 +30,12 @@
 @import 'foundation/base/init';
 
 // Utility
-@import 'utility/text';
-@import 'utility/display';
-@import 'utility/padding';
-@import 'utility/margin';
-@import 'utility/float';
-@import 'utility/animation';
-@import 'utility/bg-color';
+@import 'foundation/utility/bg-color';
+@import 'foundation/utility/display';
+@import 'foundation/utility/float';
+@import 'foundation/utility/margin';
+@import 'foundation/utility/padding';
+@import 'foundation/utility/text';
 
 // Mixins for a particular site
 @import 'mixin/hexagon';
@@ -50,6 +48,7 @@
 @import 'layout/footer';
 
 // Modules
+@import 'module/keyframes';
 @import 'module/nav';
 @import 'module/svg';
 @import 'module/hero';

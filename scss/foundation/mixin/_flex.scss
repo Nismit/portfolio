@@ -1,4 +1,11 @@
-// Responsive
+// 
+// Mixin flex
+// flex-box mixin
+// ```
+// .example {
+//   @include flex();
+// }
+// ```
 
 @mixin flex() {
   display: flex;

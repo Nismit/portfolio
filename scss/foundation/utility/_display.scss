@@ -1,17 +1,14 @@
-/*
-#overview
-fileoverview title
-
-fileoverview comment
-*/
+//
+// Utility Display
+//
 
 .u-display {
-  &-block {
-    display: block;
-  }
-
   &-none {
     display: none;
+  }
+
+  &-block {
+    display: block;
   }
 
   &-inline {

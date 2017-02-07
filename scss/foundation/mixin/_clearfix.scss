@@ -1,4 +1,11 @@
-// clearfix
+//
+// Mixin clearfix
+// clearfix mixin
+// ```
+// .example {
+//   @include clearfix();
+// }
+// ```
 
 @mixin clearfix() {
   &:after {
