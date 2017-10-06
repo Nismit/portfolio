@@ -47,7 +47,7 @@ function styleSkillLevel(elem) {
 function setOffset(elem) {
   for(var i = 0; i < elem.length; i++) {
     offsetArray[i] = elem[i].getBoundingClientRect().top;
-    //console.log("offset"+offsetArray[i]+'px');
+    // console.log("offset"+offsetArray[i]+'px');
   }
 }
 
@@ -77,12 +77,14 @@ for(var i = 0; i < navLink.length; i++) {
   navLink[i].addEventListener('click', throttleFunc, false);
 }
 
-if(navigator.userAgent.indexOf('WebKit') < 0) {
-  elScrollable = document.documentElement;
-}else {
-  elScrollable = document.body;
-}
-var scrollTop = elScrollable.scrollTop;
+// if(navigator.userAgent.indexOf('WebKit') < 0) {
+//   elScrollable = document.documentElement;
+// }else {
+//   elScrollable = document.body;
+// }
+// var scrollTop = elScrollable.scrollTop;
+
+var scrollTop = document.documentElement.scrollTop ||  document.body.scrollTop;
 
 window.addEventListener('scroll', function() {
   if(setFunc) {
@@ -90,11 +92,10 @@ window.addEventListener('scroll', function() {
   }
 
   setFunc = setTimeout(function() {
-    scrollTop = elScrollable.scrollTop;
-    //console.log("scroll",scrollTop);
+    scrollTop = document.documentElement.scrollTop ||  document.body.scrollTop;
     for(i = 0; i < offsetArray.length; i++) {
       if((offsetArray[i] - (window.innerHeight / 1.6)) <= scrollTop) {
-          //console.log(offsetArray[i]);
+          // console.log(offsetArray[i]);
         if(!anim[i].classList.contains('js')) {
           anim[i].classList.add('js');
         }
