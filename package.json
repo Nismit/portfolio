@@ -7,6 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "postinstall": "npm run getcontent",
+    "getcontent": "babel-node helpers/getContent.js install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +30,11 @@
     "next": "^8.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "dotenv": "^7.0.0"
   }
 }
