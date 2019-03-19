@@ -12,7 +12,8 @@ const client = createClient({
 });
 
 const types = [
-  'home'
+  'home',
+  'about'
 ];
 
 export const getContent = async () => {
