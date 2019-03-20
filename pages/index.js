@@ -3,7 +3,7 @@ import MainLayout from '../layouts/MainLayout';
 export default () => (
   <MainLayout>
     <p>Hello next.js</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet.
       Pulvinar etiam non quam lacus suspendisse faucibus interdum. Nec feugiat in fermentum posuere urna nec.
       Facilisis mauris sit amet massa vitae tortor condimentum. Quis risus sed vulputate odio ut enim blandit volutpat.
@@ -63,6 +63,6 @@ export default () => (
       Eget dolor morbi non arcu risus quis. Justo nec ultrices dui sapien eget.
       Lorem donec massa sapien faucibus et molestie.
       Tortor vitae purus faucibus ornare. Vestibulum rhoncus est pellentesque elit.
-      Leo vel fringilla est ullamcorper eget nulla facilisi etiam.</p>
+      Leo vel fringilla est ullamcorper eget nulla facilisi etiam.</p> */}
   </MainLayout>
 )
