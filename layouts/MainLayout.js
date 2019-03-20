@@ -1,9 +1,15 @@
 import Header from '../components/Header';
+import Terrain from '../components/Terrain';
 
 const MainLayout = props => (
   <div>
     <Header />
-    {props.children}
+    <div>
+      <div className="main__container">
+        {props.children}
+      </div>
+    </div>
+    <Terrain />
     <style jsx global>{`
       *::before,
       *::after {
@@ -21,6 +27,11 @@ const MainLayout = props => (
         margin: 0;
         color: #fff;
         background-color #000;
+      }
+
+      .main__container {
+        position: relative;
+        z-index: 10;
       }
     `}</style>
   </div>
