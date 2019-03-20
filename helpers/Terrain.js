@@ -48,6 +48,7 @@ export default class Terrain {
   textureLoad(src = '/static/pallete.png') {
     this.texture = new THREE.TextureLoader().load(src,
       function (texture) {
+        texture.needsUpdate = true;
         return texture;
       },
 
@@ -58,7 +59,6 @@ export default class Terrain {
     );
 
     if (this.texture !== null) {
-      this.texture.needsUpdate = true;
       this.uniforms.pallete.value = this.texture;
     } else {
       return null;
