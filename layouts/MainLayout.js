@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import Terrain from '../components/Terrain';
+import MainVisual from '../components/MainVisual';
 
 const MainLayout = props => (
   <div>
@@ -9,7 +9,7 @@ const MainLayout = props => (
         {props.children}
       </div>
     </div>
-    <Terrain />
+    <MainVisual />
     <style jsx global>{`
       *::before,
       *::after {
