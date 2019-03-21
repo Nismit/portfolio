@@ -2,7 +2,12 @@ import MainLayout from '../layouts/MainLayout';
 
 export default () => (
   <MainLayout>
-    <p>Hello next.js</p>
+    <div className="hero">
+      <div className="hero__container">
+        <h1>Interactive Developer</h1>
+        <p>Vancouver based developer with 5+ years in web development industry</p>
+      </div>
+    </div>
     {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet.
       Pulvinar etiam non quam lacus suspendisse faucibus interdum. Nec feugiat in fermentum posuere urna nec.
@@ -64,5 +69,16 @@ export default () => (
       Lorem donec massa sapien faucibus et molestie.
       Tortor vitae purus faucibus ornare. Vestibulum rhoncus est pellentesque elit.
       Leo vel fringilla est ullamcorper eget nulla facilisi etiam.</p> */}
+    <style jsx>{`
+        .hero {
+          display: flex;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .hero__container {
+          width: 600px;
+        }
+      `}</style>
   </MainLayout>
 )
