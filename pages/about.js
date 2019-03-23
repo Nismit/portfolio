@@ -13,6 +13,10 @@ export default () => (
 
     <div className="about__content">
       <p>content</p>
+      <p>content</p>
+      <p>content</p>
+      <p>content</p>
+      <p>content</p>
     </div>
     <style jsx>{`
       .about__head {
