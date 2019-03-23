@@ -1,6 +1,6 @@
 
 export default () => (
-  <div>
+  <div className="page home">
     <div className="hero">
       <div className="hero__container">
         <h1>Interactive Developer</h1>
@@ -17,6 +17,6 @@ export default () => (
         .hero__container {
           width: 600px;
         }
-      `}</style>
+    `}</style>
   </div>
 )
