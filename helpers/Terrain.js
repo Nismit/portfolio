@@ -15,7 +15,7 @@ export default class Terrain {
         value: 0.1
       },
       roadWidth: {
-        value: 0.5
+        value: 1.5
       },
       pallete: {
         value: null
@@ -31,7 +31,7 @@ export default class Terrain {
   }
 
   init() {
-    const geometry = new THREE.PlaneBufferGeometry(100, 400, 400, 400);
+    const geometry = new THREE.PlaneBufferGeometry(100, 400, 100, 100);
     const material = new THREE.ShaderMaterial({
       uniforms: this.uniforms,
       vertexShader: Vertex,
