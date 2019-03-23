@@ -72,7 +72,7 @@ export default class CustomApp extends App {
             top: 0;
             left: 0;
             right: 0;
-            height: auto;
+            height: 100vh;
             margin: 0;
             will-change: transform;
           }
