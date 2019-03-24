@@ -1,5 +1,6 @@
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
+import ComponentTextBlock from '../components/ComponentTextBlock';
 
 const aboutHead = {
   height: '100vh'
@@ -12,7 +13,9 @@ export default () => (
     </div>
 
     <div className="about__content">
-      <p>content</p>
+
+      <ComponentTextBlock />
+
       <p>content</p>
       <p>content</p>
       <p>content</p>
