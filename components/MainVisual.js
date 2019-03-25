@@ -103,6 +103,7 @@ class MainVisual extends Component {
   render() {
     return (
       <div
+        className="global-visual"
         style={{ width: '100vw', height: '100%', position: 'fixed', top: '0', left: '0', zIndex: '1' }}
         ref={(mount) => { this.mount = mount }}
       />
