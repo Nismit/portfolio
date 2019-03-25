@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 import Terrain from '../helpers/Terrain';
 
-class MainVisual extends Component {
+export default class MainVisual extends Component {
   constructor(props) {
     super(props);
 
@@ -110,5 +110,3 @@ class MainVisual extends Component {
     )
   }
 }
-
-export default MainVisual
