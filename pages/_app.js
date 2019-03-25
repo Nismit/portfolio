@@ -57,9 +57,19 @@ export default class CustomApp extends App {
             line-height: 0.95;
           }
 
+          p {
+            margin-top: 0;
+          }
+
           .page {
             position: relative;
             z-index: 10;
+          }
+
+          .page > div {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .virtual-scroll {
