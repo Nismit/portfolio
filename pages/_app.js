@@ -57,11 +57,6 @@ export default class CustomApp extends App {
             line-height: 0.95;
           }
 
-          .wrapper {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-          }
-
           .page {
             position: relative;
             z-index: 10;
