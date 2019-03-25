@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
 
-class About extends Component {
+export default class About extends Component {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
@@ -34,9 +34,17 @@ class About extends Component {
 
         <div className="about__content">
 
-          <ComponentTextBlock />
-          <ComponentTextBlock />
-          <ComponentTextBlock />
+          <ComponentTextBlock
+            title="Introduction"
+            content="Test"
+          />
+          <ComponentTextBlock
+            title="Introduction"
+            content="Test"
+          />
+          <ComponentTextBlock
+            title="Mission"
+          />
 
         </div>
         <style jsx>{`
@@ -50,5 +58,3 @@ class About extends Component {
     )
   }
 }
-
-export default About
