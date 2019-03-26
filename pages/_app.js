@@ -48,7 +48,7 @@ export default class CustomApp extends App {
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: 1rem;
           }
 
           h1 {
@@ -57,8 +57,16 @@ export default class CustomApp extends App {
             line-height: 0.95;
           }
 
+          h2 {
+            letter-spacing: 3px;
+            font-size: 3rem;
+            line-height: 0.95;
+          }
+
           p {
             margin-top: 0;
+            margin-bottom: 1rem;
+            line-height: 1.45;
           }
 
           .page {
