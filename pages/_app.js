@@ -28,7 +28,7 @@ export default class CustomApp extends App {
           body {
             margin: 0;
             color: #fff;
-            font-size: 16px;
+            font-size: 17px;
             background-color #000;
           }
 
@@ -66,7 +66,7 @@ export default class CustomApp extends App {
           p {
             margin-top: 0;
             margin-bottom: 1rem;
-            line-height: 1.45;
+            line-height: 1.53;
           }
 
           .page {
