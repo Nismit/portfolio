@@ -36,7 +36,7 @@ export default class About extends PureComponent {
               if (item.sys.contentType.sys.id === 'contentTextBlock') {
                 return <ComponentTextBlock
                   key={i}
-                  title={item.fields.title}
+                  fields={item.fields}
                 />
               } else {
                 return false;

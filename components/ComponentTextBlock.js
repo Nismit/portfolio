@@ -1,26 +1,20 @@
-import { Component } from 'react';
 
-export default class About extends Component {
-  constructor(props) {
-    super(props);
+export default (props) => {
+  const { title, content } = props.fields;
+
+  if (!title) {
+    return false;
   }
 
-  render() {
-    const { title, content } = this.props;
+  return (
+    <div className="content__text-block">
+      <h2>{title}</h2>
 
-    if (!title) {
-      return null;
-    }
+      {content ? (
+        <p>{content}</p>
+      ) : null}
 
-    return (
-      <div className="content__text-block">
-        <h2>{title}</h2>
-
-        {content ? (
-          <p>{content}</p>
-        ) : null}
-
-        <style jsx>{`
+      <style jsx>{`
         .content__text-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
@@ -28,7 +22,6 @@ export default class About extends Component {
           padding-right: 1rem;
         }
       `}</style>
-      </div>
-    )
-  }
+    </div>
+  )
 }
