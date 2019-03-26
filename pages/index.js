@@ -18,7 +18,7 @@ export default () => (
         }
 
         .hero__container {
-          width: 600px;
+          width: 520px;
         }
     `}</style>
     </div>
