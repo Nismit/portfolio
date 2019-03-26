@@ -1,10 +1,11 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
+import data from '../data/about';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
 
-export default class About extends Component {
+export default class About extends PureComponent {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
@@ -14,10 +15,6 @@ export default class About extends Component {
     this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
-  }
-
-  componentWillUnmount() {
-
   }
 
   onUpdateScroll() {
@@ -34,17 +31,18 @@ export default class About extends Component {
 
         <div className="about__content">
 
-          <ComponentTextBlock
-            title="Introduction"
-            content="Test"
-          />
-          <ComponentTextBlock
-            title="Introduction"
-            content="Test"
-          />
-          <ComponentTextBlock
-            title="Mission"
-          />
+          {
+            data.contentsModule.map((item, i) => {
+              if (item.sys.contentType.sys.id === 'contentTextBlock') {
+                return <ComponentTextBlock
+                  key={i}
+                  title={item.fields.title}
+                />
+              } else {
+                return false;
+              }
+            })
+          }
 
         </div>
         <style jsx>{`
