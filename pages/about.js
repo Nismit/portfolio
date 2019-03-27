@@ -6,6 +6,7 @@ import ComponentHead from '../components/ComponentHead';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
 import ComponentSkillBlock from '../components/ComponentSkillBlock';
+import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
 export default class About extends PureComponent {
   constructor(props) {
@@ -17,6 +18,13 @@ export default class About extends PureComponent {
     this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
+    console.log(data.contentsModule);
+  }
+
+  componentWillUnmount() {
+    const { scrollbar } = this.containerRef.current;
+    scrollbar.scrollTo(0, 0);
+    console.log('fire');
   }
 
   onUpdateScroll() {
@@ -44,6 +52,11 @@ export default class About extends PureComponent {
                   />
                 } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
                   return <ComponentSkillBlock
+                    key={i}
+                    fields={item.fields}
+                  />
+                } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
+                  return <ComponentAlternativeBlock
                     key={i}
                     fields={item.fields}
                   />
