@@ -10,7 +10,8 @@ export default class MainVisual extends Component {
       resolution: {
         width: 0,
         height: 0
-      }
+      },
+      isLoaded: false
     }
 
     this.loop = this.loop.bind(this);
