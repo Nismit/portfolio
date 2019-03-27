@@ -63,6 +63,12 @@ export default class CustomApp extends App {
             line-height: 0.95;
           }
 
+          h3 {
+            letter-spacing: 3px;
+            font-size: 2rem;
+            line-height: 0.95;
+          }
+
           p {
             margin-top: 0;
             margin-bottom: 1rem;
