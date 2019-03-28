@@ -18,13 +18,11 @@ export default class About extends PureComponent {
     this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
-    console.log(data.contentsModule);
   }
 
   componentWillUnmount() {
     const { scrollbar } = this.containerRef.current;
     scrollbar.scrollTo(0, 0);
-    console.log('fire');
   }
 
   onUpdateScroll() {
@@ -38,10 +36,13 @@ export default class About extends PureComponent {
         <ComponentHead headTitle="About" />
         <Scrollbar ref={this.containerRef} thumbMinSize={10} className="page about virtual-scroll">
           <div className="about__header">
-            <ComponentHeadBlock />
+            <ComponentHeadBlock
+              title={data.title}
+              subTitle={data.subTitle}
+            />
           </div>
 
-          <div className="about__content">
+          <div className="content about__content">
 
             {
               data.contentsModule.map((item, i) => {
@@ -70,7 +71,17 @@ export default class About extends PureComponent {
           <style jsx>{`
             .about__header {
               width: 100%;
-              height: 100vh:
+              height: 100vh;
+              position: relative;
+            }
+
+            .about__header:after {
+              content: '';
+              width: 100vw;
+              height: 40vh;
+              position: absolute;
+              left: 0;
+              bottom: 0;
               background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
               background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
             }
