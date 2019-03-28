@@ -1,3 +1,4 @@
+import data from '../data/home';
 import ComponentHead from '../components/ComponentHead';
 
 export default () => (
@@ -6,8 +7,8 @@ export default () => (
     <div className="page home">
       <div className="hero">
         <div className="hero__container">
-          <h1>Interactive Developer</h1>
-          <p>Vancouver based developer with 5+ years in web development industry</p>
+          <h1>{data.title}</h1>
+          <p>{data.subTitle}</p>
         </div>
       </div>
       <style jsx>{`
@@ -15,6 +16,7 @@ export default () => (
           display: flex;
           align-items: center;
           height: 100vh;
+          padding-left: 5rem;
         }
 
         .hero__container {
