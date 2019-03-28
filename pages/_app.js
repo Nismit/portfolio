@@ -13,6 +13,7 @@ export default class CustomApp extends App {
         <MainVisual />
         <Component {...pageProps} />
         <style jsx global>{`
+          *,
           *::before,
           *::after {
             box-sizing: border-box;
