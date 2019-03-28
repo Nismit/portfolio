@@ -61,6 +61,7 @@ export default class CustomApp extends App {
             letter-spacing: 3px;
             font-size: 3rem;
             line-height: 0.95;
+            margin-bottom: 2.2rem;
           }
 
           h3 {
@@ -80,8 +81,9 @@ export default class CustomApp extends App {
             z-index: 10;
           }
 
-          .page > div {
+          .content {
             max-width: 1200px;
+            padding-top: 3rem;
             margin-left: auto;
             margin-right: auto;
           }
