@@ -42,6 +42,7 @@ export default (props) => {
 
         .skills {
           display: flex;
+          flex-wrap: wrap;
         }
 
         .skill {
