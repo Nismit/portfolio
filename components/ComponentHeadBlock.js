@@ -1,9 +1,13 @@
 
-export default () => (
+export default (props) => (
   <div className="head-block">
     <div>
-      <h1>About Me</h1>
-      <p>Tests</p>
+      {props.title ? (
+        <h1>{props.title}</h1>
+      ) : null}
+      {props.subTitle ? (
+        <p>{props.subTitle}</p>
+      ) : null}
     </div>
 
     <style jsx>{`
@@ -11,6 +15,11 @@ export default () => (
         height: 100vh;
         display: flex;
         align-items: center;
+        max-width: 1200px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: auto;
+        margin-right: auto;
       }
     `}</style>
   </div>
