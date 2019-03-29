@@ -8,7 +8,15 @@ export default (props) => {
 
   return (
     <div className="content__skill-block">
-      <h2>{title}</h2>
+      <div>
+        <h2>{title}</h2>
+
+        <ul>
+          <li>Expert</li>
+          <li>Intermediate</li>
+          <li>Learning</li>
+        </ul>
+      </div>
 
       {
         skillGroup.map((item) => (
@@ -40,64 +48,88 @@ export default (props) => {
           margin-top: 1.5rem;
         }
 
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        li {
+          display: inline-block;
+        }
+
         .skills {
           display: flex;
           flex-wrap: wrap;
         }
 
         .skill {
-          padding: 3px;
-          margin-right: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .skill > span {
+          position: relative;
           display: inline-block;
-          padding: 1rem 1.5rem;
-          background-color: #000;
+          border: 3px solid #fff;
+          color: #fff;
+          text-align: center;
+          text-decoration: none;
+          outline: none;
+          transition: all .2s;
+          margin-right: 1.5rem;
+          margin-bottom: 1.5rem;
         }
 
         .skill[data-level="3"] {
-          background: linear-gradient(270deg, #26ecee, #0283cc);
-          background-size: 200% 200%;
-
-          -webkit-animation: AnimationName 5s ease infinite;
-          -moz-animation: AnimationName 5s ease infinite;
-          animation: AnimationName 5s ease infinite;
+          border-color: #0adebd;
         }
 
         .skill[data-level="2"] {
-          background: linear-gradient(270deg, #6c9fe6, #906dca);
-          background-size: 200% 200%;
-
-          -webkit-animation: AnimationName 5s ease infinite;
-          -moz-animation: AnimationName 5s ease infinite;
-          animation: AnimationName 5s ease infinite;
+          border-color: #906dca;
         }
 
         .skill[data-level="1"] {
-          background: linear-gradient(270deg, #d03332, #ca8f6d);
-          background-size: 200% 200%;
 
-          -webkit-animation: AnimationName 5s ease infinite;
-          -moz-animation: AnimationName 5s ease infinite;
-          animation: AnimationName 5s ease infinite;
         }
 
-        @-webkit-keyframes AnimationName {
-          0%{background-position:0% 50%}
-          50%{background-position:100% 50%}
-          100%{background-position:0% 50%}
+        .skill::before,
+        .skill::after {
+          position: absolute;
+          z-index: 2;
+          content: '';
+          width: 0;
+          height: 0;
+          border: 3px solid transparent;
+          box-sizing: content-box;
         }
-        @-moz-keyframes AnimationName {
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        .skill::before {
+          top: -3px;
+          left: -3px;
         }
-        @keyframes AnimationName { 
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        .skill::after {
+          bottom: -3px;
+          right: -3px;
+        }
+        .skill:hover {
+          color: #fff;
+        }
+        .skill:hover::before,
+        .skill:hover::after {
+          width: 100%;
+          height: 100%;
+        }
+        .skill:hover::before {
+          border-bottom-color: #fff;
+          border-left-color: #fff;
+          transition: height .2s, width .2s .2s;
+        }
+        .skill:hover::after {
+          border-top-color: #fff;
+          border-right-color: #fff;
+          transition: height .2s .4s, width .2s .6s;
+        }
+        .skill>span {
+          position: relative;
+          z-index: 3;
+          display: inline-block;
+          padding: .9em 2.6em;
+          background-color: #000;
         }
       `}</style>
     </div>
