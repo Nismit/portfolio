@@ -11,7 +11,8 @@ export default class MainVisual extends Component {
         width: 0,
         height: 0
       },
-      isLoaded: false
+      isLoaded: false,
+      progress: 0
     }
 
     this.loop = this.loop.bind(this);
@@ -24,38 +25,56 @@ export default class MainVisual extends Component {
     const width = this.mount.clientWidth;
     const height = this.mount.clientHeight;
 
+    //  1 of 10
     const scene = new THREE.Scene();
     const clock = new THREE.Clock({ autoStart: false });
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     const camera = new THREE.PerspectiveCamera(60, width / height, .1, 10000);
+    this.progressIndicator();
 
+    // 2
     camera.position.y = 8;
     camera.position.z = 4;
+    this.progressIndicator();
 
+    // 3
     const obj = new Terrain();
+    this.progressIndicator();
+    // 5
     const isLoaded = obj.textureLoad();
+    this.progressIndicator();
     if (isLoaded !== null) {
       obj.init();
     }
-
+    this.progressIndicator();
     // console.log(obj);
 
+    // 6
+    this.progressIndicator();
     scene.add(obj.obj);
     renderer.setClearColor('#000000');
     renderer.setSize(width, height);
 
+    this.progressIndicator();
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
     this.obj = obj;
     this.clock = clock;
 
+    // 8
+    this.progressIndicator();
     this.onUpdateScreen();
     window.addEventListener('resize', this.onUpdateScreen);
 
+
+    // 9
+    this.progressIndicator();
     this.mount.appendChild(this.renderer.domElement);
     this.clock.start();
     this.loop();
+    // 10
+    this.progressIndicator();
   }
 
   componentWillUnmount() {
@@ -99,6 +118,10 @@ export default class MainVisual extends Component {
 
     this.renderer.render(this.scene, this.camera);
     this.frameId = window.requestAnimationFrame(this.draw);
+  }
+
+  progressIndicator() {
+    this.setState((prevState) => ({ progress: prevState.progress + 1 }), () => { console.log(this.state.progress) });
   }
 
   render() {
