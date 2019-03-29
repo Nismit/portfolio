@@ -1,17 +1,30 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import { PageTransition } from 'next-page-transitions';
 import Header from '../components/Header';
 import MainVisual from '../components/MainVisual';
 
 export default class CustomApp extends App {
+  static async getInitialProps({ Component, router, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return { pageProps }
+  }
+
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
 
     return (
       <Container>
         <Header />
         <MainVisual />
-        <Component {...pageProps} />
+        <PageTransition timeout={300} classNames="page-transition">
+          <Component {...pageProps} key={router.route} />
+        </PageTransition>
         <style jsx global>{`
           *,
           *::before,
@@ -89,6 +102,17 @@ export default class CustomApp extends App {
             margin-right: auto;
           }
 
+          .global-visual:after {
+            content: '';
+            width: 100vw;
+            height: 40vh;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+          }
+
           .virtual-scroll {
             position: fixed;
             top: 0;
@@ -97,6 +121,21 @@ export default class CustomApp extends App {
             height: 100vh;
             margin: 0;
             will-change: transform;
+          }
+
+          .page-transition-enter {
+            opacity: 0;
+          }
+          .page-transition-enter-active {
+            opacity: 1;
+            transition: opacity 300ms;
+          }
+          .page-transition-exit {
+            opacity: 1;
+          }
+          .page-transition-exit-active {
+            opacity: 0;
+            transition: opacity 300ms;
           }
         `}</style>
       </Container>

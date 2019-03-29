@@ -74,17 +74,6 @@ export default class About extends PureComponent {
               height: 100vh;
               position: relative;
             }
-
-            .about__header:after {
-              content: '';
-              width: 100vw;
-              height: 40vh;
-              position: absolute;
-              left: 0;
-              bottom: 0;
-              background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
-              background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
-            }
           `}</style>
         </Scrollbar>
       </React.Fragment>

@@ -13,22 +13,10 @@ export default () => (
       </div>
       <style jsx>{`
         .hero {
-          position: relative;
           display: flex;
           align-items: center;
           height: 100vh;
           padding-left: 5rem;
-        }
-
-        .hero:after {
-          content: '';
-          width: 100vw;
-          height: 40vh;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
-          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
         }
 
         .hero__container {
