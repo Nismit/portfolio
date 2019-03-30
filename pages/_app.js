@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import MainVisual from '../components/MainVisual';
 
 export default class CustomApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
@@ -22,7 +22,7 @@ export default class CustomApp extends App {
       <Container>
         <Header />
         <MainVisual />
-        <PageTransition timeout={300} classNames="page-transition">
+        <PageTransition timeout={1000} classNames="page page-transition">
           <Component {...pageProps} key={router.route} />
         </PageTransition>
         <style jsx global>{`
@@ -125,17 +125,20 @@ export default class CustomApp extends App {
 
           .page-transition-enter {
             opacity: 0;
+            transform: translate3d(0, 0, 500px);
           }
           .page-transition-enter-active {
             opacity: 1;
-            transition: opacity 300ms;
+            transform: translate3d(0, 0, 0px);
+            transition: opacity 1s, transform 1s;
           }
           .page-transition-exit {
             opacity: 1;
           }
           .page-transition-exit-active {
             opacity: 0;
-            transition: opacity 300ms;
+            transform: translate3d(0, 0, 500px);
+            transition: opacity 1s, transform 1s;
           }
         `}</style>
       </Container>
