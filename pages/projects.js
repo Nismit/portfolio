@@ -12,10 +12,6 @@ export default class Projects extends Component {
     }
   }
 
-  componentDidMount() {
-    // console.log(data);
-  }
-
   nextProject() {
     const limit = data.allProjects.length - 1;
     this.setState((prevState) => ({
@@ -30,6 +26,7 @@ export default class Projects extends Component {
 
         <div className="project__header">
           <ComponentProjectHeadBlock
+            projectId={this.state.projectNumber}
             title={data.allProjects[this.state.projectNumber].fields.title}
             subTitle={data.allProjects[this.state.projectNumber].fields.subTitle}
             navigateNext={() => { this.nextProject(); }}
