@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import data from '../data/about';
+import data from '../data/projects';
 import ComponentHead from '../components/ComponentHead';
-import ComponentHeadBlock from '../components/ComponentHeadBlock';
+import ComponentProjectHeadBlock from '../components/ComponentProjectHeadBlock';
 
 export default class Projects extends Component {
   constructor(props) {
@@ -13,7 +13,14 @@ export default class Projects extends Component {
   }
 
   componentDidMount() {
+    // console.log(data);
+  }
 
+  nextProject() {
+    const limit = data.allProjects.length - 1;
+    this.setState((prevState) => ({
+      projectNumber: (prevState.projectNumber !== limit) ? prevState.projectNumber + 1 : 0
+    }));
   }
 
   render() {
@@ -22,9 +29,10 @@ export default class Projects extends Component {
         <ComponentHead headTitle="Project" />
 
         <div className="project__header">
-          <ComponentHeadBlock
-            title={data.title}
-            subTitle={data.subTitle}
+          <ComponentProjectHeadBlock
+            title={data.allProjects[this.state.projectNumber].fields.title}
+            subTitle={data.allProjects[this.state.projectNumber].fields.subTitle}
+            navigateNext={() => { this.nextProject(); }}
           />
         </div>
 
