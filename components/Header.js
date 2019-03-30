@@ -11,8 +11,8 @@ const Header = () => (
             </svg>
           </a>
         </Link>
-        <Link href="/about">
-          <a className="menu__link">Works</a>
+        <Link href="/projects">
+          <a className="menu__link">Projects</a>
         </Link>
         <Link href="/about">
           <a className="menu__link">About</a>
