@@ -6,10 +6,6 @@ export default class ComponentProjectHeadBlock extends PureComponent {
     super(props);
   }
 
-  childNextProject() {
-    return this.props.navigateNext();
-  }
-
   render() {
     const url = this.props.title.replace(' ', '-').toLowerCase();
 
@@ -24,10 +20,10 @@ export default class ComponentProjectHeadBlock extends PureComponent {
           ) : null}
 
           <Link as={`/project/${url}`} href={`/project?id=${this.props.projectId}`}>
-            <a className="menu__link">View Project</a>
+            <a className="project__link">View Project</a>
           </Link>
 
-          <div onClick={() => { this.childNextProject(); }}>
+          <div onClick={() => { this.props.navigateNext(); }}>
             <span>Next</span>
           </div>
         </div>
@@ -42,6 +38,18 @@ export default class ComponentProjectHeadBlock extends PureComponent {
             padding-right: 1rem;
             margin-left: auto;
             margin-right: auto;
+          }
+          .project__link {
+            display: inline-block;
+            color: white;
+            border: 3px solid #fff;
+            padding: .8rem 2.4rem;
+            text-decoration: none;
+            transition: all 800ms;
+          }
+          .project__link:hover {
+            background-color: white;
+            color: #000;
           }
         `}</style>
       </div>
