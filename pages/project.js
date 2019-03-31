@@ -1,7 +1,8 @@
 import { PureComponent } from 'react';
+import Router from 'next/router';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
-import data from '../data/projects';
+import projectData from '../data/projects';
 import ComponentHead from '../components/ComponentHead';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
@@ -31,21 +32,23 @@ export default class Project extends PureComponent {
   }
 
   render() {
+    const id = Router.query.id;
+    const data = projectData.allProjects[id].fields;
+
     return (
       <React.Fragment>
         <ComponentHead headTitle="Project" />
         <Scrollbar ref={this.containerRef} thumbMinSize={10} className="page project virtual-scroll">
           <div className="project__header">
-            <p>Tests</p>
-            {/* <ComponentHeadBlock
+            <ComponentHeadBlock
               title={data.title}
               subTitle={data.subTitle}
-            /> */}
+            />
           </div>
 
           <div className="content project__content">
 
-            {/* {
+            {
               data.contentsModule.map((item, i) => {
                 if (item.sys.contentType.sys.id === 'contentTextBlock') {
                   return <ComponentTextBlock
@@ -66,7 +69,7 @@ export default class Project extends PureComponent {
                   return false;
                 }
               })
-            } */}
+            }
 
           </div>
           <style jsx>{`
