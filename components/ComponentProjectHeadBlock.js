@@ -23,6 +23,10 @@ export default class ComponentProjectHeadBlock extends PureComponent {
             <a className="project__link">View Project</a>
           </Link>
 
+          <div onClick={() => { this.props.navigatePrev(); }}>
+            <span>Prev</span>
+          </div>
+
           <div onClick={() => { this.props.navigateNext(); }}>
             <span>Next</span>
           </div>
