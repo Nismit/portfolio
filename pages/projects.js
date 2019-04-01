@@ -12,10 +12,17 @@ export default class Projects extends Component {
     }
   }
 
-  nextProject() {
+  navToNextProject() {
     const limit = data.allProjects.length - 1;
     this.setState((prevState) => ({
       projectNumber: (prevState.projectNumber !== limit) ? prevState.projectNumber + 1 : 0
+    }));
+  }
+
+  navToPrevProject() {
+    const limit = data.allProjects.length - 1;
+    this.setState((prevState) => ({
+      projectNumber: (prevState.projectNumber !== 0) ? prevState.projectNumber - 1 : limit
     }));
   }
 
@@ -29,7 +36,8 @@ export default class Projects extends Component {
             projectId={this.state.projectNumber}
             title={data.allProjects[this.state.projectNumber].fields.title}
             subTitle={data.allProjects[this.state.projectNumber].fields.subTitle}
-            navigateNext={() => { this.nextProject(); }}
+            navigateNext={() => { this.navToNextProject(); }}
+            navigatePrev={() => { this.navToPrevProject(); }}
           />
         </div>
 
