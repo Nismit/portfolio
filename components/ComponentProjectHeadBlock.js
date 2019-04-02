@@ -23,11 +23,11 @@ export default class ComponentProjectHeadBlock extends PureComponent {
             <a className="project__link">View Project</a>
           </Link>
 
-          <div onClick={() => { this.props.navigatePrev(); }}>
+          <div className="project__nav prev" onClick={() => { this.props.navigatePrev(); }}>
             <span>Prev</span>
           </div>
 
-          <div onClick={() => { this.props.navigateNext(); }}>
+          <div className="project__nav next" onClick={() => { this.props.navigateNext(); }}>
             <span>Next</span>
           </div>
         </div>
@@ -54,6 +54,9 @@ export default class ComponentProjectHeadBlock extends PureComponent {
           .project__link:hover {
             background-color: white;
             color: #000;
+          }
+          .project__nav {
+            cursor: pointer;
           }
         `}</style>
       </div>
