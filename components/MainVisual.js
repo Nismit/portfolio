@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as THREE from 'three';
 import Terrain from '../helpers/Terrain';
+import { actionTypes, threeLoaded } from '../helpers/store';
 
-export default class MainVisual extends Component {
+const mapStateToProps = state => ({
+  localIsLoaded: state.isLoaded
+});
+
+const mapDispatchToProps = dispatch => ({
+  initThreeByDispatch: () => {
+    dispatch({ type: actionTypes.THREE_LOADED.PENDING })
+  },
+  loadedThreeByDispatch: () => {
+    dispatch({ type: actionTypes.THREE_LOADED.SUCCESS })
+  },
+  threeLoaded
+});
+
+class MainVisual extends Component {
   constructor(props) {
     super(props);
 
@@ -22,6 +38,7 @@ export default class MainVisual extends Component {
   }
 
   componentDidMount() {
+    this.props.initThreeByDispatch();
     const width = this.mount.clientWidth;
     const height = this.mount.clientHeight;
 
@@ -80,6 +97,8 @@ export default class MainVisual extends Component {
     //   console.log('set interval');
     //   this.setState((prevState) => ({ progress: prevState.progress + 1 }))
     // }, 3000);
+    this.props.loadedThreeByDispatch();
+    this.props.threeLoaded();
   }
 
   componentWillUnmount() {
@@ -130,6 +149,7 @@ export default class MainVisual extends Component {
   }
 
   render() {
+    console.log('localIsLoaded:', this.props.localIsLoaded);
     return (
       <div
         className="global-visual"
@@ -139,3 +159,5 @@ export default class MainVisual extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainVisual);
