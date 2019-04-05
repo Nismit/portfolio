@@ -1,20 +1,24 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import withReduxStore from '../helpers/withReduxStore';
 import App, { Container } from 'next/app';
 import { PageTransition } from 'next-page-transitions';
 import Header from '../components/Header';
 import MainVisual from '../components/MainVisual';
 
-export default class CustomApp extends App {
+class CustomApp extends App {
   render() {
-    const { Component, pageProps, router } = this.props;
+    const { Component, pageProps, router, reduxStore } = this.props;
 
     return (
       <Container>
-        <Header />
-        <MainVisual />
-        <PageTransition timeout={1000} classNames="page page-transition">
-          <Component {...pageProps} key={router.route} />
-        </PageTransition>
+        <Provider store={reduxStore}>
+          <Header />
+          <MainVisual />
+          <PageTransition timeout={1000} classNames="page page-transition">
+            <Component {...pageProps} key={router.route} />
+          </PageTransition>
+        </Provider>
         <style jsx global>{`
           *,
           *::before,
@@ -136,3 +140,5 @@ export default class CustomApp extends App {
     )
   }
 }
+
+export default withReduxStore(CustomApp)
