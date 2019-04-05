@@ -15,7 +15,9 @@ const mapDispatchToProps = dispatch => ({
   loadedThreeByDispatch: () => {
     dispatch({ type: actionTypes.THREE_LOADED.SUCCESS })
   },
-  threeLoaded
+  otherWayToDispatch: () => {
+    dispatch(threeLoaded())
+  }
 });
 
 class MainVisual extends Component {
@@ -38,7 +40,7 @@ class MainVisual extends Component {
   }
 
   componentDidMount() {
-    this.props.initThreeByDispatch();
+    // this.props.initThreeByDispatch();
     const width = this.mount.clientWidth;
     const height = this.mount.clientHeight;
 
@@ -97,8 +99,8 @@ class MainVisual extends Component {
     //   console.log('set interval');
     //   this.setState((prevState) => ({ progress: prevState.progress + 1 }))
     // }, 3000);
-    this.props.loadedThreeByDispatch();
-    this.props.threeLoaded();
+    // this.props.loadedThreeByDispatch();
+    this.props.otherWayToDispatch();
   }
 
   componentWillUnmount() {
