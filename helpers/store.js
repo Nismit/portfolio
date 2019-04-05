@@ -43,8 +43,14 @@ export const reducer = (state = defaultState, action) => {
 }
 
 // ACTIONS
-export const serverRenderClock = () => {
-  return { type: actionTypes.TICK, light: false, ts: Date.now() }
+export const threeStart = () => {
+  console.log('Run: threeStart');
+  return { type: actionTypes.THREE_LOADED.PENDING }
+}
+
+export const threeLoaded = () => {
+  console.log('Run: threeLoaded');
+  return { type: actionTypes.THREE_LOADED.SUCCESS }
 }
 
 export function initializeStore(initialState = defaultState) {
