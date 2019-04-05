@@ -1,4 +1,5 @@
 import { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
 import data from '../data/about';
@@ -8,7 +9,10 @@ import ComponentTextBlock from '../components/ComponentTextBlock';
 import ComponentSkillBlock from '../components/ComponentSkillBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
-export default class About extends PureComponent {
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => ({});
+
+class About extends PureComponent {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
@@ -80,3 +84,5 @@ export default class About extends PureComponent {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import data from '../data/projects';
 import ComponentHead from '../components/ComponentHead';
 import ComponentProjectHeadBlock from '../components/ComponentProjectHeadBlock';
 
-export default class Projects extends Component {
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => ({});
+
+class Projects extends Component {
   constructor(props) {
     super(props);
 
@@ -52,3 +56,5 @@ export default class Projects extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);
