@@ -42,14 +42,22 @@ export const reducer = (state = defaultState, action) => {
   }
 }
 
-// ACTIONS
+// Call dispatch with the actions
+//
+// const mapDispatchToProps = dispatch => ({
+//  callDispatch: () => {
+//    dispatch(threeLoaded())
+//  }
+// });
+//
+// In the component
+// this.props.callDispatch();
+
 export const threeStart = () => {
-  console.log('Run: threeStart');
   return { type: actionTypes.THREE_LOADED.PENDING }
 }
 
 export const threeLoaded = () => {
-  console.log('Run: threeLoaded');
   return { type: actionTypes.THREE_LOADED.SUCCESS }
 }
 
