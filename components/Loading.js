@@ -24,10 +24,11 @@ export default (props) => (
         top: 0;
         left: 0;
         z-index: 100;
+        transition: top 0.15s ease-out 1750ms;
       }
-      // .loading.is-loaded {
-      //   top: -100%;
-      // }
+      .loading.is-loaded {
+        top: -100%;
+      }
       .loading__transition__group {
         width: 100%;
         height: 100%;
@@ -44,22 +45,25 @@ export default (props) => (
         background-color: #000;
       }
       .loading__transition:nth-of-type(1) {
-        transition: transform 800ms ease-out 1100ms;
+        transition: transform 0.6s ease-out 1100ms;
       }
       .loading__transition:nth-of-type(2) {
-        transition: transform 800ms ease-out 900ms;
+        transition: transform 0.6s ease-out 1000ms;
       }
       .loading__transition:nth-of-type(3) {
-        transition: transform 800ms ease-out 700ms;
+        transition: transform 0.6s ease-out 900ms;
       }
       .loading__transition:nth-of-type(4) {
-        transition: transform 800ms ease-out 500ms;
+        transition: transform 0.6s ease-out 800ms;
       }
       .loading__transition:nth-of-type(5) {
-        transition: transform 800ms ease-out 300ms;
+        transition: transform 0.6s ease-out 700ms;
       }
       .loading__transition:nth-of-type(6) {
-        transition: transform 800ms ease-out 100ms;
+        transition: transform 0.6s ease-out 600ms;
+      }
+      .loading__transition:nth-of-type(7) {
+        transition: transform 0.6s ease-out 500ms;
       }
       .is-loaded .loading__transition {
         transform: translateY(-100%);
@@ -75,7 +79,7 @@ export default (props) => (
         left: 0;
         z-index: 102;
         opacity: 1;
-        transition: transform 500ms ease-out 0s;
+        transition: opacity 400ms ease-out 0s, transform 100ms ease-out 450ms;
       }
       .is-loaded .loading__transition__content {
         opacity: 0;
