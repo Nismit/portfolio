@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as THREE from 'three';
 import Terrain from '../helpers/Terrain';
-import { actionTypes, threeLoaded } from '../helpers/store';
+import Loading from '../components/Loading';
+import { actionTypes, threeStart, threeLoaded } from '../helpers/store';
 
 const mapStateToProps = state => ({
   localIsLoaded: state.isLoaded
@@ -10,12 +11,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   initThreeByDispatch: () => {
-    dispatch({ type: actionTypes.THREE_LOADED.PENDING })
+    dispatch(threeStart())
   },
   loadedThreeByDispatch: () => {
-    dispatch({ type: actionTypes.THREE_LOADED.SUCCESS })
-  },
-  otherWayToDispatch: () => {
     dispatch(threeLoaded())
   }
 });
@@ -40,67 +38,42 @@ class MainVisual extends Component {
   }
 
   componentDidMount() {
-    // this.props.initThreeByDispatch();
+    this.props.initThreeByDispatch();
     const width = this.mount.clientWidth;
     const height = this.mount.clientHeight;
 
-    //  1 of 10
     const scene = new THREE.Scene();
     const clock = new THREE.Clock({ autoStart: false });
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     const camera = new THREE.PerspectiveCamera(60, width / height, .1, 10000);
-    // this.progressIndicator();
-
-    // 2
     camera.position.y = 8;
     camera.position.z = 4;
-    // this.progressIndicator();
 
-    // 3
     const obj = new Terrain();
-    // this.progressIndicator();
-    // 5
+
     const isLoaded = obj.textureLoad();
-    // this.progressIndicator();
     if (isLoaded !== null) {
       obj.init();
     }
-    // this.progressIndicator();
-    // console.log(obj);
 
-    // 6
-    // this.progressIndicator();
     scene.add(obj.obj);
     renderer.setClearColor('#000000');
     renderer.setSize(width, height);
 
-    // this.progressIndicator();
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
     this.obj = obj;
     this.clock = clock;
 
-    // 8
-    // this.progressIndicator();
     this.onUpdateScreen();
     window.addEventListener('resize', this.onUpdateScreen);
 
-
-    // 9
-    // this.progressIndicator();
     this.mount.appendChild(this.renderer.domElement);
+
+    this.props.loadedThreeByDispatch();
     this.clock.start();
     this.loop();
-    // 10
-
-
-    // setInterval(() => {
-    //   console.log('set interval');
-    //   this.setState((prevState) => ({ progress: prevState.progress + 1 }))
-    // }, 3000);
-    // this.props.loadedThreeByDispatch();
-    this.props.otherWayToDispatch();
   }
 
   componentWillUnmount() {
@@ -146,18 +119,16 @@ class MainVisual extends Component {
     this.frameId = window.requestAnimationFrame(this.draw);
   }
 
-  progressIndicator() {
-    this.setState((prevState) => ({ progress: prevState.progress + 1 }), () => { console.log(this.state.progress) });
-  }
-
   render() {
-    console.log('localIsLoaded:', this.props.localIsLoaded);
     return (
-      <div
-        className="global-visual"
-        style={{ width: '100vw', height: '100%', position: 'fixed', top: '0', left: '0', zIndex: '1' }}
-        ref={(mount) => { this.mount = mount }}
-      />
+      <React.Fragment>
+        <Loading isLoaded={this.props.localIsLoaded} />
+        <div
+          className="global-visual"
+          style={{ width: '100vw', height: '100%', position: 'fixed', top: '0', left: '0', zIndex: '1' }}
+          ref={(mount) => { this.mount = mount }}
+        />
+      </React.Fragment>
     )
   }
 }
