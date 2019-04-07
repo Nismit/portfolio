@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as THREE from 'three';
 import Terrain from '../helpers/Terrain';
 import Loading from '../components/Loading';
-import { actionTypes, threeStart, threeLoaded } from '../helpers/store';
+import { threeStart, threeLoaded } from '../helpers/store';
 
 const mapStateToProps = state => ({
   localIsLoaded: state.isLoaded
