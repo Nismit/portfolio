@@ -17,6 +17,9 @@ class Project extends PureComponent {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
+    const id = Router.query.id;
+    const data = id ? projectData.allProjects[id].fields : null;
+    this.data = data;
   }
 
   componentDidMount() {
@@ -36,24 +39,21 @@ class Project extends PureComponent {
   }
 
   render() {
-    const id = Router.query.id;
-    const data = projectData.allProjects[id].fields;
-
     return (
       <React.Fragment>
         <ComponentHead headTitle="Project" />
         <Scrollbar ref={this.containerRef} thumbMinSize={10} className="page project virtual-scroll">
           <div className="project__header">
             <ComponentHeadBlock
-              title={data.title}
-              subTitle={data.subTitle}
+              title={this.data.title}
+              subTitle={this.data.subTitle}
             />
           </div>
 
           <div className="content project__content">
 
             {
-              data.contentsModule.map((item, i) => {
+              this.data.contentsModule.map((item, i) => {
                 if (item.sys.contentType.sys.id === 'contentTextBlock') {
                   return <ComponentTextBlock
                     key={i}
