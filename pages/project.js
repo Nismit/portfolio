@@ -41,7 +41,7 @@ class Project extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <ComponentHead headTitle="Project" />
+        <ComponentHead headTitle={this.data && this.data.title} />
         <Scrollbar ref={this.containerRef} thumbMinSize={10} className="page project virtual-scroll">
           <div className="project__header">
             <ComponentHeadBlock
