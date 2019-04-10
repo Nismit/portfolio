@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Router from 'next/router';
+import { withRouter, Router } from 'next/router';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
 import projectData from '../data/projects';
@@ -17,12 +17,12 @@ class Project extends PureComponent {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
-    const id = Router.query.id;
-    const data = id ? projectData.allProjects[id].fields : null;
-    this.data = data;
   }
 
   componentDidMount() {
+    const id = Router.query ? Router.query.id : null;
+    const data = id ? projectData.allProjects[id].fields : null;
+    this.data = data;
     this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
@@ -45,15 +45,15 @@ class Project extends PureComponent {
         <Scrollbar ref={this.containerRef} thumbMinSize={10} className="page project virtual-scroll">
           <div className="project__header">
             <ComponentHeadBlock
-              title={this.data.title}
-              subTitle={this.data.subTitle}
+              title={this.data && this.data.title}
+              subTitle={this.data && this.data.subTitle}
             />
           </div>
 
           <div className="content project__content">
 
             {
-              this.data.contentsModule.map((item, i) => {
+              this.data && this.data.contentsModule.map((item, i) => {
                 if (item.sys.contentType.sys.id === 'contentTextBlock') {
                   return <ComponentTextBlock
                     key={i}
@@ -89,4 +89,4 @@ class Project extends PureComponent {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Project);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Project));
