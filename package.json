@@ -1,12 +1,14 @@
 {
   "name": "portfolio",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Portfolio Development Environment",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "export": "npm run postinstall && next build && next export",
+    "serve": "serve -p 8080",
     "postinstall": "npm run getcontent",
     "getcontent": "babel-node helpers/getContent.js install",
     "test": "echo \"Error: no test specified\" && exit 1"
