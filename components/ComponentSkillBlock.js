@@ -8,7 +8,7 @@ export default (props) => {
 
   return (
     <div className="content__skill-block">
-      <div>
+      <div className="skill-block__header">
         <h2>{title}</h2>
 
         <ul>
@@ -44,6 +44,11 @@ export default (props) => {
           padding-right: 2.5rem;
         }
 
+        .skill-block__header {
+          display: flex;
+          justify-content: space-between;
+        }
+
         h3 {
           margin-top: 1.8rem;
         }
@@ -56,6 +61,27 @@ export default (props) => {
 
         li {
           display: inline-block;
+          margin-left: 1rem;
+        }
+
+        li:before {
+          content: '';
+          display: inline-block;
+          margin-right: .5rem;
+          width: 25px;
+          height: 2px;
+        }
+
+        li:nth-of-type(1):before {
+          border-top: 2px solid #0adebd;          
+        }
+
+        li:nth-of-type(2):before {
+          border-top: 2px solid #906dca;
+        }
+
+        li:nth-of-type(3):before {
+          border-top: 2px solid #0adebd;
         }
 
         .skills {
