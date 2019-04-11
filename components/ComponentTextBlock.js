@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 
 export default (props) => {
   const { title, content } = props.fields;
@@ -11,7 +12,7 @@ export default (props) => {
       <h2>{title}</h2>
 
       {content ? (
-        <p>{content}</p>
+        <ReactMarkdown source={content} />
       ) : null}
 
       <style jsx>{`
