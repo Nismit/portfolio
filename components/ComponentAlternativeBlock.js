@@ -60,18 +60,25 @@ export default (props) => {
 
         .content__alternative--wrapper {
           display: flex;
+          flex-wrap: wrap;
           padding-top: 1.5rem;
           padding-bottom: 1.5rem;
         }
 
-        .content__left {
-          width: 50%;
-          padding-right: 2rem;
+        .content__left, .content__right {
+          width: 100%; 
         }
 
-        .content__right {
-          width: 50%;
-          padding-left: 2rem;
+        @media (min-width: 45.176em) {
+          .content__left {
+            width: 50%;
+            padding-right: 2rem;
+          }
+
+          .content__right {
+            width: 50%;
+            padding-left: 2rem;
+          }
         }
       `}</style>
     </div>
