@@ -54,8 +54,8 @@ export default (props) => {
         .content__alternative-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
         }
 
         .content__alternative--wrapper {

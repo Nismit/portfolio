@@ -40,12 +40,12 @@ export default (props) => {
         .content__skill-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
         }
 
         h3 {
-          margin-top: 1.5rem;
+          margin-top: 1.8rem;
         }
 
         ul {
