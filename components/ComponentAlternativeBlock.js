@@ -65,6 +65,14 @@ export default (props) => {
           padding-bottom: 1.5rem;
         }
 
+        .content__alternative--wrapper h3 {
+          margin-bottom: 1.5rem;
+        }
+
+        .content__alternative--wrapper hr {
+          margin: 1rem 0;
+        }
+
         .content__left, .content__right {
           width: 100%; 
         }
