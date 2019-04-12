@@ -20,7 +20,7 @@ export default (props) => {
 
       {
         skillGroup.map((item) => (
-          <div key={item.sys.id}>
+          <div className="skill-block" key={item.sys.id}>
             <h3>{item.fields.title}</h3>
 
             <div className="skills">
@@ -40,9 +40,16 @@ export default (props) => {
         .content__skill-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
         }
+
+        @media (min-width: 45.176em) {
+          .content__skill-block {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+          }
+        }  
 
         .skill-block__header {
           display: flex;
@@ -50,7 +57,11 @@ export default (props) => {
         }
 
         h3 {
-          margin-top: 1.8rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .content__skill-block > .skill-block {
+          margin-bottom: 1.7rem;
         }
 
         ul {
@@ -67,9 +78,11 @@ export default (props) => {
         li:before {
           content: '';
           display: inline-block;
-          margin-right: .5rem;
+          margin-right: .7rem;
           width: 25px;
           height: 2px;
+          position: relative;
+          top: -5px;
         }
 
         li:nth-of-type(1):before {
@@ -154,7 +167,7 @@ export default (props) => {
           position: relative;
           z-index: 3;
           display: inline-block;
-          padding: .9em 2.6em;
+          padding: .8em 2.1em;
           background-color: #000;
         }
       `}</style>
