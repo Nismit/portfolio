@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
 import data from '../data/about';
+import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
@@ -38,7 +39,7 @@ class About extends PureComponent {
     return (
       <React.Fragment>
         <ComponentHead headTitle="About" />
-        <Scrollbar ref={this.containerRef} thumbMinSize={10} className="page about virtual-scroll">
+        <Scrollbar ref={this.containerRef} thumbMinSize={10} alwaysShowTracks={true} className="page about virtual-scroll">
           <div className="about__header">
             <ComponentHeadBlock
               title={data.title}
@@ -72,6 +73,9 @@ class About extends PureComponent {
             }
 
           </div>
+
+          <Footer />
+
           <style jsx>{`
             .about__header {
               width: 100%;
