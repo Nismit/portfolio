@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="footer__container">
       <p>Thank you for visiting, I hope you enjoyed a short scroll trip.<br />
         Feel free to drop me a line, just say hi and let me know you.</p>
-      <div>
+      <div className="social">
         <Link href="https://github.com/Nismit">
           <a className="icon github" target="_blank" rel="noopener noreferrer">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
@@ -28,18 +28,38 @@ const Footer = () => (
           </a>
         </Link>
       </div>
+      <p>Copyright © 2016 - Michinobu Nishimoto, All Rights Reserved.</p>
     </div>
     <style jsx>{`
       .footer {
         width: 100%;
+        padding: 3rem 0;
       }
 
       .footer__container {
         width: 100%;
         max-width: 1200px;
+        margin: 0 auto;
         padding: 2rem;
       }
 
+      p {
+        text-align: center;
+      }
+
+      .social {
+        display: flex;
+        justify-content: center;
+      }
+
+      .icon {
+        display: inline-block;
+        margin: 0 1rem;
+      }
+
+      .icon svg {
+        fill: white;
+      }
     `}</style>
   </footer>
 )
