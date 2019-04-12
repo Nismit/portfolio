@@ -1,9 +1,10 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Router } from 'next/router';
+import { withRouter } from 'next/router';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
 import projectData from '../data/projects';
+import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
@@ -17,12 +18,10 @@ class Project extends PureComponent {
   constructor(props) {
     super(props);
     this.containerRef = React.createRef();
+    this.data = this.props.router.query ? projectData.allProjects[this.props.router.query.id].fields : null;
   }
 
   componentDidMount() {
-    const id = Router.query ? Router.query.id : null;
-    const data = id ? projectData.allProjects[id].fields : null;
-    this.data = data;
     this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
@@ -76,6 +75,9 @@ class Project extends PureComponent {
             }
 
           </div>
+
+          <Footer />
+
           <style jsx>{`
             .project__header {
               width: 100%;
