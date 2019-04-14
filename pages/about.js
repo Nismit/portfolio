@@ -2,6 +2,7 @@ import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
+import { TweenLite } from 'gsap';
 import data from '../data/about';
 import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
@@ -16,6 +17,7 @@ const mapDispatchToProps = dispatch => ({});
 class About extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = { loaded: false }
     this.containerRef = React.createRef();
   }
 
@@ -25,9 +27,9 @@ class About extends PureComponent {
     this.visualContainer = visualContainer;
   }
 
-  componentWillUnmount() {
+  componentDidUpdate() {
     const { scrollbar } = this.containerRef.current;
-    scrollbar.scrollTo(0, 0);
+    TweenLite.to(scrollbar, 1, { scrollTop: 0 });
   }
 
   onUpdateScroll() {
