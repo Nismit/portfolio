@@ -29,7 +29,7 @@ class About extends PureComponent {
 
   componentDidUpdate() {
     const { scrollbar } = this.containerRef.current;
-    TweenLite.to(scrollbar, 1, { scrollTop: 0 });
+    TweenLite.to(scrollbar, 0.8, { scrollTop: 0 });
   }
 
   onUpdateScroll() {

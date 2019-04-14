@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import SmoothScrollbar from 'smooth-scrollbar';
 import Scrollbar from 'react-smooth-scrollbar';
+import { TweenLite } from 'gsap';
 import projectData from '../data/projects';
 import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
@@ -27,9 +28,9 @@ class Project extends PureComponent {
     this.visualContainer = visualContainer;
   }
 
-  componentWillUnmount() {
+  componentDidUpdate() {
     const { scrollbar } = this.containerRef.current;
-    scrollbar.scrollTo(0, 0);
+    TweenLite.to(scrollbar, 0.8, { scrollTop: 0 });
   }
 
   onUpdateScroll() {
