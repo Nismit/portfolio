@@ -15,9 +15,11 @@ class CustomApp extends App {
         <Provider store={reduxStore}>
           <Header />
           <MainVisual />
-          <PageTransition timeout={1000} classNames="page page-transition">
-            <Component {...pageProps} key={router.route} />
-          </PageTransition>
+          <div className="page">
+            <PageTransition timeout={1600} classNames="page-transition">
+              <Component {...pageProps} key={router.route} />
+            </PageTransition>
+          </div>
         </Provider>
         <style jsx global>{`
           *,
@@ -86,6 +88,9 @@ class CustomApp extends App {
           }
 
           .page {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
             z-index: 10;
           }
@@ -129,20 +134,19 @@ class CustomApp extends App {
 
           .page-transition-enter {
             opacity: 0;
-            transform: translate3d(0, 0, 500px);
+            transform: translate3d(0, 600px, 0);
           }
           .page-transition-enter-active {
             opacity: 1;
-            transform: translate3d(0, 0, 0px);
-            transition: opacity 1s, transform 1s;
+            transform: translate3d(0, 0px, 0);
+            transition: opacity 1s ease-out 600ms, transform 0.6s ease-out 1000ms;
           }
           .page-transition-exit {
             opacity: 1;
           }
           .page-transition-exit-active {
             opacity: 0;
-            transform: translate3d(0, 0, 500px);
-            transition: opacity 1s, transform 1s;
+            transition: opacity 1.6s;
           }
         `}</style>
       </Container>
