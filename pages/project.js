@@ -10,6 +10,7 @@ import ComponentHead from '../components/ComponentHead';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
 import ComponentSkillBlock from '../components/ComponentSkillBlock';
+import ComponentMediaBlock from '../components/ComponentMediaBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
 const mapStateToProps = state => ({});
@@ -68,6 +69,11 @@ class Project extends PureComponent {
                   return <ComponentAlternativeBlock
                     key={i}
                     fields={item.fields}
+                  />
+                } else if (item.sys.contentType.sys.id === 'contentImageBlock') {
+                  return <ComponentMediaBlock
+                    key={i}
+                    fields={item.fields.images}
                   />
                 } else {
                   return false;
