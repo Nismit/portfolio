@@ -54,8 +54,8 @@ export default (props) => {
         .content__alternative-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
         }
 
         .content__alternative--wrapper {
@@ -82,6 +82,11 @@ export default (props) => {
         }
 
         @media (min-width: 45.176em) {
+          .content__alternative-block {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+          } 
+
           .content__left {
             width: 50%;
             padding-right: 2rem;

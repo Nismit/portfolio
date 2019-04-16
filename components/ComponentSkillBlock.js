@@ -40,8 +40,8 @@ export default (props) => {
         .content__skill-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
         }
 
         @media (min-width: 45.176em) {

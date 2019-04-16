@@ -19,8 +19,15 @@ export default (props) => {
         .content__text-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        @media (min-width: 45.176em) {
+          .content__text-block {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+          }
         }
       `}</style>
     </div>
