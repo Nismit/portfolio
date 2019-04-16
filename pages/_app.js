@@ -64,22 +64,39 @@ class CustomApp extends App {
 
           h1 {
             letter-spacing: 7px;
-            font-size: 7rem;
+            font-size: 4.3rem;
             line-height: 0.95;
           }
 
           h2 {
             letter-spacing: 3px;
-            font-size: 3rem;
+            font-size: 2.5rem;
             line-height: 0.95;
             margin-bottom: 2.2rem;
           }
 
           h3 {
             letter-spacing: 3px;
-            font-size: 2rem;
+            font-size: 1.8rem;
             line-height: 0.95;
           }
+
+          @media (min-width: 45.176em) {
+            h1 {
+              font-size: 7rem;
+            }
+  
+            h2 {
+              font-size: 3rem;
+              line-height: 0.95;
+              margin-bottom: 2.2rem;
+            }
+  
+            h3 {
+              font-size: 2rem;
+              line-height: 0.95;
+            }
+          }  
 
           p {
             margin-top: 0;
