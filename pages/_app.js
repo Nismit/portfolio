@@ -95,6 +95,28 @@ class CustomApp extends App {
             z-index: 10;
           }
 
+          .page a {
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            transition: color .5s;
+          }
+
+          .page a:hover {
+            color: #FE6E1A;
+          }
+
+          .page a:before {
+            content: "";
+            width: 100%;
+            height: 2px;
+            border-top: 2px solid #fff;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+          }
+
           .content {
             max-width: 1200px;
             padding-top: 3rem;
