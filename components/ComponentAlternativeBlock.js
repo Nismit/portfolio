@@ -77,6 +77,10 @@ export default (props) => {
           width: 100%; 
         }
 
+        .content__left {
+          margin-bottom: 2.5rem;
+        }
+
         @media (min-width: 45.176em) {
           .content__left {
             width: 50%;
