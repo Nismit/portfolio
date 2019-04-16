@@ -1,12 +1,27 @@
 const Content = ({ file }) => {
   if (file.contentType.includes('image')) {
     return (
-      <img src={file.url} />
+      <React.Fragment>
+        <img className="media-image" src={file.url} />
+        <style jsx>{`
+          .media-image {
+            max-width: 100%;
+            height: auto;
+          }
+        `}</style>
+      </React.Fragment>
     );
   } else if (file.contentType.includes('video')) {
     return (
-      <video loop autoPlay muted>
+      <video className="media-video" loop autoPlay muted>
         <source src={file.url} />
+        <style jsx>{`
+          .media-video {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+          }
+        `}</style>
       </video>
     )
   }
@@ -24,11 +39,9 @@ export default (props) => {
       <Content file={props.fields[0].fields.file} />
 
       <style jsx>{`
-        .content__text-block {
+        .content__media-block {
           padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
         }
       `}</style>
     </div>
