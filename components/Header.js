@@ -18,7 +18,7 @@ const Header = () => (
           <a className="menu__link">About</a>
         </Link>
       </div>
-      <div>
+      <div className="social">
         <Link href="https://github.com/Nismit">
           <a className="icon github" target="_blank" rel="noopener noreferrer">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
@@ -54,7 +54,7 @@ const Header = () => (
       .header__container {
         display: flex;
         width: 100%;
-        padding: 2rem;
+        padding: 2rem 1rem;
         justify-content: space-between;
       }
 
@@ -68,6 +68,10 @@ const Header = () => (
         margin-left: 2rem;
       }
 
+      .social {
+        display: none;
+      }
+
       .icon {
         display: inline-block;
         margin-left: 2rem;
@@ -76,6 +80,17 @@ const Header = () => (
       .icon svg {
         fill: white;
       }
+
+      @media (min-width: 45.176em) {
+        .header__container {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        .social {
+          display: block;
+        }
+      }  
     `}</style>
   </header>
 )
