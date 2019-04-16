@@ -23,12 +23,22 @@ class Index extends PureComponent {
               display: flex;
               align-items: center;
               height: 100vh;
-              padding-left: 5rem;
+              padding-left: 1rem;
             }
     
             .hero__container {
-              width: 520px;
+              width: 100%;
             }
+
+            @media (min-width: 45.176em) {
+              .hero {
+                padding-left: 5rem;
+              } 
+
+              .hero__container {
+                width: 520px;
+              }
+            }  
         `}</style>
         </div>
       </React.Fragment>
