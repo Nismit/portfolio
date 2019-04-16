@@ -1,10 +1,16 @@
 import Link from 'next/link';
 
+const getYear = () => {
+  const date = new Date();
+  return date.getFullYear();
+}
+
 const Footer = () => (
   <footer className="footer">
     <div className="footer__container">
-      <p>Thank you for visiting, I hope you enjoyed a short scroll trip.<br />
-        Feel free to drop me a line, just say hi and let me know you.</p>
+      <p className="footer__text">Thank you for visiting, I hope you enjoyed a short scroll trip.<br />
+        <a href="mailto:nismit.dev@gmail.com">Feel free to drop me a line</a>, just say hi and let me know you.</p>
+
       <div className="social">
         <Link href="https://github.com/Nismit">
           <a className="icon github" target="_blank" rel="noopener noreferrer">
@@ -28,7 +34,9 @@ const Footer = () => (
           </a>
         </Link>
       </div>
-      <p>Copyright © 2016 - Michinobu Nishimoto, All Rights Reserved.</p>
+
+      <p className="footer__copyright">Copyright © 2016 - {getYear()} Michinobu Nishimoto, All Rights Reserved.</p>
+
     </div>
     <style jsx>{`
       .footer {
@@ -43,6 +51,25 @@ const Footer = () => (
         padding: 2rem;
       }
 
+      .footer__text {
+        font-family: 'DIN condensed';
+        text-transform: uppercase;
+        font-size: 2.8rem;
+        letter-spacing: 1.5px;
+        line-height: 1.35;
+        margin-bottom: 2.5rem;
+      }
+
+      .footer__text a:before {
+        bottom: 7px;
+        height: 4px;
+        border-top: 4px solid #fff;
+      }
+
+      .footer__copyright {
+        font-size: 0.85rem;
+      }
+
       p {
         text-align: center;
       }
@@ -50,6 +77,11 @@ const Footer = () => (
       .social {
         display: flex;
         justify-content: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .social a:before {
+        display: none;
       }
 
       .icon {
@@ -59,6 +91,12 @@ const Footer = () => (
 
       .icon svg {
         fill: white;
+      }
+
+      @media (min-width: 45.176em) {
+        .footer__text {
+          line-height: 1.15;
+        }
       }
     `}</style>
   </footer>
