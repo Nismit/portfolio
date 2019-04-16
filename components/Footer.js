@@ -54,7 +54,7 @@ const Footer = () => (
       .footer__text {
         font-family: 'DIN condensed';
         text-transform: uppercase;
-        font-size: 2.8rem;
+        font-size: 2.2rem;
         letter-spacing: 1.5px;
         line-height: 1.35;
         margin-bottom: 2.5rem;
@@ -95,6 +95,7 @@ const Footer = () => (
 
       @media (min-width: 45.176em) {
         .footer__text {
+          font-size: 2.8rem;
           line-height: 1.15;
         }
       }
