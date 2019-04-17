@@ -6,8 +6,8 @@ const Header = () => (
       <div>
         <Link scroll={false} href="/">
           <a className="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="83.061" height="27.143">
-              <path fill="#FFF" d="M74.678 1.295v15.16L56.612 1.295H45.245l29.426 24.692.007-.008v.008h7.307V1.295zM55.215 25.987h11.367L37.172 1.309l-.012-.014-.002.002-.003-.002-.012.014-17.992 15.098L1.146 1.298v9.538l18.006 15.11.007-.008 17.998-15.103z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="80.839" height="24.692">
+              <path fill="#FFF" d="M80.839 0v24.692h-7.307v-.008l-.007.008L44.099 0h11.367l18.066 15.16V0h7.307zm-26.77 24.692h11.366L36.026.014 36.014 0l-.002.002L36.009 0l-.012.014-17.992 15.098L0 .003v9.538L18.006 24.65l.006-.008L36.011 9.541l18.058 15.151z" />
             </svg>
           </a>
         </Link>
@@ -54,7 +54,7 @@ const Header = () => (
       .header__container {
         display: flex;
         width: 100%;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 0;
         justify-content: space-between;
       }
 
@@ -63,7 +63,7 @@ const Header = () => (
         text-transform: uppercase;
         color: white;
         letter-spacing: 2.5px;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         text-decoration: none;
         margin-left: 2rem;
       }
