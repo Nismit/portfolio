@@ -104,6 +104,20 @@ class CustomApp extends App {
             line-height: 1.53;
           }
 
+          ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          ul li {
+            display: inline-block;
+          }
+
+          ul li a {
+            display: inline-block;
+            margin-right: 1rem;
+          }
+
           .page {
             width: 100%;
             height: 100vh;
