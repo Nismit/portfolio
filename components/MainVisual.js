@@ -46,7 +46,7 @@ class MainVisual extends Component {
     const clock = new THREE.Clock({ autoStart: false });
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     const camera = new THREE.PerspectiveCamera(60, width / height, .1, 10000);
-    camera.position.y = 8;
+    camera.position.y = 13;
     camera.position.z = 4;
 
     const obj = new Terrain();
