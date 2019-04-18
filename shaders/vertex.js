@@ -188,37 +188,65 @@ varying float vDisplace;
 varying float fogDepth;
 
 void main() {
+  // float t = time * speed;
+  // float wRoad = 0.05;
+  // float wRoad2 = wRoad * 0.01;
+  
+  // float angleCenter = uv.y * PI*4.0;
+  // angleCenter += t * 0.9;
+  
+  // float centerOff = (
+  //   sin(angleCenter) + 
+  //   sin(angleCenter*0.5) 
+  // ) * wRoad;
+
+  // vec3 noiseIn = vec3(uv, 1.0)*10.0;
+  // float noise = cnoise(vec3(noiseIn.x, noiseIn.y + t, noiseIn.z));
+  // noise += 1.0;
+  // float h = noise;
+  // float angle = (uv.x - centerOff) * PI;
+  // float f = abs(cos(angle));
+  // h *= pow(f, 0.5 + roadWidth);
+  
+
+  // vDisplace = h;
+  
+  // h*=maxHeight;
+
+  // vec3 transformed = vec3( position.x, position.y, position.z + h );
+
+  // vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 );
+  // gl_Position = projectionMatrix * mvPosition;
+
+
+
+
+  // Test Code
   float t = time * speed;
-  float wRoad = distortCenter;
-  float wRoad2 = wRoad * 0.5;
-  
-  float angleCenter = uv.y * PI*4.0;
-  angleCenter += t * 0.9;
-  
-  float centerOff = (
-    sin(angleCenter) + 
-    sin(angleCenter*0.5) 
-  ) * wRoad;
+  // float center = uv.y * PI * 10.0;
+  // float road = sin(center) * 0.001;
+  // float angle = (uv.x - road) * PI;
 
-  vec3 noiseIn = vec3(uv, 1.0)*10.0;
-  float noise = cnoise(vec3(noiseIn.x, noiseIn.y + t, noiseIn.z));
-  noise += 1.0;
-  float h = noise;
-  float angle = (uv.x - centerOff) * PI;
+
+  float angle = uv.x * PI;
   float f = abs(cos(angle));
-  h *= pow(f, 1.5 + roadWidth);
-  
 
-  vDisplace = h;
-  
-  h*=maxHeight;
 
-  vec3 transformed = vec3( position.x, position.y, position.z + h );
+  vec3 coord = vec3(uv, 1.0)*10.0;
+  float noise = 1. + cnoise( vec3( coord.x, coord.y + t, coord.z ));
 
-  vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 );
-  gl_Position = projectionMatrix * mvPosition;
+  float height = 2. * noise;
+  height *= f*f*1.5;
+
+  // we apply height to z because the plane is rotated on x-axis
+  vec4 pos = vec4( position.x, position.y, height, 1.0 );
+
+  // output the final position
+  gl_Position = projectionMatrix * modelViewMatrix * pos;
+
+
   
-  fogDepth = -mvPosition.z;
+  // fogDepth = -mvPosition.z;
 }`;
 
 export default Vertex
