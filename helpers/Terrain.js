@@ -11,11 +11,8 @@ export default class Terrain {
       time: {
         value: 0.0
       },
-      distortCenter: {
-        value: 0.1
-      },
       roadWidth: {
-        value: 1.5
+        value: 2.5
       },
       pallete: {
         value: null
@@ -25,8 +22,7 @@ export default class Terrain {
       },
       maxHeight: {
         value: 10.0
-      },
-      color: new THREE.Color(1, 1, 1)
+      }
     }
   }
 
@@ -37,7 +33,7 @@ export default class Terrain {
       vertexShader: Vertex,
       fragmentShader: Fragment,
       wireframe: false,
-      fog: true
+      fog: false
     });
 
     this.obj = new THREE.Mesh(geometry, material);
@@ -45,7 +41,7 @@ export default class Terrain {
     this.obj.rotation.x = -Math.PI / 2;
   }
 
-  textureLoad(src = '/static/pallete.png') {
+  textureLoad(src = '/static/three-palette-2.png') {
     this.texture = new THREE.TextureLoader().load(src,
       function (texture) {
         texture.needsUpdate = true;
