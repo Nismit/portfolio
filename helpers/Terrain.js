@@ -12,7 +12,7 @@ export default class Terrain {
         value: 0.0
       },
       roadWidth: {
-        value: 2.5
+        value: 2.1
       },
       pallete: {
         value: null
@@ -21,7 +21,7 @@ export default class Terrain {
         value: 0.5
       },
       maxHeight: {
-        value: 10.0
+        value: 8.0
       }
     }
   }
