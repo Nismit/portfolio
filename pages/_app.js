@@ -45,17 +45,23 @@ class CustomApp extends App {
 
           @font-face {
             font-family: 'DIN condensed';
-            src:  local('DIN condensed'),
-                  url('/static/fonts/din-condensed-bold.woff2') format('woff2'),
-                  url('/static/fonts/din-condensed-bold.woff')  format('woff'),
-                  url('/static/fonts/din-condensed-bold.ttf')   format('truetype'),
-                  url('/static/fonts/din-condensed-bold.eot')   format('embedded-opentype');
+            src:  url('/static/fonts/din-condensed-medium.woff2') format('woff2'),
+                  url('/static/fonts/din-condensed-medium.woff')  format('woff');
+            font-weight: 500;
+            font-style: normal;
+          }
+
+          @font-face {
+            font-family: 'DIN condensed';
+            src:  url('/static/fonts/din-condensed-bold.woff2') format('woff2'),
+                  url('/static/fonts/din-condensed-bold.woff')  format('woff');
             font-weight: 700;
             font-style: normal;
           }
 
           h1, h2, h3, h4 {
             font-family: 'DIN condensed';
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 0;
@@ -153,6 +159,10 @@ class CustomApp extends App {
             padding-top: 3rem;
             margin-left: auto;
             margin-right: auto;
+          }
+
+          .content p {
+            color: rgba(255, 255, 255, .7);
           }
 
           .global-visual:after {
