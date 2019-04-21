@@ -41,7 +41,7 @@ const Footer = () => (
     <style jsx>{`
       .footer {
         width: 100%;
-        padding: 3rem 0;
+        padding-top: 3rem;
       }
 
       .footer__container {
@@ -53,6 +53,7 @@ const Footer = () => (
 
       .footer__text {
         font-family: 'DIN condensed';
+        font-weight: 700;
         text-transform: uppercase;
         font-size: 2.2rem;
         letter-spacing: 1.5px;
