@@ -49,23 +49,35 @@ const Header = () => (
         top: 0;
         left: 0;
         z-index: 15;
+        background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
       }
 
       .header__container {
         display: flex;
         width: 100%;
-        padding: 2rem 1rem 0;
+        padding: 2rem 1rem 2rem;
         justify-content: space-between;
       }
 
       .menu__link {
         font-family: 'DIN condensed';
+        font-weight: 500;
         text-transform: uppercase;
         color: white;
         letter-spacing: 2.5px;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         text-decoration: none;
         margin-left: 2rem;
+      }
+
+      .menu__link:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 12px;
+        border-top: 3px solid #fff;
+        transform: rotate(50deg);
+        margin-right: .8rem;
       }
 
       .social {
@@ -79,6 +91,14 @@ const Header = () => (
 
       .icon svg {
         fill: white;
+      }
+
+      .icon.linkedin svg {
+        width: 22px;
+      }
+
+      .icon.twitter svg {
+        width: 24px;
       }
 
       @media (min-width: 45.176em) {
