@@ -44,7 +44,7 @@ const Header = () => (
     </div>
     <style jsx>{`
       .header {
-        width: 100%;
+        width: calc(100% - 5px);
         position: fixed;
         top: 0;
         left: 0;
@@ -68,6 +68,11 @@ const Header = () => (
         font-size: 1.5rem;
         text-decoration: none;
         margin-left: 2rem;
+        transition: color .5s;
+      }
+
+      .menu__link:hover {
+        color: #2678bf;
       }
 
       .menu__link:before {
