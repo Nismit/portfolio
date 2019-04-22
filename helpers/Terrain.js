@@ -12,7 +12,7 @@ export default class Terrain {
         value: 0.0
       },
       roadWidth: {
-        value: 2.1
+        value: 2.5
       },
       pallete: {
         value: null
@@ -21,7 +21,7 @@ export default class Terrain {
         value: 0.5
       },
       maxHeight: {
-        value: 8.0
+        value: 9.0
       }
     }
   }
@@ -41,7 +41,7 @@ export default class Terrain {
     this.obj.rotation.x = -Math.PI / 2;
   }
 
-  textureLoad(src = '/static/three-palette-2.png') {
+  textureLoad(src = '/static/three-palette-9.png') {
     this.texture = new THREE.TextureLoader().load(src,
       function (texture) {
         texture.needsUpdate = true;
