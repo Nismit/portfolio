@@ -141,17 +141,7 @@ class CustomApp extends App {
           }
 
           .page a:hover {
-            color: #FE6E1A;
-          }
-
-          .page a:before {
-            content: "";
-            width: 100%;
-            height: 2px;
-            border-top: 2px solid #fff;
-            position: absolute;
-            left: 0;
-            bottom: 0;
+            color: #2678bf;
           }
 
           .content {
