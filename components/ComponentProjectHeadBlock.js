@@ -53,6 +53,7 @@ export default class ComponentProjectHeadBlock extends PureComponent {
           }
           .project__link {
             display: inline-block;
+            margin-top: .7rem;
             color: white;
             border: 3px solid #fff;
             padding: .8rem 2.4rem;
@@ -60,24 +61,56 @@ export default class ComponentProjectHeadBlock extends PureComponent {
             transition: all 500ms;
           }
           .project__link:hover {
-            background-color: white;
-            color: #000;
+            background-color: #2678bf;
+            color: white;
+            cursor: pointer;
           }
           .project__nav__container {
             display: flex;
+            position: relative;
+            top: 2rem;
           }
           .project__nav {
             cursor: pointer;
             padding: 1rem;
             display: flex;
             align-items: center;
+            font-size: 1.2rem;
+            transition: color 500ms;
           }
+
+          .project__nav.prev {
+            padding-left: 0;
+          }
+
+          .project__nav.next {
+            padding-right: 0;
+          }
+
           .project__nav svg {
             fill: #fff;
+            margin-right: .7rem;
+            transition: fill 500ms;
           }
           .project__nav.next svg {
+            margin-right: 0;
+            margin-left: .7rem;
             transform: rotate(180deg);
           }
+
+          .project__nav:hover {
+            color: #2678bf;
+          }
+
+          .project__nav:hover svg {
+            fill: #2678bf;
+          }
+
+          @media (min-width: 45.176em) {
+            .head-block {
+              padding-left: 5rem;
+            } 
+          }  
         `}</style>
       </div>
     )
