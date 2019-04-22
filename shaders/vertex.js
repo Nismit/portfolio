@@ -101,6 +101,11 @@ float snoise(vec3 v) {
                                 dot(p2,x2), dot(p3,x3) ) );
 }
 
+// https://stackoverflow.com/questions/4200224/random-noise-functions-for-glsl
+float rand(vec2 co){
+  return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
 #define PI 3.1415926535897932384626433832795
 
 uniform float time;
@@ -119,6 +124,7 @@ void main() {
   float f = abs(cos(roadAnimation));
 
   vec3 coord = vec3(uv, 1.0) * 10.0;
+  float coeffient = rand(coord.xy);
   float noise = snoise( vec3(coord.x, coord.y + t, coord.z) );
   noise += 1.0;
 
@@ -127,7 +133,7 @@ void main() {
   vDisplace = height;
   height *=maxHeight;
 
-  vec4 mvPosition = vec4( position.x, position.y, position.z + height, 1.0 );
+  vec4 mvPosition = vec4( position.x + coeffient, position.y + coeffient, position.z + height, 1.0 );
   gl_Position = projectionMatrix * modelViewMatrix * mvPosition;  
 }`;
 
