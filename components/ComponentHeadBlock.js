@@ -21,6 +21,12 @@ export default (props) => (
         margin-left: auto;
         margin-right: auto;
       }
+
+      @media (min-width: 45.176em) {
+        .head-block {
+          padding-left: 5rem;
+        } 
+      }  
     `}</style>
   </div>
 )
