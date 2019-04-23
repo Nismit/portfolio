@@ -59,12 +59,7 @@ const Footer = () => (
         letter-spacing: 1.5px;
         line-height: 1.35;
         margin-bottom: 2.5rem;
-      }
-
-      .footer__text a:before {
-        bottom: 7px;
-        height: 4px;
-        border-top: 4px solid #fff;
+        color: rgba(255, 255, 255, .6);
       }
 
       .footer__copyright {
@@ -92,6 +87,27 @@ const Footer = () => (
 
       .icon svg {
         fill: white;
+        transition: fill 500ms;
+      }
+
+      .icon.linkedin svg {
+        width: 22px;
+      }
+
+      .icon.twitter svg {
+        width: 24px;
+      }
+
+      .icon.github:hover svg {
+        fill: #4078c0;
+      }
+
+      .icon.linkedin:hover svg {
+        fill: #0077b5;
+      }
+
+      .icon.twitter:hover svg {
+        fill: #1da1f2;
       }
 
       @media (min-width: 45.176em) {

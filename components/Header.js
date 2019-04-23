@@ -49,7 +49,7 @@ const Header = () => (
         top: 0;
         left: 0;
         z-index: 15;
-        background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
       }
 
       .header__container {
@@ -96,6 +96,7 @@ const Header = () => (
 
       .icon svg {
         fill: white;
+        transition: fill 500ms;
       }
 
       .icon.linkedin svg {
@@ -104,6 +105,18 @@ const Header = () => (
 
       .icon.twitter svg {
         width: 24px;
+      }
+
+      .icon.github:hover svg {
+        fill: #4078c0;
+      }
+
+      .icon.linkedin:hover svg {
+        fill: #0077b5;
+      }
+
+      .icon.twitter:hover svg {
+        fill: #1da1f2;
       }
 
       @media (min-width: 45.176em) {
