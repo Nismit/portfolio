@@ -24,6 +24,7 @@ export default (props) => (
 
       @media (min-width: 45.176em) {
         .head-block {
+          max-width: 100%;
           padding-left: 5rem;
         } 
       }  

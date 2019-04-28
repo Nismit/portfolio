@@ -108,6 +108,7 @@ export default class ComponentProjectHeadBlock extends PureComponent {
 
           @media (min-width: 45.176em) {
             .head-block {
+              max-width: 100%;
               padding-left: 5rem;
             } 
           }  
