@@ -6,7 +6,7 @@ const Header = () => (
       <div>
         <Link scroll={false} href="/">
           <a className="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="80.839" height="24.692">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80.839" height="24.692" viewBox="0 0 81 25">
               <path fill="#FFF" d="M80.839 0v24.692h-7.307v-.008l-.007.008L44.099 0h11.367l18.066 15.16V0h7.307zm-26.77 24.692h11.366L36.026.014 36.014 0l-.002.002L36.009 0l-.012.014-17.992 15.098L0 .003v9.538L18.006 24.65l.006-.008L36.011 9.541l18.058 15.151z" />
             </svg>
           </a>
@@ -55,7 +55,7 @@ const Header = () => (
       .header__container {
         display: flex;
         width: 100%;
-        padding: 2rem 1rem 2rem;
+        padding: 1rem;
         justify-content: space-between;
       }
 
@@ -65,7 +65,7 @@ const Header = () => (
         text-transform: uppercase;
         color: white;
         letter-spacing: 2.5px;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         text-decoration: none;
         margin-left: 2rem;
         transition: color .5s;
@@ -75,14 +75,10 @@ const Header = () => (
         color: #2678bf;
       }
 
-      .menu__link:before {
-        content: "";
-        display: inline-block;
-        width: 22px;
-        height: 12px;
-        border-top: 3px solid #fff;
-        transform: rotate(50deg);
-        margin-right: .8rem;
+      .logo svg {
+        width: 60px;
+        position: relative;
+        top: 4px;
       }
 
       .social {
@@ -121,8 +117,29 @@ const Header = () => (
 
       @media (min-width: 45.176em) {
         .header__container {
+          padding-top: 2rem;
           padding-left: 2rem;
           padding-right: 2rem;
+        }
+
+        .menu__link {
+          font-size: 1.5rem;
+          margin-left: 2rem;
+        }
+
+        .menu__link:before {
+          content: "";
+          display: inline-block;
+          width: 22px;
+          height: 12px;
+          border-top: 3px solid #fff;
+          transform: rotate(50deg);
+          margin-right: .8rem;
+        }
+
+        .logo svg {
+          width: 81px;
+          position: static;
         }
 
         .social {
