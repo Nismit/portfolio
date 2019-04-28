@@ -1,0 +1,50 @@
+{
+  "name": "portfolio",
+  "version": "1.2.0",
+  "description": "Portfolio Development Environment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "npm run postinstall && next build && next export",
+    "serve": "serve -p 8080",
+    "postinstall": "npm run getcontent",
+    "getcontent": "babel-node helpers/getContent.js install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nismit/portfolio.git"
+  },
+  "keywords": [
+    "react",
+    "next.js"
+  ],
+  "author": "Nismit <nismit.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nismit/portfolio/issues"
+  },
+  "homepage": "https://github.com/Nismit/portfolio#readme",
+  "dependencies": {
+    "contentful": "^7.4.3",
+    "gsap": "^2.1.2",
+    "next": "^8.0.3",
+    "next-page-transitions": "^1.0.0-beta.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-markdown": "^4.0.6",
+    "react-redux": "^6.0.1",
+    "react-smooth-scrollbar": "^8.0.6",
+    "redux": "^4.0.1",
+    "smooth-scrollbar": "^8.3.1",
+    "three": "^0.103.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "dotenv": "^7.0.0"
+  }
+}
