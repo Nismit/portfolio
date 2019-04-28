@@ -5,7 +5,7 @@ module.exports = {
     const projects = data.allProjects.reduce(
       (projects, project, index) =>
         Object.assign({}, projects, {
-          [`/project/${project.fields.title.replace(' ', '-').toLowerCase()}`]: {
+          [`/project/${project.fields.title.replace(/\s/g, '-').toLowerCase()}`]: {
             page: '/project',
             query: { id: index }
           }
