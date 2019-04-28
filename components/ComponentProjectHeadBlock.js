@@ -7,7 +7,7 @@ export default class ComponentProjectHeadBlock extends PureComponent {
   }
 
   render() {
-    const url = this.props.title.replace(' ', '-').toLowerCase();
+    const url = this.props.title.replace(/\s/g, '-').toLowerCase();
 
     return (
       <div className="head-block">
