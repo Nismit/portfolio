@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import withReduxStore from '../helpers/withReduxStore';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import { PageTransition } from 'next-page-transitions';
 import Header from '../components/Header';
 import MainVisual from '../components/MainVisual';
@@ -11,16 +11,15 @@ class CustomApp extends App {
     const { Component, pageProps, router, reduxStore } = this.props;
 
     return (
-      <Container>
-        <Provider store={reduxStore}>
-          <Header />
-          <MainVisual />
-          <div className="page">
-            <PageTransition timeout={1600} classNames="page-transition">
-              <Component {...pageProps} key={router.route} />
-            </PageTransition>
-          </div>
-        </Provider>
+      <Provider store={reduxStore}>
+        <Header />
+        <MainVisual />
+        <div className="page">
+          <PageTransition timeout={1600} classNames="page-transition">
+            <Component {...pageProps} key={router.route} />
+          </PageTransition>
+        </div>
+
         <style jsx global>{`
           *,
           *::before,
@@ -202,7 +201,7 @@ class CustomApp extends App {
             transition: opacity 1.6s;
           }
         `}</style>
-      </Container>
+      </Provider>
     )
   }
 }
