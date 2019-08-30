@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import SmoothScrollbar from 'smooth-scrollbar';
-import Scrollbar from 'react-smooth-scrollbar';
+// import SmoothScrollbar from 'smooth-scrollbar';
+// import Scrollbar from 'react-smooth-scrollbar';
 import { TweenLite } from 'gsap';
 import data from '../data/about';
 import Footer from '../components/Footer';
@@ -18,30 +18,36 @@ class About extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { loaded: false }
+    this.scrollBar = null;
     this.containerRef = React.createRef();
   }
 
   componentDidMount() {
-    this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
+    const smoothScrollbar = require('smooth-scrollbar').default;
+    this.scrollBar = smoothScrollbar.init(this.containerRef.current, {
+      thumbMinSize: 10,
+      alwaysShowTracks: true
+    });
+
+    this.scrollBar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
   }
 
   componentDidUpdate() {
-    const { scrollbar } = this.containerRef.current;
-    TweenLite.to(scrollbar, 0.8, { scrollTop: 0 });
+    TweenLite.to(this.containerRef.current, 0.8, { scrollTop: 0 });
+
   }
 
   onUpdateScroll() {
-    const { scrollbar } = this.containerRef.current;
-    this.visualContainer.style.transform = `translate3d(0,-${scrollbar.offset.y}px, 0)`;
+    this.visualContainer.style.transform = `translate3d(0,-${this.scrollBar.offset.y}px, 0)`;
   }
 
   render() {
     return (
       <React.Fragment>
         <ComponentHead headTitle="About" />
-        <Scrollbar ref={this.containerRef} thumbMinSize={10} alwaysShowTracks={true} className="page about virtual-scroll">
+        <div ref={this.containerRef} className={`page about virtual-scroll`}>
           <div className="about__header">
             <ComponentHeadBlock
               title={data.title}
@@ -85,7 +91,7 @@ class About extends PureComponent {
               position: relative;
             }
           `}</style>
-        </Scrollbar>
+        </div>
       </React.Fragment>
     )
   }
