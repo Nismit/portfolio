@@ -1,8 +1,6 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
-import SmoothScrollbar from 'smooth-scrollbar';
-import Scrollbar from 'react-smooth-scrollbar';
 import { TweenLite } from 'gsap';
 import projectData from '../data/projects';
 import Footer from '../components/Footer';
@@ -19,31 +17,36 @@ const mapDispatchToProps = dispatch => ({});
 class Project extends PureComponent {
   constructor(props) {
     super(props);
+    this.scrollBar = null;
     this.containerRef = React.createRef();
     this.data = this.props.router.query ? projectData.allProjects[this.props.router.query.id].fields : null;
   }
 
   componentDidMount() {
-    this.containerRef.current.scrollbar.addListener(() => this.onUpdateScroll());
+    const smoothScrollbar = require('smooth-scrollbar').default;
+    this.scrollBar = smoothScrollbar.init(this.containerRef.current, {
+      thumbMinSize: 10,
+      alwaysShowTracks: true
+    });
+
+    this.scrollBar.addListener(() => this.onUpdateScroll());
     const visualContainer = document.querySelector('.global-visual');
     this.visualContainer = visualContainer;
   }
 
   componentDidUpdate() {
-    const { scrollbar } = this.containerRef.current;
-    TweenLite.to(scrollbar, 0.8, { scrollTop: 0 });
+    TweenLite.to(this.containerRef.current, 0.8, { scrollTop: 0 });
   }
 
   onUpdateScroll() {
-    const { scrollbar } = this.containerRef.current;
-    this.visualContainer.style.transform = `translate3d(0,-${scrollbar.offset.y}px, 0)`;
+    this.visualContainer.style.transform = `translate3d(0,-${this.scrollBar.offset.y}px, 0)`;
   }
 
   render() {
     return (
       <React.Fragment>
         <ComponentHead headTitle={this.data && this.data.title} />
-        <Scrollbar ref={this.containerRef} thumbMinSize={10} alwaysShowTracks={true} className="page project virtual-scroll">
+        <div ref={this.containerRef} className={`page project virtual-scroll`}>
           <div className="project__header">
             <ComponentHeadBlock
               title={this.data && this.data.title}
@@ -92,7 +95,7 @@ class Project extends PureComponent {
               position: relative;
             }
           `}</style>
-        </Scrollbar>
+        </div>
       </React.Fragment>
     )
   }

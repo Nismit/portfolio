@@ -1,7 +1,5 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-// import SmoothScrollbar from 'smooth-scrollbar';
-// import Scrollbar from 'react-smooth-scrollbar';
 import { TweenLite } from 'gsap';
 import data from '../data/about';
 import Footer from '../components/Footer';
