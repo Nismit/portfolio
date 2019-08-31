@@ -36,7 +36,6 @@ class About extends PureComponent {
 
   componentDidUpdate() {
     TweenLite.to(this.containerRef.current, 0.8, { scrollTop: 0 });
-
   }
 
   onUpdateScroll() {
