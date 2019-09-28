@@ -33,7 +33,7 @@
     "next": "^9.0.5",
     "next-page-transitions": "^1.0.0-beta.1",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.10.1",
     "react-markdown": "^4.2.2",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
