@@ -4,4 +4,5 @@ update_configs:
     directory: "/"
     update_schedule: "weekly"
     default_reviewers:
-    - "Nismit"
+      - "Nismit"
+    target_branch: "dev"
