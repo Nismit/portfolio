@@ -41,7 +41,7 @@ export default class Terrain {
     this.obj.rotation.x = -Math.PI / 2;
   }
 
-  textureLoad(src = '/static/three-palette-9.png') {
+  textureLoad(src = '/three-palette-9.png') {
     this.texture = new THREE.TextureLoader().load(src,
       function (texture) {
         texture.needsUpdate = true;
