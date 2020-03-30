@@ -44,16 +44,16 @@ class CustomApp extends App {
 
           @font-face {
             font-family: 'DIN condensed';
-            src:  url('/static/fonts/din-condensed-medium.woff2') format('woff2'),
-                  url('/static/fonts/din-condensed-medium.woff')  format('woff');
+            src:  url('/fonts/din-condensed-medium.woff2') format('woff2'),
+                  url('/fonts/din-condensed-medium.woff')  format('woff');
             font-weight: 500;
             font-style: normal;
           }
 
           @font-face {
             font-family: 'DIN condensed';
-            src:  url('/static/fonts/din-condensed-bold.woff2') format('woff2'),
-                  url('/static/fonts/din-condensed-bold.woff')  format('woff');
+            src:  url('/fonts/din-condensed-bold.woff2') format('woff2'),
+                  url('/fonts/din-condensed-bold.woff')  format('woff');
             font-weight: 700;
             font-style: normal;
           }
