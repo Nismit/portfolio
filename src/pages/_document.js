@@ -14,7 +14,7 @@ export default class CustomDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+          <link rel="icon" type="image/x-icon" href="./favicon.ico" />
           <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"></link>
         </Head>
         <body className="custom_class">
