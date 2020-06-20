@@ -1,4 +1,4 @@
-const data = require('./data/projects');
+const data = require('./src/data/projects');
 
 module.exports = {
   exportPathMap: async function () {
