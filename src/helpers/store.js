@@ -1,4 +1,7 @@
+import { useMemo } from 'react';
 import { createStore } from 'redux';
+
+let store;
 
 const defaultState = {
   isLoaded: false,
@@ -20,7 +23,7 @@ export const actionTypes = {
 }
 
 // REDUCERS
-export const reducer = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.THREE_LOADED.ERROR:
       return {
@@ -61,6 +64,29 @@ export const threeLoaded = () => {
   return { type: actionTypes.THREE_LOADED.SUCCESS }
 }
 
-export function initializeStore(initialState = defaultState) {
-  return createStore(reducer, initialState)
+function preStore(preLoadedState = defaultState) {
+  return createStore(reducer, preLoadedState);
+}
+
+export function initializeStore(preLoadedState) {
+  let _store = store ?? preStore(preLoadedState);
+
+  if (preLoadedState && store) {
+    _store = pretore({
+      ...store.getState(),
+      ...preLoadedState,
+    })
+    // Reset the current store
+    store = undefined;
+  }
+
+  if (typeof window === 'undefined') return _store;
+  if (!store) store = _store;
+
+  return _store;
+}
+
+export function useStore(defaultState) {;
+  const store = useMemo(() => initializeStore(defaultState), [defaultState]);
+  return store;
 }
