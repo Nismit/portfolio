@@ -1,22 +1,23 @@
-import React from 'react';
 import { Provider } from 'react-redux';
-import withReduxStore from '../helpers/withReduxStore';
-import App from 'next/app';
+import { useStore } from '../helpers/store';
+import { useRouter } from 'next/router';
 import { PageTransition } from 'next-page-transitions';
 import Header from '../components/Header';
 import MainVisual from '../components/MainVisual';
 
-class CustomApp extends App {
-  render() {
-    const { Component, pageProps, router, reduxStore } = this.props;
+export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const store = useStore(pageProps.initialReduxState);
+  // console.log('Router:', router.pathname);
+  // console.log('Store:', pageProps.initialReduxState);
 
-    return (
-      <Provider store={reduxStore}>
+  return (
+    <Provider store={store}>
         <Header />
         <MainVisual />
         <div className="page">
           <PageTransition timeout={1600} classNames="page-transition">
-            <Component {...pageProps} key={router.route} />
+            <Component {...pageProps} key={router.pathname} />
           </PageTransition>
         </div>
 
@@ -90,18 +91,18 @@ class CustomApp extends App {
             h1 {
               font-size: 7rem;
             }
-  
+
             h2 {
               font-size: 3rem;
               line-height: 0.95;
               margin-bottom: 2.2rem;
             }
-  
+
             h3 {
               font-size: 2rem;
               line-height: 0.95;
             }
-          }  
+          }
 
           p {
             margin-top: 0;
@@ -202,8 +203,5 @@ class CustomApp extends App {
           }
         `}</style>
       </Provider>
-    )
-  }
+  )
 }
-
-export default withReduxStore(CustomApp)
