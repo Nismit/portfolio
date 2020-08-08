@@ -1,16 +1,10 @@
-import { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import data from '../data/home';
 import ComponentHead from '../components/ComponentHead';
 
-const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({});
-
-class Index extends PureComponent {
-  render() {
-    return (
-      <React.Fragment>
-        <ComponentHead headTitle="Interactive Developer" />
+function IndexPage() {
+  return (
+    <>
+      <ComponentHead headTitle="Interactive Developer" />
         <div className="page home">
           <div className="hero">
             <div className="hero__container">
@@ -25,7 +19,7 @@ class Index extends PureComponent {
               height: 100vh;
               padding-left: 1rem;
             }
-    
+
             .hero__container {
               width: 100%;
             }
@@ -33,17 +27,15 @@ class Index extends PureComponent {
             @media (min-width: 45.176em) {
               .hero {
                 padding-left: 5rem;
-              } 
+              }
 
               .hero__container {
                 width: 520px;
               }
-            }  
+            }
         `}</style>
         </div>
-      </React.Fragment>
-    )
-  }
+    </>
+  )
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default IndexPage;
