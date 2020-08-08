@@ -8,8 +8,6 @@ import MainVisual from '../components/MainVisual';
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const store = useStore(pageProps.initialReduxState);
-  // console.log('Router:', router.pathname);
-  // console.log('Store:', pageProps.initialReduxState);
 
   return (
     <Provider store={store}>
