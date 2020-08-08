@@ -1,7 +1,5 @@
-import { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router';
-import { TweenLite } from 'gsap';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import projectData from '../data/projects';
 import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
@@ -11,94 +9,89 @@ import ComponentSkillBlock from '../components/ComponentSkillBlock';
 import ComponentMediaBlock from '../components/ComponentMediaBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
-const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({});
+function Project(props) {
+  let visualContainer, scrollBar;
+  const refContainer = useRef(null);
+  const data = props.query ? projectData.allProjects[props.query.id].fields : null;
 
-class Project extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.scrollBar = null;
-    this.containerRef = React.createRef();
-    this.data = this.props.router.query ? projectData.allProjects[this.props.router.query.id].fields : null;
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const smoothScrollbar = require('smooth-scrollbar').default;
-    this.scrollBar = smoothScrollbar.init(this.containerRef.current, {
+    scrollBar = smoothScrollbar.init(refContainer.current, {
       thumbMinSize: 10,
       alwaysShowTracks: true
     });
 
-    this.scrollBar.addListener(() => this.onUpdateScroll());
-    const visualContainer = document.querySelector('.global-visual');
-    this.visualContainer = visualContainer;
+    scrollBar.addListener(() => onUpdateScroll());
+    visualContainer = document.querySelector('.global-visual');
+  }, []);
+
+  useEffect(() => {
+    gsap.to(refContainer.current, 0.8, { scrollTop: 0 });
+  });
+
+  const onUpdateScroll = () => {
+    visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
   }
 
-  componentDidUpdate() {
-    TweenLite.to(this.containerRef.current, 0.8, { scrollTop: 0 });
-  }
-
-  onUpdateScroll() {
-    this.visualContainer.style.transform = `translate3d(0,-${this.scrollBar.offset.y}px, 0)`;
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <ComponentHead headTitle={this.data && this.data.title} />
-        <div ref={this.containerRef} className={`page project virtual-scroll`}>
-          <div className="project__header">
-            <ComponentHeadBlock
-              title={this.data && this.data.title}
-              subTitle={this.data && this.data.subTitle}
-            />
-          </div>
-
-          <div className="content project__content">
-
-            {
-              this.data && this.data.contentsModule.map((item, i) => {
-                if (item.sys.contentType.sys.id === 'contentTextBlock') {
-                  return <ComponentTextBlock
-                    key={i}
-                    fields={item.fields}
-                  />
-                } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
-                  return <ComponentSkillBlock
-                    key={i}
-                    fields={item.fields}
-                  />
-                } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
-                  return <ComponentAlternativeBlock
-                    key={i}
-                    fields={item.fields}
-                  />
-                } else if (item.sys.contentType.sys.id === 'contentImageBlock') {
-                  return <ComponentMediaBlock
-                    key={i}
-                    fields={item.fields.images}
-                  />
-                } else {
-                  return false;
-                }
-              })
-            }
-
-          </div>
-
-          <Footer />
-
-          <style jsx>{`
-            .project__header {
-              width: 100%;
-              height: 100vh;
-              position: relative;
-            }
-          `}</style>
+  return (
+    <>
+      <ComponentHead headTitle={data && data.title} />
+      <div ref={refContainer} className={`page project virtual-scroll`}>
+        <div className="project__header">
+          <ComponentHeadBlock
+            title={data && data.title}
+            subTitle={data && data.subTitle}
+          />
         </div>
-      </React.Fragment>
-    )
-  }
+
+        <div className="content project__content">
+
+          {
+            data && data.contentsModule.map((item, i) => {
+              if (item.sys.contentType.sys.id === 'contentTextBlock') {
+                return <ComponentTextBlock
+                  key={i}
+                  fields={item.fields}
+                />
+              } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
+                return <ComponentSkillBlock
+                  key={i}
+                  fields={item.fields}
+                />
+              } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
+                return <ComponentAlternativeBlock
+                  key={i}
+                  fields={item.fields}
+                />
+              } else if (item.sys.contentType.sys.id === 'contentImageBlock') {
+                return <ComponentMediaBlock
+                  key={i}
+                  fields={item.fields.images}
+                />
+              } else {
+                return false;
+              }
+            })
+          }
+
+        </div>
+
+        <Footer />
+
+        <style jsx>{`
+          .project__header {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+          }
+        `}</style>
+      </div>
+    </>
+  )
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Project));
+Project.getInitialProps = async ({ query }) => {
+  return { query }
+}
+
+export default Project;
