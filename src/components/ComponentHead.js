@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default (props) => {
+const ComponentHead = (props) => {
   return (
     <div>
       <Head>
@@ -9,3 +9,5 @@ export default (props) => {
     </div>
   );
 }
+
+export default ComponentHead;

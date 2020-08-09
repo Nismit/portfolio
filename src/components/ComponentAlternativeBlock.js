@@ -1,5 +1,4 @@
-
-export default (props) => {
+const ComponentAlternativeBlock = (props) => {
   const { title, contentLeft, contentRight } = props.fields;
 
   if (!title) {
@@ -74,7 +73,7 @@ export default (props) => {
         }
 
         .content__left, .content__right {
-          width: 100%; 
+          width: 100%;
         }
 
         .content__left {
@@ -85,7 +84,7 @@ export default (props) => {
           .content__alternative-block {
             padding-left: 2.5rem;
             padding-right: 2.5rem;
-          } 
+          }
 
           .content__left {
             width: 50%;
@@ -101,3 +100,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default ComponentAlternativeBlock;

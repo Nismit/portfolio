@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 
-export default (props) => {
+const ComponentTextBlock = (props) => {
   const { title, content } = props.fields;
 
   if (!title) {
@@ -33,3 +33,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default ComponentTextBlock;
