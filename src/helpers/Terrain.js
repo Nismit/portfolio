@@ -49,7 +49,7 @@ export default class Terrain {
       },
 
       function (err) {
-        console.error('An error happened');
+        console.error('An error happened: ', err);
         return null;
       }
     );
