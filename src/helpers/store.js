@@ -45,25 +45,6 @@ const reducer = (state = defaultState, action) => {
   }
 }
 
-// Call dispatch with the actions
-//
-// const mapDispatchToProps = dispatch => ({
-//  callDispatch: () => {
-//    dispatch(threeLoaded())
-//  }
-// });
-//
-// In the component
-// this.props.callDispatch();
-
-export const threeStart = () => {
-  return { type: actionTypes.THREE_LOADED.PENDING }
-}
-
-export const threeLoaded = () => {
-  return { type: actionTypes.THREE_LOADED.SUCCESS }
-}
-
 function preStore(preLoadedState = defaultState) {
   return createStore(reducer, preLoadedState);
 }
