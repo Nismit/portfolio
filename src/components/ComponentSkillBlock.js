@@ -1,5 +1,4 @@
-
-export default (props) => {
+const ComponentSkillBlock = (props) => {
   const { title, skillGroup } = props.fields;
 
   if (!title) {
@@ -43,7 +42,7 @@ export default (props) => {
             padding-left: 2.5rem;
             padding-right: 2.5rem;
           }
-        }  
+        }
 
         .skill-block__header {
           display: flex;
@@ -77,3 +76,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default ComponentSkillBlock;

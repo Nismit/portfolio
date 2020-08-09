@@ -1,5 +1,4 @@
-
-export default (props) => (
+const ComponentHeadBlock = (props) => (
   <div className="head-block">
     <div>
       {props.title ? (
@@ -26,8 +25,10 @@ export default (props) => (
         .head-block {
           max-width: 100%;
           padding-left: 5rem;
-        } 
-      }  
+        }
+      }
     `}</style>
   </div>
 )
+
+export default ComponentHeadBlock;

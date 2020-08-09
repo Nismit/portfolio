@@ -27,7 +27,7 @@ const Content = ({ file }) => {
   }
 }
 
-export default (props) => {
+const ComponentMediaBlock = (props) => {
 
   if (!props.fields) {
     return false;
@@ -47,3 +47,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default ComponentMediaBlock;

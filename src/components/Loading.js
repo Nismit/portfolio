@@ -1,5 +1,4 @@
-
-export default (props) => (
+const Loading = (props) => (
   <div className={`loading ${props.isLoaded && "is-loaded"}`}>
     <div className="loading__transition__group">
       <div className="loading__transition"></div>
@@ -88,3 +87,5 @@ export default (props) => (
     `}</style>
   </div>
 )
+
+export default Loading;
