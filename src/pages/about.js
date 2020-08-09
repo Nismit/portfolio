@@ -9,77 +9,69 @@ import ComponentSkillBlock from '../components/ComponentSkillBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
 function AboutPage() {
-  let visualContainer, scrollBar;
-  const refContainer = useRef(null);
+    let visualContainer, scrollBar;
+    const refContainer = useRef(null);
 
-  useEffect(() => {
-    const smoothScrollbar = require('smooth-scrollbar').default;
-    scrollBar = smoothScrollbar.init(refContainer.current, {
-      thumbMinSize: 10,
-      alwaysShowTracks: true
+    useEffect(() => {
+        const smoothScrollbar = require('smooth-scrollbar').default;
+        scrollBar = smoothScrollbar.init(refContainer.current, {
+            thumbMinSize: 10,
+            alwaysShowTracks: true
+        });
+
+        scrollBar.addListener(() => onUpdateScroll());
+        visualContainer = document.querySelector('.global-visual');
+    }, []);
+
+    useEffect(() => {
+        gsap.to(refContainer.current, 0.8, { scrollTop: 0 });
     });
 
-    scrollBar.addListener(() => onUpdateScroll());
-    visualContainer = document.querySelector('.global-visual');
-  }, []);
+    const onUpdateScroll = () => {
+        visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
+    }
 
-  useEffect(() => {
-    gsap.to(refContainer.current, 0.8, { scrollTop: 0 });
-  });
+    return (
+        <>
+            <ComponentHead headTitle="About" />
+            <div ref={refContainer} className={`page about virtual-scroll`}>
+                <div className="about__header">
+                    <ComponentHeadBlock
+                        title={data.title}
+                        subTitle={data.subTitle}
+                    />
+                </div>
 
-  const onUpdateScroll = () => {
-    visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
-  }
+                <div className="content about__content">
 
-  return (
-    <>
-      <ComponentHead headTitle="About" />
-      <div ref={refContainer} className={`page about virtual-scroll`}>
-        <div className="about__header">
-          <ComponentHeadBlock
-            title={data.title}
-            subTitle={data.subTitle}
-          />
-        </div>
+                    {
+                        data.contentsModule.map((item, i) => {
+                            if (item.sys.contentType.sys.id === 'contentTextBlock') {
+                                return <ComponentTextBlock
+                                    key={i}
+                                    fields={item.fields}
+                                />
+                            } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
+                                return <ComponentSkillBlock
+                                    key={i}
+                                    fields={item.fields}
+                                />
+                            } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
+                                return <ComponentAlternativeBlock
+                                    key={i}
+                                    fields={item.fields}
+                                />
+                            } else {
+                                return false;
+                            }
+                        })
+                    }
 
-        <div className="content about__content">
+                </div>
 
-          {
-            data.contentsModule.map((item, i) => {
-              if (item.sys.contentType.sys.id === 'contentTextBlock') {
-                return <ComponentTextBlock
-                  key={i}
-                  fields={item.fields}
-                />
-              } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
-                return <ComponentSkillBlock
-                  key={i}
-                  fields={item.fields}
-                />
-              } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
-                return <ComponentAlternativeBlock
-                  key={i}
-                  fields={item.fields}
-                />
-              } else {
-                return false;
-              }
-            })
-          }
-
-        </div>
-
-        <Footer />
-
-        <style jsx>{`
-          .about__header {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-          }
-        `}</style>
-      </div>
-    </>
-  )
+                <Footer />
+            </div>
+        </>
+    )
 }
 export default AboutPage;

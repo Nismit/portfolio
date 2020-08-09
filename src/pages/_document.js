@@ -4,24 +4,24 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class Document extends NextDocument {
-  static async getInitialProps(ctx) {
-    const initialProps = await NextDocument.getInitialProps(ctx);
-    return { ...initialProps };
-  }
+    static async getInitialProps(ctx) {
+        const initialProps = await NextDocument.getInitialProps(ctx);
+        return { ...initialProps };
+    }
 
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-          <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"></link>
-        </Head>
-        <body className="custom_class">
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+    render() {
+        return (
+            <Html lang="en">
+                <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"></link>
+                </Head>
+                <body className="custom_class">
+                    <Main />
+                    <NextScript />
+                </body>
+            </Html>
+        );
+    }
 }

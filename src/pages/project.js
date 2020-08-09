@@ -10,88 +10,80 @@ import ComponentMediaBlock from '../components/ComponentMediaBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
 function Project(props) {
-  let visualContainer, scrollBar;
-  const refContainer = useRef(null);
-  const data = props.query ? projectData.allProjects[props.query.id].fields : null;
+    let visualContainer, scrollBar;
+    const refContainer = useRef(null);
+    const data = props.query ? projectData.allProjects[props.query.id].fields : null;
 
-  useEffect(() => {
-    const smoothScrollbar = require('smooth-scrollbar').default;
-    scrollBar = smoothScrollbar.init(refContainer.current, {
-      thumbMinSize: 10,
-      alwaysShowTracks: true
+    useEffect(() => {
+        const smoothScrollbar = require('smooth-scrollbar').default;
+        scrollBar = smoothScrollbar.init(refContainer.current, {
+            thumbMinSize: 10,
+            alwaysShowTracks: true
+        });
+
+        scrollBar.addListener(() => onUpdateScroll());
+        visualContainer = document.querySelector('.global-visual');
+    }, []);
+
+    useEffect(() => {
+        gsap.to(refContainer.current, 0.8, { scrollTop: 0 });
     });
 
-    scrollBar.addListener(() => onUpdateScroll());
-    visualContainer = document.querySelector('.global-visual');
-  }, []);
+    const onUpdateScroll = () => {
+        visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
+    }
 
-  useEffect(() => {
-    gsap.to(refContainer.current, 0.8, { scrollTop: 0 });
-  });
+    return (
+        <>
+            <ComponentHead headTitle={data && data.title} />
+            <div ref={refContainer} className={`page project virtual-scroll`}>
+                <div className="project__header">
+                    <ComponentHeadBlock
+                        title={data && data.title}
+                        subTitle={data && data.subTitle}
+                    />
+                </div>
 
-  const onUpdateScroll = () => {
-    visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
-  }
+                <div className="content project__content">
 
-  return (
-    <>
-      <ComponentHead headTitle={data && data.title} />
-      <div ref={refContainer} className={`page project virtual-scroll`}>
-        <div className="project__header">
-          <ComponentHeadBlock
-            title={data && data.title}
-            subTitle={data && data.subTitle}
-          />
-        </div>
+                    {
+                        data && data.contentsModule.map((item, i) => {
+                            if (item.sys.contentType.sys.id === 'contentTextBlock') {
+                                return <ComponentTextBlock
+                                    key={i}
+                                    fields={item.fields}
+                                />
+                            } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
+                                return <ComponentSkillBlock
+                                    key={i}
+                                    fields={item.fields}
+                                />
+                            } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
+                                return <ComponentAlternativeBlock
+                                    key={i}
+                                    fields={item.fields}
+                                />
+                            } else if (item.sys.contentType.sys.id === 'contentImageBlock') {
+                                return <ComponentMediaBlock
+                                    key={i}
+                                    fields={item.fields.images}
+                                />
+                            } else {
+                                return false;
+                            }
+                        })
+                    }
 
-        <div className="content project__content">
+                </div>
 
-          {
-            data && data.contentsModule.map((item, i) => {
-              if (item.sys.contentType.sys.id === 'contentTextBlock') {
-                return <ComponentTextBlock
-                  key={i}
-                  fields={item.fields}
-                />
-              } else if (item.sys.contentType.sys.id === 'contentSkillsBlock') {
-                return <ComponentSkillBlock
-                  key={i}
-                  fields={item.fields}
-                />
-              } else if (item.sys.contentType.sys.id === 'contentAlternativeBlock') {
-                return <ComponentAlternativeBlock
-                  key={i}
-                  fields={item.fields}
-                />
-              } else if (item.sys.contentType.sys.id === 'contentImageBlock') {
-                return <ComponentMediaBlock
-                  key={i}
-                  fields={item.fields.images}
-                />
-              } else {
-                return false;
-              }
-            })
-          }
-
-        </div>
-
-        <Footer />
-
-        <style jsx>{`
-          .project__header {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-          }
-        `}</style>
-      </div>
-    </>
-  )
+                <Footer />
+            </div>
+        </>
+    )
 }
 
 Project.getInitialProps = async ({ query }) => {
-  return { query }
+    return { query }
 }
 
 export default Project;
