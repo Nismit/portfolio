@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Portfolio Development Environment",
   "main": "index.js",
   "scripts": {
