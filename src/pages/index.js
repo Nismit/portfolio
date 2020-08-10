@@ -3,19 +3,19 @@ import styled from "@emotion/styled";
 import ComponentHead from '../components/ComponentHead';
 
 function IndexPage() {
-  return (
-    <>
-      <ComponentHead headTitle="Interactive Developer" />
-        <div className="page home">
-          <_Hero>
-            <div className="container">
-              <h1>{data.title}</h1>
-              <p>{data.subTitle}</p>
+    return (
+        <>
+            <ComponentHead headTitle="Interactive Developer" />
+            <div className="page home">
+                <_Hero>
+                    <div className="container">
+                        <h1>{data.title}</h1>
+                        <p>{data.subTitle}</p>
+                    </div>
+                </_Hero>
             </div>
-          </_Hero>
-        </div>
-    </>
-  )
+        </>
+    )
 }
 
 const _Hero = styled.div`
