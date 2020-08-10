@@ -1,51 +1,54 @@
+import styled from "@emotion/styled";
+
 const Content = ({ file }) => {
-  if (file.contentType.includes('image')) {
-    return (
-      <React.Fragment>
-        <img className="media-image" src={file.url} />
-        <style jsx>{`
-          .media-image {
-            max-width: 100%;
-            height: auto;
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  } else if (file.contentType.includes('video')) {
-    return (
-      <video className="media-video" loop autoPlay muted>
-        <source src={file.url} />
-        <style jsx>{`
-          .media-video {
-            max-width: 100%;
-            width: 100%;
-            height: auto;
-          }
-        `}</style>
-      </video>
-    )
-  }
+    if (file.contentType.includes('image')) {
+        return (
+            <_MediaImage>
+                <img src={file.url} />
+            </_MediaImage>
+        );
+    } else if (file.contentType.includes('video')) {
+        return (
+            <_MediaVideo>
+                <video loop autoPlay muted>
+                    <source src={file.url} />
+                </video>
+            </_MediaVideo>
+        )
+    }
 }
+
+const _MediaImage = styled.div`
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+`;
+
+const _MediaVideo = styled.div`
+    video {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+`;
 
 const ComponentMediaBlock = (props) => {
 
-  if (!props.fields) {
-    return false;
-  }
+    if (!props.fields) {
+        return false;
+    }
 
-  return (
-    <div className="content__media-block">
-
-      <Content file={props.fields[0].fields.file} />
-
-      <style jsx>{`
-        .content__media-block {
-          padding-top: 4rem;
-          padding-bottom: 4rem;
-        }
-      `}</style>
-    </div>
-  )
+    return (
+        <_ContentMediaBlock>
+            <Content file={props.fields[0].fields.file} />
+        </_ContentMediaBlock>
+    )
 }
+
+const _ContentMediaBlock = styled.div`
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+`;
 
 export default ComponentMediaBlock;
