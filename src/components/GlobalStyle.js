@@ -20,7 +20,7 @@ export default function GlobalStyle() {
         color: #fff;
         font-size: 17px;
         background-color #000;
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     @font-face {
