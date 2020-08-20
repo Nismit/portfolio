@@ -4,6 +4,7 @@ import projectData from '../data/projects';
 import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
 import ComponentHeadBlock from '../components/ComponentHeadBlock';
+import ComponentProjectDescription from '../components/ComponentProjectDescription';
 import ComponentTextBlock from '../components/ComponentTextBlock';
 import ComponentSkillBlock from '../components/ComponentSkillBlock';
 import ComponentMediaBlock from '../components/ComponentMediaBlock';
@@ -45,9 +46,11 @@ function Project(props) {
                 </div>
 
                 <div className="content project__content">
-
-                    {
-                        data && data.contentsModule.map((item, i) => {
+                {
+                    data &&  <ComponentProjectDescription props={data} />
+                }
+                {
+                    data && data.contentsModule.map((item, i) => {
                             if (item.sys.contentType.sys.id === 'contentTextBlock') {
                                 return <ComponentTextBlock
                                     key={i}
@@ -71,9 +74,8 @@ function Project(props) {
                             } else {
                                 return false;
                             }
-                        })
-                    }
-
+                    })
+                }
                 </div>
 
                 <Footer />
