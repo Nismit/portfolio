@@ -21,10 +21,16 @@ function AboutPage() {
 
         scrollBar.addListener(() => onUpdateScroll());
         visualContainer = document.querySelector('.global-visual');
+
+        return () => {
+            if(visualContainer !== undefined) {
+                visualContainer.style.transform = `translate3d(0, 0, 0)`;
+            }
+        }
     }, []);
 
     useEffect(() => {
-        gsap.to(refContainer.current, 0.8, { scrollTop: 0 });
+        gsap.to(refContainer.current, { scrollTop: 0, duration: 0.8 });
     });
 
     const onUpdateScroll = () => {
