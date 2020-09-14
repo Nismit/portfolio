@@ -19,14 +19,14 @@ export default function GlobalStyle() {
         margin: 0;
         color: #fff;
         font-size: 17px;
-        background-color #000;
+        background-color: #000;
         font-family: 'Roboto', sans-serif;
     }
 
     @font-face {
         font-family: 'DIN condensed';
         src:  url('/fonts/din-condensed-medium.woff2') format('woff2'),
-            url('/fonts/din-condensed-medium.woff')  format('woff');
+                url('/fonts/din-condensed-medium.woff')  format('woff');
         font-weight: 500;
         font-style: normal;
     }
@@ -34,7 +34,7 @@ export default function GlobalStyle() {
     @font-face {
         font-family: 'DIN condensed';
         src:  url('/fonts/din-condensed-bold.woff2') format('woff2'),
-            url('/fonts/din-condensed-bold.woff')  format('woff');
+                url('/fonts/din-condensed-bold.woff')  format('woff');
         font-weight: 700;
         font-style: normal;
     }
@@ -93,15 +93,6 @@ export default function GlobalStyle() {
     ul {
         list-style: none;
         padding-left: 0;
-    }
-
-    ul li {
-        display: inline-block;
-    }
-
-    ul li a {
-        display: inline-block;
-        margin-right: 1rem;
     }
 
     .page {
