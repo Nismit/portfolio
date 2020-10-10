@@ -17,7 +17,7 @@ export default class Document extends NextDocument {
                     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
                     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"></link>
                 </Head>
-                <body className="custom_class">
+                <body>
                     <Main />
                     <NextScript />
                 </body>
