@@ -3,17 +3,18 @@ import Link from 'next/link';
 import styled from "@emotion/styled";
 
 const Header = () => {
-    const [active, setActive] = useState(false);
+    const [aboutActive, setAboutActive] = useState(false);
+    const [projectsActive, setProjectsActive] = useState(false);
 
     const sleep = (ms) => {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     return (
-        <_Header className={`${active ? 'isActive' : ''}`}>
+        <_Header>
             <div className="header__container">
                 <Link scroll={false} href="/">
-                    <a className="logo">
+                    <a className="logo" onClick={() => sleep(200).then(() =>{ setAboutActive(false); setProjectsActive(false); })}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="80.839" height="24.692" viewBox="0 0 81 25">
                             <path d="M80.839 0v24.692h-7.307v-.008l-.007.008L44.099 0h11.367l18.066 15.16V0h7.307zm-26.77 24.692h11.366L36.026.014 36.014 0l-.002.002L36.009 0l-.012.014-17.992 15.098L0 .003v9.538L18.006 24.65l.006-.008L36.011 9.541l18.058 15.151z" />
                         </svg>
@@ -24,12 +25,12 @@ const Header = () => {
                     <ul>
                         <li>
                             <Link scroll={false} href="/projects" >
-                                <a onClick={() => sleep(800).then(() => setActive(!active)) } className="menu__link">Projects</a>
+                                <a onClick={() => sleep(200).then(() =>{ setProjectsActive(!projectsActive); setAboutActive(false); })} className={`${projectsActive ? 'isActive' : ''} menu__link`}>Projects</a>
                             </Link>
                         </li>
                         <li>
                             <Link scroll={false} href="/about">
-                                <a onClick={() => sleep(800).then(() => setActive(!active)) } className="menu__link">About</a>
+                                <a onClick={() => sleep(200).then(() =>{ setAboutActive(!aboutActive); setProjectsActive(false); })} className={`${aboutActive ? 'isActive' : ''} menu__link`}>About</a>
                             </Link>
                         </li>
                     </ul>
