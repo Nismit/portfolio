@@ -6,14 +6,13 @@ function IndexPage() {
     return (
         <>
             <ComponentHead headTitle="Interactive Developer" />
-            <div className="page home">
+            <main className="page home">
                 <_Hero>
                     <div className="container">
-                        <h1>{data.title}</h1>
-                        <p>{data.subTitle}</p>
+                        <h1>Vancouver Based<br />Interactive Developer</h1>
                     </div>
                 </_Hero>
-            </div>
+            </main>
         </>
     )
 }
@@ -28,11 +27,19 @@ const _Hero = styled.div`
         width: 100%;
     }
 
-    @media (min-width: 45.176em) {
-        padding-left: 5rem;
+    h1 {
+        font-size: 40px;
+        text-align: center;
+        line-height: 1.4;
+        letter-spacing: 0.7px;
+    }
 
-        .container {
-            width: 520px;
+    @media (min-width: 45.176em) {
+        h1 {
+            font-size: 80px;
+            text-align: center;
+            line-height: 1.17;
+            letter-spacing: 0.7px;
         }
     }
 `;
