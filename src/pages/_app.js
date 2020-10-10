@@ -1,3 +1,4 @@
+import '../styles.css';
 import { Provider } from 'react-redux';
 import { useStore } from '../helpers/store';
 import { useRouter } from 'next/router';
