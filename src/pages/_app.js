@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
         <Provider store={store}>
             <GlobalStyle />
             <Header />
-            <MainVisual />
+            {/* <MainVisual /> */}
             <div className="page">
                 <PageTransition timeout={1600} classNames="page-transition">
                     <Component {...pageProps} key={router.pathname} />
