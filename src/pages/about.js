@@ -96,7 +96,7 @@ const _Main = styled.main`
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                margin-bottom: 2rem;
+                margin-bottom: 4rem;
             }
         }
     }
@@ -145,7 +145,7 @@ const _Main = styled.main`
     }
 
     .mail {
-        margin-top: 2rem;
+        margin-top: 4rem;
         text-align: right;
 
         &__button {
@@ -159,6 +159,8 @@ const _Main = styled.main`
             text-align: center;
             padding: 1.22rem 1rem;
             letter-spacing: 2px;
+            color: #fff;
+            text-decoration: none;
         }
     }
 `;
