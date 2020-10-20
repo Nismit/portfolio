@@ -17,6 +17,8 @@ export default class Scroller {
         this.sectionWidth = 200;
         this.loopSectionPosition = 0;
 
+        this.scrollValue = 0;
+
         this.uniforms = {
             u_time: {
                 value: 0.0
@@ -52,7 +54,6 @@ export default class Scroller {
     addInstancedMesh() {
         // An InstancedMesh of 4 cubes
         this.mesh = new InstancedMesh(new BoxBufferGeometry(50,50,50), new MeshNormalMaterial(), 4);
-        console.log(this.mesh);
         this.scene.add(this.mesh);
         this.setInstancedMeshPositions(this.mesh, 0);
     }
@@ -122,10 +123,15 @@ export default class Scroller {
     draw = () => {
         const time = this.clock.getDelta();
         this.uniforms.u_time.value += time;
-        this.camera.position.x += 5.;
+        // this.camera.position.x += 5.;
+        this.camera.position.x = this.scrollValue;
         this.loopFunction();
         this.renderer.render(this.scene, this.camera);
         this.frameId = window.requestAnimationFrame(this.draw);
+    }
+
+    update(value) {
+        this.scrollValue = value;
     }
 
     stop() {
