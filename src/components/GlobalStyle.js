@@ -2,7 +2,7 @@ import { Global, css } from '@emotion/core';
 
 export default function GlobalStyle() {
     const GLOBAL_STYLE = css`
-    *,
+    /* *,
     *::before,
     *::after {
         box-sizing: border-box;
@@ -13,33 +13,17 @@ export default function GlobalStyle() {
         -ms-text-size-adjust: 100%;
         -ms-overflow-style: scrollbar;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
+    } */
 
-    body {
+    /* body {
         margin: 0;
         color: #fff;
         font-size: 17px;
         background-color: #000;
         font-family: 'Roboto', sans-serif;
-    }
+    } */
 
-    @font-face {
-        font-family: 'DIN condensed';
-        src:  url('/fonts/din-condensed-medium.woff2') format('woff2'),
-                url('/fonts/din-condensed-medium.woff')  format('woff');
-        font-weight: 500;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'DIN condensed';
-        src:  url('/fonts/din-condensed-bold.woff2') format('woff2'),
-                url('/fonts/din-condensed-bold.woff')  format('woff');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    h1, h2, h3, h4 {
+    /* h1, h2, h3, h4 {
         font-family: 'DIN condensed';
         font-weight: 700;
         letter-spacing: 2px;
@@ -65,10 +49,10 @@ export default function GlobalStyle() {
         letter-spacing: 3px;
         font-size: 1.8rem;
         line-height: 0.95;
-    }
+    } */
 
     @media (min-width: 45.176em) {
-        h1 {
+        /* h1 {
         font-size: 7rem;
         }
 
@@ -81,21 +65,21 @@ export default function GlobalStyle() {
         h3 {
         font-size: 2rem;
         line-height: 0.95;
-        }
+        } */
     }
 
-    p {
+    /* p {
         margin-top: 0;
         margin-bottom: 1rem;
         line-height: 1.53;
-    }
+    } */
 
-    ul {
+    /* ul {
         list-style: none;
         padding-left: 0;
-    }
+    } */
 
-    .page {
+    /* .page {
         width: 100%;
         height: 100vh;
         overflow: hidden;
@@ -113,15 +97,15 @@ export default function GlobalStyle() {
 
     .page a:hover {
         color: #2678bf;
-    }
+    } */
 
-    .project__header, .about__header {
+    /* .project__header, .about__header {
         width: 100%;
         height: 100vh;
         position: relative;
-    }
+    } */
 
-    .content {
+    /* .content {
         max-width: 1200px;
         padding-top: 3rem;
         margin-left: auto;
@@ -130,7 +114,11 @@ export default function GlobalStyle() {
 
     .content p {
         color: rgba(255, 255, 255, .7);
-    }
+    } */
+
+    /* .global-visual {
+        display: none;
+    } */
 
     .global-visual:after {
         content: '';
