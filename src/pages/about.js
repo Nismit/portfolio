@@ -92,6 +92,13 @@ const _Main = styled.main`
         &__title {
             margin-bottom: 0;
 
+            font-family: 'DIN condensed';
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            /* margin-top: 0;
+            margin-bottom: 1rem; */
+
             &--section {
                 display: flex;
                 align-items: center;
