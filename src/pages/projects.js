@@ -6,9 +6,9 @@ import ComponentHead from '../components/ComponentHead';
 import ComponentProjectHeadBlock from '../components/ComponentProjectHeadBlock';
 
 function Projects() {
-    let projectsManager, percentage = 0;
+    let projectsManager, frameId, percentage = 0, prevScrollTime = 0;
     const _delta = { value: 0 };
-    const coefficient = 120;
+    const coefficient = 80;
     const refContainer = useRef(null);
     const refScrollContainer = useRef(null);
     const [projectNumber, setProjectNumber] = useState(0);
@@ -17,21 +17,26 @@ function Projects() {
         return ((1 - t) * a + t * b);
     }
 
+    const throttle = (func, delay) => {
+        // Previously called time of the function
+        let prev = 0;
+        return (...args) => {
+            let now = new Date().getTime();
+            if(now - prev > delay) {
+                prev = now;
+                return func(...args);
+            }
+        }
+    }
+
     const onWheel = (e) => {
         if(!e) { e = window.event }
 
-        // console.log(e);
+        // Need to check predictive scrolling or user scroll
+
         // Chrome/Safari has wheelDelta on wheel event
         // Firefox does not implement wheelDelta, so deltaY can be used the value
         const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.deltaY)));
-        // var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-        // console.log('Delta:', delta);
-        // const otherDelta = e.wheelDeltaY || e.deltaY * -1;
-        // console.log('Other:', otherDelta);
-        // const wheelDeltaY = e.wheelDeltaY / 120 * -1;
-        // console.log('WheelDeltaY:', wheelDeltaY);
-        // const deltaY = e.deltaY * -1;
-        // console.log('DeltaY:', deltaY);
 
         if((_delta.value + (delta * coefficient) > 0)) {
             _delta.value = 0;
@@ -39,8 +44,20 @@ function Projects() {
             _delta.value += (delta * coefficient);
         }
 
-        percentage = lerp(percentage, -_delta.value, .02);
-        console.log(percentage);
+        // const now = new Date().getTime();
+        // if(now - prevScrollTime > 10) {
+        //     prevScrollTime = now;
+        //     console.log('fire');
+        // } else {
+        //     console.log('not fire');
+        // }
+
+        console.log(_delta.value);
+    }
+
+    const smooth = () => {
+        frameId = requestAnimationFrame(smooth);
+        percentage = lerp(percentage, -_delta.value, .12);
         projectsManager.update(Math.round(percentage * 100) / 100);
     }
 
@@ -56,6 +73,7 @@ function Projects() {
         // getLocomotive();
         // refScrollContainer.current.addEventListener('scroll', e => onScroll(e) );
         projectsManager = new Scroller();
+        smooth();
         refContainer.current.appendChild(projectsManager.renderer.domElement);
         refScrollContainer.current.addEventListener("wheel", onWheel);
 
@@ -64,9 +82,7 @@ function Projects() {
                 refContainer.current.removeChild(projectsManager.renderer.domElement);
             }
             refScrollContainer.current.removeEventListener("wheel", onWheel);
-            // refScrollContainer.current.removeEventListener("DOMMouseScroll", onWheel);
-            // refScrollContainer.current.addEventListener("mousewheel", onWheel);
-            // refScrollContainer.current.addEventListener("DOMMouseScroll", onWheel);
+            cancelAnimationFrame(frameId);
             projectsManager.destroy();
         }
     }, []);
