@@ -6,12 +6,18 @@ import ComponentHead from '../components/ComponentHead';
 import ComponentProjectHeadBlock from '../components/ComponentProjectHeadBlock';
 
 function Projects() {
-    let projectsManager, frameId, percentage = 0, prevScrollTime = 0;
+    let projectsManager, frameId, percentage = 0;
     const _delta = { value: 0 };
-    const coefficient = 80;
+    const velocity = 80;
     const refContainer = useRef(null);
     const refScrollContainer = useRef(null);
     const [projectNumber, setProjectNumber] = useState(0);
+
+    let absoluteDelta, timeStamp;
+    let sleep = 150;
+    let isFired = false;
+    let cacheDelta = 0;
+    let cacheTimestamp = 0;
 
     const lerp = (a, b, t) => {
         return ((1 - t) * a + t * b);
@@ -30,29 +36,47 @@ function Projects() {
     }
 
     const onWheel = (e) => {
+        e.preventDefault();
         if(!e) { e = window.event }
 
-        // Need to check predictive scrolling or user scroll
+        let coefficient = 1;
+        const internalDelta = e.wheelDelta || -e.deltaY;
+        if(!internalDelta) { return; }
+
+        absoluteDelta = Math.abs(internalDelta);
+
+        if(absoluteDelta - cacheDelta > 0) {
+            timeStamp = e.timeStamp;
+
+            if(!isFired && (timeStamp - cacheTimestamp) > sleep) {
+                coefficient = 1;
+                isFired = true;
+            }
+
+            cacheTimestamp = timeStamp;
+        } else {
+            coefficient = 0;
+            isFired = false;
+        }
+        cacheDelta = absoluteDelta;
+
+        // console.log('delta', cacheDelta);
 
         // Chrome/Safari has wheelDelta on wheel event
         // Firefox does not implement wheelDelta, so deltaY can be used the value
         const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.deltaY)));
 
-        if((_delta.value + (delta * coefficient) > 0)) {
+        if((_delta.value + (delta * velocity) > 0)) {
             _delta.value = 0;
         } else {
-            _delta.value += (delta * coefficient);
+            _delta.value += (delta * velocity * coefficient);
         }
 
-        // const now = new Date().getTime();
-        // if(now - prevScrollTime > 10) {
-        //     prevScrollTime = now;
-        //     console.log('fire');
-        // } else {
-        //     console.log('not fire');
-        // }
-
-        console.log(_delta.value);
+        if((_delta.value + delta > 0)) {
+            _delta.value = 0;
+        } else {
+            _delta.value += delta;
+        }
     }
 
     const smooth = () => {
