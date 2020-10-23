@@ -1,6 +1,6 @@
-import { Scene, WebGLRenderer, PerspectiveCamera, Clock, BoxBufferGeometry, MeshNormalMaterial, Mesh, InstancedMesh, Object3D } from 'three';
-import Vertex from '../shaders/vertex';
-import Fragment from '../shaders/fragment';
+import { Scene, WebGLRenderer, PerspectiveCamera, Clock, PlaneBufferGeometry, ShaderMaterial, Mesh, InstancedMesh, Object3D, TextureLoader, LoadingManager } from 'three';
+import Vertex from '../shaders/vertexScroller';
+import Fragment from '../shaders/fragmentScroller';
 
 export default class Scroller {
     constructor() {
@@ -12,10 +12,13 @@ export default class Scroller {
         this.clock = new Clock({ autoStart: false });
         this.renderer = new WebGLRenderer({ antialias: true });
         this.camera = new PerspectiveCamera(45, 1 / 1, .1, 1000);
+        this.manager = new LoadingManager();
 
         this.dummy = new Object3D();
-        this.sectionWidth = 200;
+        this.sectionWidth = 10;
         this.loopSectionPosition = 0;
+
+        this.textures = [];
 
         this.scrollValue = 0;
 
@@ -29,31 +32,28 @@ export default class Scroller {
     }
 
     init() {
-        // const geometry = new PlaneBufferGeometry(100, 50, 100, 100);
-        // const material = new ShaderMaterial({
-        //     uniforms: this.uniforms,
-        //     vertexShader: VertexSmoke,
-        //     fragmentShader: FragmentSmoke,
-        //     wireframe: true,
-        //     fog: false
-        // });
-
-        // this.mesh = new Mesh(geometry, material);
-        // this.scene.add(this.mesh);
         this.addInstancedMesh();
+        this.loadTexture();
 
         this.onResize();
         window.addEventListener('resize', this.onResize);
 
         this.camera.position.y = 0;
-        this.camera.position.z = 300;
+        this.camera.position.z = 10;
 
         this.loop();
     }
 
     addInstancedMesh() {
         // An InstancedMesh of 4 cubes
-        this.mesh = new InstancedMesh(new BoxBufferGeometry(50,50,50), new MeshNormalMaterial(), 4);
+        const options = {
+            transparent: true,
+            uniforms: this.uniforms,
+            vertexShader: Vertex,
+            fragmentShader: Fragment
+        }
+
+        this.mesh = new InstancedMesh(new PlaneBufferGeometry(6, 4), new ShaderMaterial( options ), 4);
         this.scene.add(this.mesh);
         this.setInstancedMeshPositions(this.mesh, 0);
     }
@@ -85,24 +85,51 @@ export default class Scroller {
         this.camera.updateProjectionMatrix();
     }
 
-    textureLoad(src = '/three-palette-9.png') {
-        this.texture = new THREE.TextureLoader().load(src,
-            function (texture) {
-                texture.needsUpdate = true;
-                return texture;
+    loadTexture() {
+        const testData = {
+            'random1': {
+                url: 'https://picsum.photos/2048/1024'
             },
-
-            function (err) {
-                console.error('An error happened: ', err);
-                return null;
-            }
-        );
-
-        if (this.texture !== null) {
-            // this.uniforms.pallete.value = this.texture;
-        } else {
-            return null;
+            'random12': {
+                url: 'https://picsum.photos/2048/1024'
+            },
+            'random123': {
+                url: 'https://picsum.photos/2048/1024'
+            },
+            'random1234': {
+                url: 'https://picsum.photos/2048/1024'
+            },
+            'random12345': {
+                url: 'https://picsum.photos/2048/1024'
+            },
         }
+
+        const loader = new TextureLoader( this.manager );
+
+        for (var key in testData) {
+            this.textures.push(new Promise((resolve, reject) => {
+                const entry = testData[key];
+                const url = entry.url;
+
+                loader.load(url,
+                    texture => {
+                        entry.val = texture;
+                        resolve(entry);
+                    },
+                    error => {
+                        reject(new Error(error + 'An error occurred loading while loading: ' + entry.url));
+                    }
+                );
+            }));
+        }
+
+        this.manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+            console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+        };
+
+        Promise.all(this.textures).then(loadedTextures => {
+            console.log(loadedTextures);
+        });
     }
 
     loop() {
