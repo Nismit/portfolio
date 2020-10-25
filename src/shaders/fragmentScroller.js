@@ -1,8 +1,10 @@
 const FragmentScroller = `
 precision mediump float;
 uniform float u_time;
-// uniform sampler2D pallete;
-// varying vec3 vUv;
+uniform sampler2D u_texture[4];
+
+varying float textureIndex;
+varying vec2 vUv;
 
 vec3 hsv2rgb(vec3 c) {
   vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
@@ -11,9 +13,14 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 void main() {
-  // vec3 position = normalize(vUv);
-  // vec3 rgb = hsv2rgb(vec3( (sin(0.01 * u_time) + (position.x + position.y) / 10.0) , 0.7, 0.7));
-  gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+  if(textureIndex > 1.0) {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * texture2D(u_texture[0], vUv);
+  } else if (textureIndex > 2.0) {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * texture2D(u_texture[1], vUv);
+  } else {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * texture2D(u_texture[2], vUv);
+  }
+
 }`;
 
 export default FragmentScroller;
