@@ -149,23 +149,6 @@ export default function GlobalStyle() {
         width: 5px !important;
         background: rgba(255, 255, 255, .95) !important;
     }
-
-    .page-transition-enter {
-        opacity: 0;
-        transform: translate3d(0, 600px, 0);
-    }
-    .page-transition-enter-active {
-        opacity: 1;
-        transform: translate3d(0, 0px, 0);
-        transition: opacity 1s ease-out 600ms, transform 0.6s ease-out 1000ms;
-    }
-    .page-transition-exit {
-        opacity: 1;
-    }
-    .page-transition-exit-active {
-        opacity: 0;
-        transition: opacity 1.6s;
-    }
     `;
     return <Global styles={GLOBAL_STYLE} />;
 }
