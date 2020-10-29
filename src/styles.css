@@ -131,10 +131,6 @@ strong {
     font-weight: bolder;
 }
 
-small {
-    font-size: 0.875em;
-}
-
 a {
     color: #0d6efd;
     text-decoration: underline;
@@ -158,10 +154,25 @@ svg {
     vertical-align: middle;
 }
 
-iframe {
-    border: 0;
-}
-
 [hidden] {
     display: none !important;
+}
+
+.page-transition-enter {
+    opacity: 0;
+    /* transform: translate3d(0, 600px, 0); */
+}
+.page-transition-enter-active {
+    opacity: 1;
+    /* transform: translate3d(0, 0px, 0); */
+    transition: opacity 1s ease-out 600ms;
+}
+.page-transition-exit {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.page-transition-exit-active {
+    opacity: 0;
+    transform: translate3d(0, -100px, 0);
+    transition: opacity 600ms ease-out, transform 1s ease-out;
 }
