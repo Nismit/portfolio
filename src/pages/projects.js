@@ -141,11 +141,34 @@ function Projects() {
                     <div className="slider">
                         <div id="planes">
 
-                            <div className="plane-wrapper">
-                                <span className="plane-title">Bahamas</span>
+                        {
+                    data && data.allProjects.map((item, i) => {
+                        return (
+                            <div className="plane-wrapper" key={i}>
+                                <span className="plane-title">{item.fields.title}</span>
+                                <Link as={`/project/major-tom`} href={`/project?id=0`}>
+                                    <picture className="plane">
+                                        {
+                                            item.fields.hero.map((content, j) => {
+                                                if(content.fields.file.contentType === 'image/png') {
+                                                    return <img key={j} src={content.fields.file.url} />
+                                                } else {
+                                                    return <source key={j} srcSet={content.fields.file.url} type={content.fields.file.contentType} />
+                                                }
+                                            })
+                                        }
+                                    </picture>
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
+
+                            {/* <div className="plane-wrapper">
+                                <span className="plane-title">MAJOR TOM</span>
                                 <Link as={`/project/major-tom`} href={`/project?id=0`}>
                                     <div className="plane">
-                                        <img src="https://source.unsplash.com/2fFd7SIVpz8/1280x720" alt="Photo by Gregory Culmer on Unsplash" crossOrigin="true" />
+                                        <img src="/major-tom-hero.webp" alt="Photo by Gregory Culmer on Unsplash" crossOrigin="true" />
                                     </div>
                                 </Link>
                             </div>
@@ -190,28 +213,8 @@ function Projects() {
                                 <div className="plane">
                                     <img src="https://source.unsplash.com/Mwg_MdX-Jx4/1280x720" alt="Photo by Samule Sun on Unsplash" crossOrigin="true" />
                                 </div>
-                            </div>
+                            </div> */}
 
-                        </div>
-
-                        <div className="slider__inner">
-                            <div className="slider__item">
-                                <Link as={`/project/major-tom`} href={`/project?id=0`}>
-                                    <div className="slider__content"></div>
-                                </Link>
-                            </div>
-                            <div className="slider__item" style={{left: '120%'}}>
-                                <div className="slider__content"></div>
-                            </div>
-                            <div className="slider__item" style={{left: '240%'}}>
-                                <div className="slider__content"></div>
-                            </div>
-                            <div className="slider__item" style={{left: '360%'}}>
-                                <div className="slider__content"></div>
-                            </div>
-                            <div className="slider__item" style={{left: '480%'}}>
-                                <div className="slider__content"></div>
-                            </div>
                         </div>
                     </div>
                 </_Scroll>
@@ -230,13 +233,6 @@ const _Projects = styled.div`
 `;
 
 const _Scroll = styled.div`
-    /* width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1; */
-
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -248,41 +244,12 @@ const _Scroll = styled.div`
         align-items: center;
         overflow: hidden;
         padding: 0 14vw;
-
-        &__inner {
-            display: flex;
-            position: relative;
-            display: none;
-        }
-
-        &__item {
-            overflow: hidden;
-
-            &:first-of-type {
-                position: relative;
-            }
-
-            &:not(:first-of-type) {
-                position: absolute;
-                top: 0;
-                height: 100%;
-            }
-        }
-
-        &__content {
-            position: relative;
-            overflow: hidden;
-            width: 76vw;
-            padding-bottom: calc(100% / (2/1));
-            background-color: rgba(255, 255, 255, 0.1);
-        }
     }
 
     #planes {
         /* width of items * number of items */
         width: calc(((100vw / 1.75) + 10vw) * 7);
 
-        /* padding: 0 2.5vw; */
         height: 100vh;
         display: flex;
         align-items: center;
@@ -321,14 +288,14 @@ const _Scroll = styled.div`
         top: 50%;
         left: 50%;
         z-index: 1;
+        font-weight: 700;
+        font-family: 'DIN condensed';
         transform: translate3D(-50%, -50%, 0);
         font-size: 4vw;
         font-weight: 700;
         line-height: 1.2;
         text-transform: uppercase;
-        color: #032f4d;
-        -webkit-text-stroke: 1px white;
-
+        color: #fff;
         transition: color 0.5s;
     }
 
@@ -346,10 +313,42 @@ const _Scroll = styled.div`
         overflow: hidden;
         transition: filter 0.5s;
         filter: grayscale(1);
+
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: opacity 0.5s;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .plane-wrapper:hover {
+            .plane {
+                filter: grayscale(0);
+
+                &:after {
+                    opacity: 0;
+                }
+            }
+
+            .plane-title {
+                color: transparent;
+            }
+        }
     }
 
     #planes.dragged .plane {
         filter: grayscale(0);
+
+        &:after {
+            opacity: 0;
+        }
     }
 
     .plane img {
