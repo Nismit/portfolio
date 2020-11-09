@@ -30,6 +30,24 @@ function AboutPage() {
     //     }
     // }, []);
 
+    useEffect(() => {
+        const tl = gsap.timeline();
+        const element = refContainer.current;
+        // tl.set(element.getElementsByClassName('about__title'), {y: 80, opacity: 0});
+        // tl.set(element.getElementsByClassName('about__title'), {y: 80, opacity: 0});
+        tl.delay(1);
+        tl.fromTo(element.getElementsByClassName('about__title'), {y: 80, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
+        tl.fromTo(element.getElementsByClassName('social'), {y: 80, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
+        tl.fromTo(element.getElementsByClassName('about__content'), {x: -60, opacity: 0}, {duration: 0.6, x: 0, opacity: 1});
+        tl.fromTo(element.getElementsByClassName('mail'), {y: 80, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
+
+        return () => {
+            if(visualContainer !== undefined) {
+                visualContainer.style.transform = `translate3d(0, 0, 0)`;
+            }
+        }
+    }, []);
+
     // useEffect(() => {
     //     gsap.to(refContainer.current, { scrollTop: 0, duration: 0.8 });
     // });
@@ -41,7 +59,7 @@ function AboutPage() {
     return (
         <>
             <ComponentHead headTitle="About" />
-            <_Main className="page about virtual-scroll">
+            <_Main ref={refContainer} className="page about virtual-scroll">
                 <div>
                     <div className="about__title--section">
                         <h1 className="about__title">About</h1>
@@ -65,11 +83,13 @@ function AboutPage() {
                         </div>
                     </div>
 
-                    <p>I have over 7 years of experience as a front end developer.
-                    I'm passionate about coding and performance. Also, I want the whole team to be better than now. On a daily basis,
-                    I'm learning and increasing my knowledge of new technologies, even if it's not in my field such as back end,
-                    because there might be some new approaches. I should have a good eye for design, so I look at a lot of websites and apps to learn.
-                    Personally, I'd love to WebGL stuff because it has a ton of visual expressions on the Web, so I keep to make something with WebGL.</p>
+                    <div className="about__content">
+                        <p>I have over 7 years of experience as a front end developer.
+                        I'm passionate about coding and performance. Also, I want the whole team to be better than now. On a daily basis,
+                        I'm learning and increasing my knowledge of new technologies, even if it's not in my field such as back end,
+                        because there might be some new approaches. I should have a good eye for design, so I look at a lot of websites and apps to learn.
+                        Personally, I'd love to WebGL stuff because it has a ton of visual expressions on the Web, so I keep to make something with WebGL.</p>
+                    </div>
 
                     <p className="mail"><a href="mailto:nismit.dev@gmail.com" className="mail__button">Drop Me Line</a></p>
                 </div>
@@ -96,8 +116,6 @@ const _Main = styled.main`
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            /* margin-top: 0;
-            margin-bottom: 1rem; */
 
             &--section {
                 display: flex;
