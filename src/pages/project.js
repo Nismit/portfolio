@@ -10,28 +10,33 @@ import ComponentTextBlock from '../components/ComponentTextBlock';
 import ComponentSkillBlock from '../components/ComponentSkillBlock';
 import ComponentMediaBlock from '../components/ComponentMediaBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
+import ProjectImage from '../components/ProjectImage';
+import SmoothScroll from '../helpers/SmoothScroll';
 
 function Project(props) {
-    let visualContainer, scrollBar;
+    let scrollBar, smoothScroll;
     const refContainer = useRef(null);
     const data = props.query ? projectData.allProjects[props.query.id].fields : null;
 
-    // useEffect(() => {
-    //     const smoothScrollbar = require('smooth-scrollbar').default;
-    //     scrollBar = smoothScrollbar.init(refContainer.current, {
-    //         thumbMinSize: 10,
-    //         alwaysShowTracks: true
-    //     });
+    useEffect(() => {
+        async function getLocomotive() {
+            const Locomotive = (await import('locomotive-scroll')).default;
+            new Locomotive({
+                el: refContainer.current,
+                smooth: true
+            });
+        }
 
-    //     scrollBar.addListener(() => onUpdateScroll());
-    //     visualContainer = document.querySelector('.global-visual');
+        // getLocomotive();
 
-    //     return () => {
-    //         if(visualContainer !== undefined) {
-    //             visualContainer.style.transform = `translate3d(0, 0, 0)`;
-    //         }
-    //     }
-    // }, []);
+        // smoothScroll = new SmoothScroll({ element: refContainer.current });
+
+        return () => {
+            // if(scrollBar) {
+            //     scrollBar.destroy();
+            // }
+        }
+    }, []);
 
     // useEffect(() => {
     //     gsap.to(refContainer.current, { scrollTop: 0, duration: 0.8 });
@@ -47,6 +52,8 @@ function Project(props) {
             <main ref={refContainer} className={`project`}>
                 <_Project>
                     <section className="project__hero">
+                        <ProjectImage props={data.hero} />
+
                         <div className="project__hero--container">
                             <h1>{data.title}</h1>
                         </div>
@@ -73,15 +80,15 @@ function Project(props) {
                     </section>
 
                     <section className="project__content">
-                        <div style={{ margin: '8rem auto', width: '70vw', height: '600px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
-
-                        <div style={{ margin: '8rem auto', width: '70vw', height: '600px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
-
-                        <div style={{ margin: '8rem auto', width: '70vw', height: '600px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
-
-                        <div style={{ width: '100%', height: '600px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
-
-                        <div style={{ margin: '8rem auto', width: '70vw', height: '600px', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}></div>
+                        {
+                            data.contentsModule.map((modules, i) => {
+                                return (
+                                    <div key={i}>
+                                        <ProjectImage props={modules.fields.images} />
+                                    </div>
+                                )
+                            })
+                        }
                     </section>
 
                     <section className="project__next">
@@ -104,15 +111,60 @@ const _Project = styled.div`
     .project {
         &__hero {
             width: 100%;
-            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+
+            &:after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, .85);
+            }
 
             &--container {
                 width: 100%;
                 padding: 0 16vw;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 2;
+            }
 
+            .project__image {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+
+                img {
+                    width: 100%;
+                    height: 100vh;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &__image {
+            width: 100%;
+
+            img {
+                width: 100%;
+                display: block;
+                object-fit: cover;
+            }
+        }
+
+        &__content {
+            background-color: #171717;
+
+            div {
+                width: 70vw;
+                margin: 0 auto;
+                padding: 12rem 0;
             }
         }
 
@@ -180,7 +232,7 @@ const _Project = styled.div`
         }
 
         &__next {
-            margin-top: 8rem;
+            padding-top: 8rem;
 
             &--container {
                 height: 600px;
