@@ -8,27 +8,12 @@ import ComponentHeadBlock from '../components/ComponentHeadBlock';
 import ComponentTextBlock from '../components/ComponentTextBlock';
 import ComponentSkillBlock from '../components/ComponentSkillBlock';
 import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
+import NoiseBackground from '../helpers/NoiseBackground';
 
 function AboutPage() {
-    let visualContainer, scrollBar;
+    let visualManager;
     const refContainer = useRef(null);
-
-    // useEffect(() => {
-    //     const smoothScrollbar = require('smooth-scrollbar').default;
-    //     scrollBar = smoothScrollbar.init(refContainer.current, {
-    //         thumbMinSize: 10,
-    //         alwaysShowTracks: true
-    //     });
-
-    //     scrollBar.addListener(() => onUpdateScroll());
-    //     visualContainer = document.querySelector('.global-visual');
-
-    //     return () => {
-    //         if(visualContainer !== undefined) {
-    //             visualContainer.style.transform = `translate3d(0, 0, 0)`;
-    //         }
-    //     }
-    // }, []);
+    const refBackgroundContainer = useRef(null);
 
     useEffect(() => {
         const tl = gsap.timeline();
@@ -41,24 +26,21 @@ function AboutPage() {
         tl.fromTo(element.getElementsByClassName('about__content'), {x: -60, opacity: 0}, {duration: 0.6, x: 0, opacity: 1});
         tl.fromTo(element.getElementsByClassName('mail'), {y: 80, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
 
+        visualManager = new NoiseBackground();
+        refBackgroundContainer.current.appendChild(visualManager.renderer.domElement);
+
         return () => {
-            if(visualContainer !== undefined) {
-                visualContainer.style.transform = `translate3d(0, 0, 0)`;
+            if(refBackgroundContainer.current.firstChild) {
+                refBackgroundContainer.current.removeChild(visualManager.renderer.domElement);
             }
+            visualManager.destroy();
         }
     }, []);
-
-    // useEffect(() => {
-    //     gsap.to(refContainer.current, { scrollTop: 0, duration: 0.8 });
-    // });
-
-    // const onUpdateScroll = () => {
-    //     visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
-    // }
 
     return (
         <>
             <ComponentHead headTitle="About" />
+            <_BackgroundVisual ref={refBackgroundContainer} />
             <_Main ref={refContainer} className="page about virtual-scroll">
                 <div>
                     <div className="about__title--section">
@@ -188,6 +170,15 @@ const _Main = styled.main`
             text-decoration: none;
         }
     }
+`;
+
+const _BackgroundVisual = styled.div`
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 `;
 
 export default AboutPage;
