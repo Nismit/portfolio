@@ -22,7 +22,7 @@ void main() {
 
     vec3 bg = hsv2rgb(vec3(0., 0., 0.130));
 
-    gl_FragColor = vec4(color * bg, 0.6);
+    gl_FragColor = vec4(color * bg, 0.4);
 }
 `;
 
