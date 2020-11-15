@@ -1,22 +1,19 @@
 import { useEffect, useRef } from 'react';
 import styled from "@emotion/styled";
+import Link from 'next/link';
 import gsap from 'gsap';
 import projectData from '../data/projects';
-import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
-import ComponentHeadBlock from '../components/ComponentHeadBlock';
-import ComponentProjectDescription from '../components/ComponentProjectDescription';
-import ComponentTextBlock from '../components/ComponentTextBlock';
-import ComponentSkillBlock from '../components/ComponentSkillBlock';
-import ComponentMediaBlock from '../components/ComponentMediaBlock';
-import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 import ProjectImage from '../components/ProjectImage';
-import SmoothScroll from '../helpers/SmoothScroll';
 
 function Project(props) {
     let scrollBar, smoothScroll;
     const refContainer = useRef(null);
     const data = props.query ? projectData.allProjects[props.query.id].fields : null;
+    const nextProject = projectData.allProjects[(props.query.id + 1)].fields
+                        ? projectData.allProjects[(props.query.id + 1)].fields : projectData.allProjects[0].fields;
+    const nextProjectUrl = nextProject.title.replace(/\s/g, '-').toLowerCase();
+    const nextProjectId = projectData.allProjects[(props.query.id + 1)].fields ? (props.query.id + 1) : 0;
 
     useEffect(() => {
         async function getLocomotive() {
@@ -37,14 +34,6 @@ function Project(props) {
             // }
         }
     }, []);
-
-    // useEffect(() => {
-    //     gsap.to(refContainer.current, { scrollTop: 0, duration: 0.8 });
-    // });
-
-    // const onUpdateScroll = () => {
-    //     visualContainer.style.transform = `translate3d(0,-${scrollBar.offset.y}px, 0)`;
-    // }
 
     return (
         <>
@@ -93,7 +82,11 @@ function Project(props) {
 
                     <section className="project__next">
                         <div className="project__next--container">
-
+                            <p>
+                                <Link as={`/project/${nextProjectUrl}`} href={`/project?id=${nextProjectId}`}>
+                                    Next Project
+                                </Link>
+                            </p>
                         </div>
                     </section>
 
@@ -232,11 +225,54 @@ const _Project = styled.div`
         }
 
         &__next {
-            padding-top: 8rem;
-
             &--container {
-                height: 600px;
-                background-color: rgba(255, 255, 255, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 9rem 0;
+
+                a {
+                    color: white;
+                    font-weight: 700;
+                    font-family: 'DIN condensed';
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    font-size: 70px;
+                    letter-spacing: 1px;
+                    position: relative;
+                    color: rgba(255, 255, 255, 0.5);
+                    transition: color 300ms ease-in;
+
+                    &::before,
+                    &::after {
+                        content: '';
+                        width: 50%;
+                        height: 5px;
+                        background-color: #fff;
+                        position: absolute;
+                        bottom: -4px;
+                        transition: width 300ms ease-in;
+                        opacity: 0;
+                    }
+
+                    &::before {
+                        left: 50%;
+                    }
+
+                    &::after {
+                        right: 50%;
+                    }
+
+                    &:hover {
+                        color: rgba(255, 255, 255, 1);
+
+                        &::before,
+                        &::after {
+                            opacity: 1;
+                            width: 25%;
+                        }
+                    }
+                }
             }
         }
     }
