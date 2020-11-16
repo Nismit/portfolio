@@ -1,4 +1,4 @@
-import { Scene, WebGLRenderer, PerspectiveCamera, Clock, PlaneBufferGeometry, ShaderMaterial, Mesh, SpotLight, SpotLightHelper } from 'three';
+import { Scene, WebGLRenderer, PerspectiveCamera, Clock, PlaneBufferGeometry, RawShaderMaterial, Mesh, Vector2 } from 'three';
 import VertexSmoke from '../shaders/vertexSmoke';
 import FragmentSmoke from '../shaders/fragmentSmoke';
 
@@ -16,6 +16,9 @@ export default class Smoke {
         this.uniforms = {
             u_time: {
                 value: 0.0
+            },
+            u_resolution: {
+                value: new Vector2()
             }
         }
 
@@ -23,39 +26,19 @@ export default class Smoke {
     }
 
     init() {
-        const geometry = new PlaneBufferGeometry(100, 40, 100, 60);
-        const material = new ShaderMaterial({
+        const geometry = new PlaneBufferGeometry(4,4);
+        const material = new RawShaderMaterial({
             uniforms: this.uniforms,
             vertexShader: VertexSmoke,
             fragmentShader: FragmentSmoke,
-            wireframe: true,
+            wireframe: false,
             fog: false
         });
 
         this.mesh = new Mesh(geometry, material);
-        this.mesh.position.z = -10;
-        this.mesh.rotation.x = -88 * Math.PI / 180;
         this.scene.add(this.mesh);
 
-        const spotLight = new SpotLight( 0xffffff, 1 );
-        spotLight.position.set( 0, 20, 10 );
-        // spotLight.angle = Math.PI / 4;
-        spotLight.angle = Math.PI / 2;
-        spotLight.penumbra = 0.1;
-        spotLight.decay = 2;
-        spotLight.distance = 10;
-
-        spotLight.castShadow = true;
-        spotLight.shadow.mapSize.width = 256;
-        spotLight.shadow.mapSize.height = 256;
-        spotLight.shadow.camera.near = 10;
-        spotLight.shadow.camera.far = 100;
-        spotLight.shadow.focus = 1;
-        this.scene.add( spotLight );
-        const lightHelper = new SpotLightHelper( spotLight );
-        this.scene.add( lightHelper );
-
-        this.camera.position.z = 130;
+        this.camera.position.z = 1;
 
         this.onResize();
         window.addEventListener('resize', this.onResize);
@@ -68,6 +51,7 @@ export default class Smoke {
         const height = window.innerHeight;
 
         this.resolution = { width: width, height: height };
+        this.uniforms.u_resolution.value = new Vector2(width, height);
 
         this.renderer.setSize(width, height, true);
         this.renderer.setPixelRatio(window.devicePixelRatio);
