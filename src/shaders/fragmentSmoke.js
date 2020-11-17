@@ -63,22 +63,6 @@ void main() {
 
     float f = fbm(st+r);
 
-    // color = mix(vec3(0.101961,0.619608,0.666667),
-    //             vec3(0.666667,0.666667,0.498039),
-    //             clamp((f*f)*4.0,0.0,1.0));
-
-    // color = mix(color,
-    //             vec3(0,0,0.164706),
-    //             clamp(length(q),0.0,1.0));
-
-    // color = mix(color,
-    //             vec3(0.666667,1,1),
-    //             clamp(length(r.x),0.0,1.0));
-
-    // color = mix(vec3(0.101961,0.619608,0.666667),
-    //             vec3(0.666667,0.666667,0.498039),
-    //             clamp((f*f)*4.0,0.0,1.0));
-
     color = mix(hsv2rgb(vec3(0., 0., 0.130)),
                 hsv2rgb(vec3(0.5591, 0.6458, 0.1882)),
                 clamp((f*f)*2.0,0.0,1.0));
@@ -90,20 +74,6 @@ void main() {
     color = mix(color,
                 hsv2rgb(vec3(0.5505,0.5156,0.2510)),
                 clamp((f*f)*2.0,0.0,1.0));
-
-    // color = mix(color,
-    //             hsv2rgb(vec3(0.5698,0.4907,0.8392)),
-    //             clamp((f*f)*1.0,0.,0.6));
-
-    // color = mix(color,
-    //             vec3(0.4,0.3,0.3),
-    //             clamp(length(q),0.0,1.0));
-
-    // color = mix(color,
-    //             hsv2rgb(vec3(0.5698,0.4907,0.8392)),
-    //             clamp(length(q),0.0,1.0));
-
-    // color = mix(color, hsv2rgb(vec3(0., 0., 0.130)), clamp(length(r.y),0.0,1.0));
 
     gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
 }
