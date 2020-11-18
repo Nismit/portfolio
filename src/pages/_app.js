@@ -4,8 +4,7 @@ import { useStore } from '../helpers/store';
 import { useRouter } from 'next/router';
 import { PageTransition } from 'next-page-transitions';
 import Header from '../components/Header';
-import MainVisual from '../components/MainVisual';
-import GlobalStyle from '../components/GlobalStyle';
+import MainBackground from '../components/MainBackground';
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
@@ -13,9 +12,8 @@ export default function App({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <GlobalStyle />
             <Header />
-            {/* <MainVisual /> */}
+            <MainBackground />
             <div className="page">
                 <PageTransition timeout={1600} classNames="page-transition">
                     <Component {...pageProps} key={router.pathname} />
