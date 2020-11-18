@@ -1,4 +1,4 @@
-import { Scene, WebGLRenderer, PerspectiveCamera, Clock, PlaneBufferGeometry, ShaderMaterial, Mesh, Vector2 } from 'three';
+import { Scene, WebGLRenderer, PerspectiveCamera, Clock, PlaneBufferGeometry, RawShaderMaterial, Mesh, Vector2 } from 'three';
 import VertexNoise from '../shaders/vertexNoise';
 import FragmentNoise from '../shaders/fragmentNoise';
 
@@ -14,9 +14,6 @@ export default class NoiseBackground {
         this.camera = new PerspectiveCamera(60, 1 / 1, .1, 1000);
 
         this.uniforms = {
-            u_time: {
-                value: 0.0
-            },
             u_resolution: {
                 value: new Vector2()
             }
@@ -27,13 +24,11 @@ export default class NoiseBackground {
 
     init() {
         const geometry = new PlaneBufferGeometry(4, 4);
-        const material = new ShaderMaterial({
+        const material = new RawShaderMaterial({
             uniforms: this.uniforms,
             vertexShader: VertexNoise,
             fragmentShader: FragmentNoise,
-            wireframe: false,
-            transparent: true,
-            fog: false
+            transparent: true
         });
 
         this.mesh = new Mesh(geometry, material);
@@ -44,7 +39,8 @@ export default class NoiseBackground {
         this.onResize();
         window.addEventListener('resize', this.onResize);
 
-        this.loop();
+        // this.loop();
+        this.drawOnce();
     }
 
     onResize = () => {
@@ -60,6 +56,8 @@ export default class NoiseBackground {
 
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
+
+        this.drawOnce();
     }
 
     loop() {
@@ -70,11 +68,12 @@ export default class NoiseBackground {
     }
 
     draw = () => {
-        const time = this.clock.getDelta();
-        this.uniforms.u_time.value += time;
-
         this.renderer.render(this.scene, this.camera);
         this.frameId = window.requestAnimationFrame(this.draw);
+    }
+
+    drawOnce = () => {
+        this.renderer.render(this.scene, this.camera);
     }
 
     stop() {
@@ -82,7 +81,7 @@ export default class NoiseBackground {
     }
 
     destroy() {
-        cancelAnimationFrame(this.frameId);
+        // cancelAnimationFrame(this.frameId);
         window.removeEventListener('resize', this.onResize);
     }
 }
