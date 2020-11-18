@@ -1,10 +1,11 @@
 const VertexNoise = `
 precision mediump float;
-varying vec3 vUv;
+
+attribute vec2 uv;
+attribute vec3 position;
 
 void main() {
-    vUv = position;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    gl_Position = vec4( position, 1.0 );
 }
 `;
 
