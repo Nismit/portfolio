@@ -39,19 +39,21 @@ function Projects() {
                                 const url = item.fields.title.replace(/\s/g, '-').toLowerCase();
                                 return (
                                     <div className="plane-wrapper" key={i}>
-                                        <span className="plane-title">{item.fields.title}</span>
                                         <Link as={`/project/${url}`} href={`/project?id=${i}`}>
-                                            <picture className="plane">
-                                                {
-                                                    item.fields.hero.map((content, j) => {
-                                                        if(content.fields.file.contentType === 'image/png') {
-                                                            return <img key={j} src={content.fields.file.url} />
-                                                        } else {
-                                                            return <source key={j} srcSet={content.fields.file.url} type={content.fields.file.contentType} />
-                                                        }
-                                                    })
-                                                }
-                                            </picture>
+                                            <a>
+                                                <picture className="plane">
+                                                    {
+                                                        item.fields.hero.map((content, j) => {
+                                                            if(content.fields.file.contentType === 'image/png') {
+                                                                return <img key={j} src={content.fields.file.url} />
+                                                            } else {
+                                                                return <source key={j} srcSet={content.fields.file.url} type={content.fields.file.contentType} />
+                                                            }
+                                                        })
+                                                    }
+                                                </picture>
+                                                <span className="plane-title">{item.fields.title}</span>
+                                            </a>
                                         </Link>
                                     </div>
                                 )
@@ -166,12 +168,8 @@ const _Scroll = styled.div`
                 filter: grayscale(0);
 
                 &:after {
-                    opacity: 0;
+                    opacity: 0.5;
                 }
-            }
-
-            .plane-title {
-                color: transparent;
             }
         }
     }
