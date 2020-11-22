@@ -1,4 +1,6 @@
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
+import gsap from 'gsap';
 import data from '../data/home';
 import styled from "@emotion/styled";
 import ComponentHead from '../components/ComponentHead';
@@ -7,10 +9,17 @@ import Smoke from '../helpers/Smoke';
 function IndexPage() {
     let visualManager;
     const refContainer = useRef(null);
+    const refDOMContainer = useRef(null);
 
     useEffect(() => {
         visualManager = new Smoke();
         refContainer.current.appendChild(visualManager.renderer.domElement);
+        const tl = gsap.timeline();
+        const element = refDOMContainer.current;
+        tl.delay(1);
+        tl.fromTo(refContainer.current, {opacity: 0}, {duration: 0.8, opacity: 1});
+        tl.fromTo(element.getElementsByClassName('home__title'), {y: 40, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
+        tl.fromTo(element.getElementsByClassName('home__link'), {y: 40, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
 
         return () => {
             if(refContainer.current.firstChild) {
@@ -25,9 +34,12 @@ function IndexPage() {
             <ComponentHead headTitle="Interactive Developer" />
             <main className="page home">
                 <_HomeVisual ref={refContainer} />
-                <_Hero>
+                <_Hero ref={refDOMContainer}>
                     <div className="container">
-                        <h1>Vancouver Based<br />Interactive Developer</h1>
+                        <h1 className="home__title">Vancouver Based<br />Interactive Developer</h1>
+                        <Link href="/projects">
+                            <a className="home__link">View Projects</a>
+                        </Link>
                     </div>
                 </_Hero>
             </main>
@@ -43,6 +55,7 @@ const _Hero = styled.div`
 
     .container {
         width: 100%;
+        text-align: center;
     }
 
     h1 {
@@ -56,6 +69,57 @@ const _Hero = styled.div`
 
         margin-top: 0;
         margin-bottom: 1rem;
+    }
+
+    a {
+        display: inline-block;
+        width: 320px;
+        border: 1px solid #fff;
+        font-family: 'DIN condensed';
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-top: 1.5rem;
+        padding: 1.22rem 1rem;
+        letter-spacing: 2px;
+        color: #fff;
+        text-decoration: none;
+
+        position: relative;
+        transition: color 300ms ease-in;
+
+        &::before,
+        &::after {
+            content: '';
+            width: 0%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            position: absolute;
+            top: 0;
+            transition: width 300ms ease-in;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        &::before {
+            left: 0;
+        }
+
+        &::after {
+            right: 0;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: #121212;
+
+                &::before,
+                &::after {
+                    opacity: 1;
+                    width: 50%;
+                }
+            }
+        }
     }
 
     @media (min-width: 45.176em) {
