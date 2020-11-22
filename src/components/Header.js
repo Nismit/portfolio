@@ -25,7 +25,7 @@ const Header = () => {
                     <ul>
                         <li>
                             <Link scroll={false} href="/projects" >
-                                <a onClick={() => sleep(200).then(() =>{ setProjectsActive(!projectsActive); setAboutActive(false); })} className={`${projectsActive ? 'isActive' : ''} menu__link`}>Projects</a>
+                                <a onClick={() => sleep(200).then(() =>{ setProjectsActive(projectsActive ? projectsActive : !projectsActive); setAboutActive(false); })} className={`${projectsActive ? 'isActive' : ''} menu__link`}>Projects</a>
                             </Link>
                         </li>
                         <li>
