@@ -23,10 +23,6 @@ function Projects() {
         const tl = gsap.timeline();
         const element = refScrollContainer.current;
         tl.set(element, {opacity: 0});
-        // tl.set(element.getElementsByClassName('about__title'), {y: 80, opacity: 0});
-        // tl.delay(1);
-        // tl.fromTo(element.getElementsByClassName('home__title'), {y: 40, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
-        // tl.fromTo(element.getElementsByClassName('home__link'), {y: 40, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
 
         refScrollContainer.current.querySelector('img').onload = () => {
             console.log('Image loaded');
