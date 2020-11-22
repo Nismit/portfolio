@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import styled from "@emotion/styled";
+import gsap from 'gsap';
 import data from '../data/projects';
 import Slider from '../helpers/Slider';
 import ComponentHead from '../components/ComponentHead';
@@ -18,6 +19,19 @@ function Projects() {
         }
 
         slider = new Slider(options);
+
+        const tl = gsap.timeline();
+        const element = refScrollContainer.current;
+        tl.set(element, {opacity: 0});
+        // tl.set(element.getElementsByClassName('about__title'), {y: 80, opacity: 0});
+        // tl.delay(1);
+        // tl.fromTo(element.getElementsByClassName('home__title'), {y: 40, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
+        // tl.fromTo(element.getElementsByClassName('home__link'), {y: 40, opacity: 0}, {duration: 0.6, y: 0, opacity: 1});
+
+        refScrollContainer.current.querySelector('img').onload = () => {
+            console.log('Image loaded');
+            tl.fromTo(element, {opacity: 0}, {duration: 0.6, opacity: 1});
+        }
 
         return () => {
             if(slider) {
