@@ -2,12 +2,7 @@ import { useEffect, useRef } from 'react';
 import styled from "@emotion/styled";
 import gsap from 'gsap';
 import data from '../data/about';
-import Footer from '../components/Footer';
 import ComponentHead from '../components/ComponentHead';
-import ComponentHeadBlock from '../components/ComponentHeadBlock';
-import ComponentTextBlock from '../components/ComponentTextBlock';
-import ComponentSkillBlock from '../components/ComponentSkillBlock';
-import ComponentAlternativeBlock from '../components/ComponentAlternativeBlock';
 
 function AboutPage() {
     const refContainer = useRef(null);
@@ -155,6 +150,42 @@ const _Main = styled.main`
             letter-spacing: 2px;
             color: #fff;
             text-decoration: none;
+
+            position: relative;
+            transition: color 300ms ease-in;
+
+            &::before,
+            &::after {
+                content: '';
+                width: 0%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 1);
+                position: absolute;
+                top: 0;
+                transition: width 300ms ease-in;
+                opacity: 0;
+                z-index: -1;
+            }
+
+            &::before {
+                left: 0;
+            }
+
+            &::after {
+                right: 0;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: #121212;
+
+                    &::before,
+                    &::after {
+                        opacity: 1;
+                        width: 50%;
+                    }
+                }
+            }
         }
     }
 `;
