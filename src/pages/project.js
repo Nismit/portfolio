@@ -10,10 +10,10 @@ function Project(props) {
     let scrollBar, smoothScroll;
     const refContainer = useRef(null);
     const data = props.query ? projectData.allProjects[props.query.id].fields : null;
-    const nextProject = projectData.allProjects[(props.query.id + 1)].fields
+    const nextProject = projectData.allProjects[(props.query.id + 1)]
                         ? projectData.allProjects[(props.query.id + 1)].fields : projectData.allProjects[0].fields;
     const nextProjectUrl = nextProject.title.replace(/\s/g, '-').toLowerCase();
-    const nextProjectId = projectData.allProjects[(props.query.id + 1)].fields ? (props.query.id + 1) : 0;
+    const nextProjectId = projectData.allProjects[(props.query.id + 1)] ? (props.query.id + 1) : 0;
 
     useEffect(() => {
         async function getLocomotive() {
@@ -63,7 +63,7 @@ function Project(props) {
                                 <span>{ data.role }</span>
                             </li>
                             <li>
-                                <a href="#" className="launch__button">Launch</a>
+                                <a href={ data.siteUrl } target="_blank" rel="noopener" className="launch__button">Launch</a>
                             </li>
                         </ul>
                     </section>
@@ -84,7 +84,7 @@ function Project(props) {
                         <div className="project__next--container">
                             <p>
                                 <Link as={`/project/${nextProjectUrl}`} href={`/project?id=${nextProjectId}`}>
-                                    Next Project
+                                    <a>Next Project</a>
                                 </Link>
                             </p>
                         </div>
@@ -151,8 +151,14 @@ const _Project = styled.div`
             }
         }
 
+        &__video {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+        }
+
         &__content {
-            background-color: #171717;
+            background-color: rgba(23, 23, 23, 0.7);
 
             div {
                 width: 70vw;
@@ -203,18 +209,43 @@ const _Project = styled.div`
                 letter-spacing: 2px;
                 color: #fff;
                 text-decoration: none;
-                /* background: repeating-linear-gradient(45deg, rgb(0, 0, 0), rgb(0, 0, 0) 5px, rgb(255, 255, 255) 5px, rgb(255, 255, 255) 10px); */
-                /* background: repeating-linear-gradient(-70deg,rgb(0,0,0),rgb(0,0,0) 15px,rgba(255,255,255, 0.4) 10px,rgba(255,255,255, 0.4) 20px); */
-                background-image:
-                    repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 1rem,
-                    #ccc 1rem,
-                    #ccc 2rem
-                    );
-                background-size: 200% 200%;
-                animation: barberpole 10s linear infinite;
+                position: relative;
+                transition: color 300ms ease-in;
+
+                &::before,
+                &::after {
+                    content: '';
+                    width: 0%;
+                    height: 100%;
+                    background-color: rgba(255, 255, 255, 1);
+                    position: absolute;
+                    top: 0;
+                    transition: width 300ms ease-in;
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                &::before {
+                    left: 0;
+                }
+
+                &::after {
+                    right: 0;
+                }
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                .launch__button {
+                    &:hover {
+                        color: #121212;
+
+                        &::before,
+                        &::after {
+                            opacity: 1;
+                            width: 50%;
+                        }
+                    }
+                }
             }
 
             @keyframes barberpole {
