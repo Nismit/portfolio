@@ -1,14 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled from "@emotion/styled";
 
 const Header = () => {
+    const router = useRouter();
     const [aboutActive, setAboutActive] = useState(false);
     const [projectsActive, setProjectsActive] = useState(false);
 
     const sleep = (ms) => {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    useEffect(() => {
+        if(router.route === '/project' || router.route === '/projects') {
+            setProjectsActive(!projectsActive);
+        }
+
+        if(router.route === '/about') {
+            setAboutActive(!aboutActive);
+        }
+    }, []);
 
     return (
         <_Header>
