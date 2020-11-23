@@ -121,11 +121,15 @@ const _Project = styled.div`
 
             &--container {
                 width: 100%;
-                padding: 0 16vw;
+                padding: 0 2.5rem;
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
                 z-index: 2;
+
+                h1 {
+                    font-size: 3.5rem;
+                }
             }
 
             .project__image {
@@ -161,25 +165,25 @@ const _Project = styled.div`
             background-color: rgba(23, 23, 23, 0.7);
 
             div {
-                width: 70vw;
-                margin: 0 auto;
-                padding: 12rem 0;
+                width: 100%;
+                padding: 6rem 0;
             }
         }
 
         &__stats {
             width: 100%;
-            padding: 8rem 16vw;
+            padding: 6rem 2.5rem;
 
             ul {
                 margin: 0;
                 padding-left: 0;
                 display: flex;
-                align-items: center;
+                flex-direction: column;
 
                 li {
                     font-size: 13px;
-                    margin-right: 5vw;
+                    margin-right: 0;
+                    margin-bottom: 0.8rem;
 
                     &:last-child {
                         flex-grow: 2;
@@ -198,7 +202,7 @@ const _Project = styled.div`
 
             .launch__button {
                 display: inline-block;
-                width: 320px;
+                width: 100%;
                 border: 1px solid #fff;
                 font-family: 'DIN condensed';
                 font-weight: 700;
@@ -211,6 +215,7 @@ const _Project = styled.div`
                 text-decoration: none;
                 position: relative;
                 transition: color 300ms ease-in;
+                margin-top: 3rem;
 
                 &::before,
                 &::after {
@@ -268,39 +273,82 @@ const _Project = styled.div`
                     font-family: 'DIN condensed';
                     text-transform: uppercase;
                     text-decoration: none;
-                    font-size: 70px;
+                    font-size: 50px;
                     letter-spacing: 1px;
                     position: relative;
                     color: rgba(255, 255, 255, 0.5);
                     transition: color 300ms ease-in;
+                }
+            }
+        }
 
-                    &::before,
-                    &::after {
-                        content: '';
-                        width: 50%;
-                        height: 5px;
-                        background-color: #fff;
-                        position: absolute;
-                        bottom: -4px;
-                        transition: width 300ms ease-in;
-                        opacity: 0;
+        @media (min-width: 45.176em) {
+            &__hero {
+                &--container {
+                    padding: 0 16vw;
+                }
+            }
+
+            &__stats {
+                padding: 8rem 16vw;
+
+                ul {
+                    flex-direction: row;
+                    align-items: center;
+
+                    li {
+                        margin-right: 5vw;
+                        margin-bottom: 0;
                     }
+                }
 
-                    &::before {
-                        left: 50%;
-                    }
+                .launch__button {
+                    width: 320px;
+                    margin-top: 0;
+                }
+            }
 
-                    &::after {
-                        right: 50%;
-                    }
+            &__content {
+                div {
+                    width: 70vw;
+                    margin: 0 auto;
+                    padding: 12rem 0;
+                }
+            }
 
-                    &:hover {
-                        color: rgba(255, 255, 255, 1);
+            &__next {
+                &--container {
+                    a {
+                        font-size: 70px;
 
                         &::before,
                         &::after {
-                            opacity: 1;
-                            width: 25%;
+                            content: '';
+                            width: 50%;
+                            height: 5px;
+                            background-color: #fff;
+                            position: absolute;
+                            bottom: -4px;
+                            transition: width 300ms ease-in;
+                            opacity: 0;
+                        }
+
+                        &::before {
+                            left: 50%;
+                        }
+
+                        &::after {
+                            right: 50%;
+                        }
+
+                        &:hover {
+                            color: rgba(255, 255, 255, 1);
+
+                            &::before,
+                            &::after {
+                                opacity: 1;
+                                width: 25%;
+                            }
                         }
                     }
                 }

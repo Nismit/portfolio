@@ -55,14 +55,14 @@ const Header = () => {
 const _Header = styled.header`
     width: 100%;
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 0;
     z-index: 15;
 
     .header__container {
         display: flex;
         width: 100%;
-        padding: 1rem;
+        padding: 1rem 2rem;
         justify-content: space-between;
     }
 

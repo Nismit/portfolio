@@ -139,7 +139,7 @@ const _Main = styled.main`
 
         &__button {
             display: inline-block;
-            width: 320px;
+            width: 100%;
             border: 1px solid #fff;
             font-family: 'DIN condensed';
             font-weight: 700;
@@ -185,6 +185,17 @@ const _Main = styled.main`
                         width: 50%;
                     }
                 }
+            }
+        }
+    }
+
+    @media (min-width: 45.176em) {
+        padding-left: 5.3rem;
+        padding-right: 5.3rem;
+
+        .mail {
+            &__button {
+                width: 320px;
             }
         }
     }

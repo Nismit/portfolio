@@ -51,17 +51,18 @@ const _Hero = styled.div`
     display: flex;
     align-items: center;
     height: 100vh;
-    padding-left: 1rem;
 
     .container {
         width: 100%;
         text-align: center;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
     }
 
     h1 {
         font-weight: 700;
         font-family: 'DIN condensed';
-        font-size: 40px;
+        font-size: 37px;
         text-align: center;
         line-height: 1.4;
         letter-spacing: 0.7px;
@@ -73,7 +74,7 @@ const _Hero = styled.div`
 
     a {
         display: inline-block;
-        width: 320px;
+        width: 100%;
         border: 1px solid #fff;
         font-family: 'DIN condensed';
         font-weight: 700;
@@ -124,10 +125,14 @@ const _Hero = styled.div`
 
     @media (min-width: 45.176em) {
         h1 {
-            font-size: 80px;
+            font-size: 5.1vw;
             text-align: center;
             line-height: 1.17;
             letter-spacing: 0.7px;
+        }
+
+        a {
+            width: 320px;
         }
     }
 `;
