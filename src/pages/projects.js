@@ -49,7 +49,7 @@ function Projects() {
                                 const url = item.fields.title.replace(/\s/g, '-').toLowerCase();
                                 return (
                                     <div className="plane-wrapper" key={i}>
-                                        <Link as={`/project/${url}`} href={`/project?id=${i}`}>
+                                        <Link href={`/project?id=${i}`} as={`/project/${url}`}>
                                             <a>
                                                 <picture className="plane">
                                                     {
@@ -85,31 +85,29 @@ const _Scroll = styled.div`
     .slider {
         position: relative;
         height: 100%;
-        display: flex;
-        align-items: center;
+        display: block;
         overflow: hidden;
-        padding: 0 14vw;
+        padding: 0 2.5rem;
+        padding-top: 5rem;
     }
 
     #planes {
         /* width of items * number of items */
-        width: calc(((100vw / 1.75) + 10vw) * 7);
-
-        height: 100vh;
+        width: 100%;
+        height: auto;
         display: flex;
+        flex-direction: column;
         align-items: center;
         cursor: grab;
-
         transition: background-color 0.5s;
     }
 
     .plane-wrapper {
         position: relative;
-
-        width: calc(100vw / 1.75);
-        height: 50vh;
-        margin: auto 5vw;
         text-align: center;
+        width: 70vw;
+        height: calc(100vh / 1.75);
+        margin: 5vw 0;
 
         &:first-of-type {
             margin-left: 0;
@@ -198,6 +196,26 @@ const _Scroll = styled.div`
         min-height: 100%;
         object-fit: cover;
         pointer-events: none;
+    }
+
+    @media (min-width: 45.176em) {
+        .slider {
+            display: flex;
+            align-items: center;
+            padding: 0 14vw;
+        }
+
+        #planes {
+            height: 100vh;
+            width: calc(((100vw / 1.75) + 10vw) * 7);
+            flex-direction: row;
+        }
+
+        .plane-wrapper {
+            width: calc(100vw / 1.75);
+            height: 50vh;
+            margin: auto 5vw;
+        }
     }
 `;
 
