@@ -26,7 +26,7 @@ export default class Smoke {
     }
 
     init() {
-        const geometry = new PlaneBufferGeometry(4,4);
+        const geometry = new PlaneBufferGeometry(2,2);
         const material = new RawShaderMaterial({
             uniforms: this.uniforms,
             vertexShader: VertexSmoke,
