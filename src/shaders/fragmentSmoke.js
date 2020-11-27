@@ -49,35 +49,33 @@ float fbm ( in vec2 _st) {
 }
 
 void main() {
-    // vec2 st = gl_FragCoord.xy/u_resolution.xy*3.;
-    // // st += st * abs(sin(u_time*0.1)*3.0);
-    // vec3 color = vec3(0.);
+    vec2 st = gl_FragCoord.xy/u_resolution.xy*1.;
+    // st += st * abs(sin(u_time*0.1)*3.0);
+    vec3 color = vec3(0.);
 
-    // vec2 q = vec2(0.);
-    // q.x = fbm( st + 0.0 * u_time);
-    // q.y = fbm( st + vec2(1.0));
+    vec2 q = vec2(0.);
+    q.x = fbm( st + 0.0 * u_time);
+    q.y = fbm( st + vec2(1.0));
 
-    // vec2 r = vec2(0.);
-    // r.x = fbm( st + 1.0*q + vec2(1.7,9.2)+ 0.015  * u_time );
-    // r.y = fbm( st + 1.0*q + vec2(8.3,2.8)+ 0.0526 * u_time );
+    vec2 r = vec2(0.);
+    r.x = fbm( st + 1.0*q + vec2(1.7,9.2)+ 0.015  * u_time );
+    r.y = fbm( st + 1.0*q + vec2(8.3,2.8)+ 0.0526 * u_time );
 
-    // float f = fbm(st+r);
+    float f = fbm(st+r);
 
-    // color = mix(hsv2rgb(vec3(0., 0., 0.130)),
-    //             hsv2rgb(vec3(0.5591, 0.6458, 0.1882)),
-    //             clamp((f*f)*2.0,0.0,1.0));
+    color = mix(hsv2rgb(vec3(0., 0., 0.130)),
+                hsv2rgb(vec3(0.5591, 0.6458, 0.1882)),
+                clamp((f*f)*2.0, 0.0, 1.0));
 
     // color = mix(color,
     //             hsv2rgb(vec3(0.6400,0.4630,0.2118)),
-    //             clamp((f*f)*4.0,0.0,1.0));
+    //             clamp((f*f)*4.0, 0.0, 1.0));
 
     // color = mix(color,
     //             hsv2rgb(vec3(0.5505,0.5156,0.2510)),
-    //             clamp((f*f)*2.0,0.0,1.0));
+    //             clamp((f*f)*2.0, 0.0, 1.0));
 
-    // gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
-
-    gl_FragColor = vec4(vec3(1.0, 0.5, 1.0), 1.);
+    gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
 }
 `;
 
