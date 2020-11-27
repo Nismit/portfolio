@@ -75,7 +75,8 @@ void main() {
     //             hsv2rgb(vec3(0.5505,0.5156,0.2510)),
     //             clamp((f*f)*2.0, 0.0, 1.0));
 
-    gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
+    // gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
+    gl_FragColor = vec4(color, 1.);
 }
 `;
 
