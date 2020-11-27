@@ -1,4 +1,4 @@
-import { Scene, WebGL1Renderer, PerspectiveCamera, Clock, PlaneBufferGeometry, RawShaderMaterial, Mesh, Vector2 } from 'three';
+import { Scene, WebGL1Renderer, PerspectiveCamera, Clock, PlaneBufferGeometry, RawShaderMaterial, ShaderMaterial, Mesh, Vector2 } from 'three';
 import VertexSmoke from '../shaders/vertexSmoke';
 import FragmentSmoke from '../shaders/fragmentSmoke';
 
@@ -27,7 +27,7 @@ export default class Smoke {
 
     init() {
         const geometry = new PlaneBufferGeometry(2,2);
-        const material = new RawShaderMaterial({
+        const material = new ShaderMaterial({
             uniforms: this.uniforms,
             vertexShader: VertexSmoke,
             fragmentShader: FragmentSmoke,
