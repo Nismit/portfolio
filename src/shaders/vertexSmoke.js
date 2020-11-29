@@ -1,5 +1,5 @@
 const VertexSmoke = `
-precision mediump float;
+precision highp float;
 
 attribute vec2 uv;
 attribute vec3 position;
