@@ -16,6 +16,9 @@ export default class NoiseBackground {
         this.uniforms = {
             u_resolution: {
                 value: new Vector2()
+            },
+            u_ratio: {
+                value: 1.0
             }
         }
 
@@ -49,6 +52,7 @@ export default class NoiseBackground {
 
         this.resolution = { width: width, height: height };
         this.uniforms.u_resolution.value = new Vector2(width, height);
+        this.uniforms.u_ratio.value = window.devicePixelRatio.toFixed(1);
 
         this.renderer.setSize(width, height, true);
         this.renderer.setPixelRatio(window.devicePixelRatio);

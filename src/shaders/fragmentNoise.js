@@ -1,5 +1,7 @@
 const FragmentNoise = `
-precision mediump float;
+precision highp float;
+
+uniform float u_ratio;
 uniform vec2 u_resolution;
 
 float random (vec2 st) {
@@ -13,7 +15,7 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 void main() {
-    vec2 st = (gl_FragCoord.xy - u_resolution) / min(u_resolution.x, u_resolution.y);
+    vec2 st = (gl_FragCoord.xy * u_ratio - u_resolution) / min(u_resolution.x, u_resolution.y);
 
     float rnd = random( st );
     vec3 color = vec3(rnd);
