@@ -1,5 +1,5 @@
 const FragmentSmoke = `
-precision mediump float;
+precision highp float;
 uniform float u_time;
 uniform float u_ratio;
 uniform vec2 u_resolution;
