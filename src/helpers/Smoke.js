@@ -1,4 +1,4 @@
-import { Scene, WebGL1Renderer, PerspectiveCamera, Clock, PlaneBufferGeometry, RawShaderMaterial, ShaderMaterial, Mesh, Vector2 } from 'three';
+import { Scene, WebGLRenderer, PerspectiveCamera, Clock, PlaneBufferGeometry, RawShaderMaterial, ShaderMaterial, Mesh, Vector2 } from 'three';
 import VertexSmoke from '../shaders/vertexSmoke';
 import FragmentSmoke from '../shaders/fragmentSmoke';
 
@@ -10,7 +10,7 @@ export default class Smoke {
         this.resolution = null;
         this.scene = new Scene();
         this.clock = new Clock({ autoStart: false });
-        this.renderer = new WebGL1Renderer({ antialias: true });
+        this.renderer = new WebGLRenderer({ antialias: true });
         this.camera = new PerspectiveCamera(60, 1 / 1, .1, 1000);
 
         this.uniforms = {
