@@ -17,6 +17,9 @@ export default class Smoke {
             u_time: {
                 value: 0.0
             },
+            u_ratio: {
+                value: 1.0
+            },
             u_resolution: {
                 value: new Vector2()
             }
@@ -52,6 +55,7 @@ export default class Smoke {
 
         this.resolution = { width: width, height: height };
         this.uniforms.u_resolution.value = new Vector2(width, height);
+        this.uniforms.u_ratio.value = window.devicePixelRatio.toFixed(1);
 
         this.renderer.setSize(width, height, true);
         this.renderer.setPixelRatio(window.devicePixelRatio);
