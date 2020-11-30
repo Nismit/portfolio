@@ -33,7 +33,7 @@ float noise (in vec2 _st) {
     return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
-#define NUM_OCTAVES 6
+#define NUM_OCTAVES 4
 
 float fbm ( in vec2 _st) {
     float v = 0.0;
@@ -50,7 +50,7 @@ float fbm ( in vec2 _st) {
 }
 
 void main() {
-    vec2 st = (gl_FragCoord.xy * u_ratio)/u_resolution.xy*1.;
+    vec2 st = (gl_FragCoord.xy * u_ratio)/u_resolution.xy;
     // st += st * abs(sin(u_time*0.1)*3.0);
     vec3 color = vec3(0.);
 
@@ -68,13 +68,13 @@ void main() {
                 hsv2rgb(vec3(0.5591, 0.6458, 0.1882)),
                 clamp((f*f)*2.0, 0.0, 1.0));
 
-    color = mix(color,
-                hsv2rgb(vec3(0.6400,0.4630,0.2118)),
-                clamp((f*f)*4.0, 0.0, 1.0));
+    // color = mix(color,
+    //             hsv2rgb(vec3(0.6400,0.4630,0.2118)),
+    //             clamp((f*f)*4.0, 0.0, 1.0));
 
-    color = mix(color,
-                hsv2rgb(vec3(0.5505,0.5156,0.2510)),
-                clamp((f*f)*2.0, 0.0, 1.0));
+    // color = mix(color,
+    //             hsv2rgb(vec3(0.5505,0.5156,0.2510)),
+    //             clamp((f*f)*2.0, 0.0, 1.0));
 
     gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
 }
