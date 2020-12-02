@@ -5,7 +5,7 @@ uniform float u_ratio;
 uniform vec2 u_resolution;
 
 // const mat2 m = mat2( 0.80,  0.60, -0.60,  0.80 );
-const mat2 m = mat2( 1.6,  1.2, -1.2,  1.6 );
+const mat2 m = mat2( 1.6,  1.2, -1.8,  2.0 );
 
 vec3 hsv2rgb(vec3 c) {
     vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
@@ -97,9 +97,9 @@ void main() {
 
     color = mix(color,
                 hsv2rgb(vec3(0.5505,0.5156,0.2510)),
-                clamp((f*f)*2.0, 0.0, 1.0));
+                clamp((f*f)*0.89, 0.0, 0.8));
 
-    gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, 1.);
+    gl_FragColor = vec4((f*f*f+.6*f*f+.5*f) * color, .8);
 }
 `;
 
