@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
     return (
         <Provider store={store}>
             <Header />
-            {/* <MainBackground /> */}
+            <MainBackground />
             <div className="page">
                 <PageTransition timeout={1600} classNames="page-transition">
                     <Component {...pageProps} key={router.pathname} />
