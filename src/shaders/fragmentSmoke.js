@@ -12,12 +12,12 @@ const mat2 m = mat2( 5.0,  1.0, 1.0,  1.0 );
 //     return fract(sin(dot(_st.xy, vec2(12.9898,78.233)))* 43758.5453123);
 // }
 
-highp float random(in vec2 _st) {
-    highp float a = 12.9898;
-    highp float b = 78.233;
-    highp float c = 43758.5453;
-    highp float dt= dot(_st.xy ,vec2(a,b));
-    highp float sn= mod(dt,3.14);
+float random(in vec2 _st) {
+    float a = 12.9898;
+    float b = 78.233;
+    float c = 43758.5453;
+    float dt = dot(_st.xy ,vec2(a,b));
+    float sn = mod(dt,3.14);
     return fract(sin(sn) * c);
 }
 
@@ -48,7 +48,7 @@ float noise (in vec2 _st) {
             (d - b) * u.x * u.y;
 }
 
-#define NUM_OCTAVES 4
+#define NUM_OCTAVES 3
 
 float fbm( in vec2 x ) {
     float G = exp2(-1.0);
