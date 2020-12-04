@@ -48,7 +48,7 @@ float noise (in vec2 _st) {
             (d - b) * u.x * u.y;
 }
 
-#define NUM_OCTAVES 6
+#define NUM_OCTAVES 4
 
 float fbm( in vec2 x ) {
     float G = exp2(-1.0);
