@@ -9,7 +9,7 @@ const mat2 m = mat2( 5.0,  1.0, 1.0,  1.0 );
 // const mat2 m = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
 
 float random (in vec2 _st) {
-    return fract(sin(dot(_st.xy, vec2(12.9898,78.233)))* 43758.5453);
+    return fract(sin(dot(_st.xy, vec2(12.98,78.233)))* 43758.5);
 }
 
 // float random(in vec2 _st) {
