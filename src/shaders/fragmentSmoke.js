@@ -4,52 +4,42 @@ uniform float u_time;
 uniform float u_ratio;
 uniform vec2 u_resolution;
 
-float map(float value, float min1, float max1, float min2, float max2) {
-    return ((value - min1) / (max1 - min1)) * (max2 - min2) + min2;
+const mat2 m = mat2( 0.80,  0.60, -0.60,  0.80 );
+
+mat2 rotation(float a) {
+    return mat2( cos(a), -sin(a), sin(a), cos(a) );
 }
 
-
-vec3 hsv2rgb(vec3 c) {
-    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
-    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
-    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+float noise( in vec2 p ) {
+    return sin(p.x) * sin(p.y);
 }
 
-float random (in vec2 _st) {
-    return fract(sin(dot(_st.xy, vec2(12.9898,78.233)))* 43758.5453123);
+// For mobile
+highp float random(vec2 co){
+    highp float a = 12.9898;
+    highp float b = 78.233;
+    highp float c = 43758.5453;
+    highp float dt= dot(co.xy ,vec2(a,b));
+    highp float sn= mod(dt,3.14);
+    return fract(sin(sn) * c);
 }
 
-// Based on Morgan McGuire @morgan3d
-// https://www.shadertoy.com/view/4dS3Wd
-float noise (in vec2 _st) {
-    vec2 i = floor(_st);
-    vec2 f = fract(_st);
-
-    // Four corners in 2D of a tile
-    float a = random(i);
-    float b = random(i + vec2(1.0, 0.0));
-    float c = random(i + vec2(0.0, 1.0));
-    float d = random(i + vec2(1.0, 1.0));
-
-    vec2 u = f * f * (3.0 - 2.0 * f);
-
-    return mix(a, b, u.x) +
-            (c - a)* u.y * (1.0 - u.x) +
-            (d - b) * u.x * u.y;
+// https://www.shadertoy.com/view/MsS3Wc
+vec3 hsv2rgb_smooth( in vec3 c ) {
+    vec3 rgb = clamp( abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),6.0)-3.0)-1.0, 0.0, 1.0 );
+	rgb = rgb*rgb*(3.0-2.0*rgb); // cubic smoothing	
+	return c.z * mix( vec3(1.0), rgb, c.y);
 }
 
 #define NUM_OCTAVES 5
 
-float fbm ( in vec2 _st) {
+float fbm(vec2 p) {
     float v = 0.0;
     float a = 0.5;
-    vec2 shift = vec2(100.0);
-    // Rotate to reduce axial bias
-    mat2 rot = mat2(cos(0.5), sin(0.5),
-                        -sin(0.5), cos(0.50));
+
     for (int i = 0; i < NUM_OCTAVES; ++i) {
-        v += a * noise(_st);
-        _st = rot * _st * 2.0 + shift;
+        v += a * (1.0 + noise(p));
+        p = rotation(0.5) * p * vec2(1.5);
         a *= 0.5;
     }
     return v;
@@ -57,40 +47,42 @@ float fbm ( in vec2 _st) {
 
 void main( void ) {
 
-    vec2 st = gl_FragCoord.xy/u_resolution.y;
-    //st += st * abs(sin(u_time*0.1)*3.0);
-    vec3 color = vec3(0.0);
+    vec2 p = (gl_FragCoord.xy / u_resolution.xy) * 2.0 - 1.0;
+    p.x *= u_resolution.x / u_resolution.y;
 
-    vec3 darker = vec3(45.0/255.0,107.0/255.0,55.0/255.0);
-    vec3 lighter = vec3(255.0/255.0,255.0/255.0,250.0/255.0);
+    vec2 s = vec2(0.0400, 0.1434);
+    vec2 q = vec2(0.);
+    q = q + s;
+    q.x = fbm( (p * s) / 0.126);
+    q.y = fbm( (p * s) / 0.589);
 
-        vec2 q = vec2(0.);
-        q.x = fbm( st + 0.02*u_time);
-        q.y = fbm( st + vec2(1.0));
+    vec2 r = vec2(0.);
+    r.x = fbm( p + 10.0*q + vec2(1.0,9.2)+ 0.150 * u_time);
+    r.y = fbm( p + 25.0*q + vec2(5.0,3.2)+ 0.126 * u_time);
 
-        vec2 r = vec2(0.);
-        r.x = fbm( st + 10.0*q + vec2(1.0,9.2)+ 0.15 * u_time );
-        r.y = fbm( st + 25.0*q + vec2(5.0,2.8)+ 0.126 * u_time);
+    float f = fbm(p);
 
-        float f = fbm(st+r);
+    vec3 col = vec3(0.0);
+    col = mix(
+            hsv2rgb_smooth(vec3(0.5870,0.6087,0.2065)),
+            hsv2rgb_smooth(vec3(0.4565,0.7283,0.9348)), 
+        f);
 
-        color = mix(darker,
-                        lighter,
-                        clamp((f*f)*4.0,1.0,1.0));
+    col = mix(col,
+            hsv2rgb_smooth(vec3(0.4913,0.5000,0.9022)),
+            // clamp(length(r.x),0.0,1.0)
+            dot(q.x, q.y)
+            );
 
-        color = mix(color,
-                        darker,
-                        clamp(length(q),1.0,1.0));
+    col = mix(col,
+                vec3(0,0.1,0.164706),
+                // clamp(length(r),0.0,1.0)
+                dot(r.x,r.y)
+                );
+    
+    col = clamp( col*f*0.574, 0.0, 1.0 );
 
-        color = mix(color,
-                        lighter,
-                        clamp(length(r.x),1.0,1.0));
-
-
-        vec4 rgb = vec4 (vec4((f*f*f+.6*f*f+.5)*color,1.));
-
-    gl_FragColor = rgb;
-
+    gl_FragColor = vec4(col, 1.);
 }
 `;
 
