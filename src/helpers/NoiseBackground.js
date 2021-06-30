@@ -40,13 +40,13 @@ export default class NoiseBackground {
         this.camera.position.z = 1;
 
         this.onResize();
-        window.addEventListener('resize', this.onResize);
+        window.addEventListener('resize', this.onResize.bind(this));
 
         // this.loop();
         this.drawOnce();
     }
 
-    onResize = () => {
+    onResize() {
         const width = document.documentElement.clientWidth;
         const height = window.innerHeight;
 
@@ -67,16 +67,16 @@ export default class NoiseBackground {
     loop() {
         if (!this.frameId) {
             this.clock.start();
-            this.frameId = requestAnimationFrame(this.draw);
+            this.frameId = requestAnimationFrame(this.draw.bind(this));
         }
     }
 
-    draw = () => {
+    draw() {
         this.renderer.render(this.scene, this.camera);
-        this.frameId = window.requestAnimationFrame(this.draw);
+        this.frameId = window.requestAnimationFrame(this.draw.bind(this));
     }
 
-    drawOnce = () => {
+    drawOnce() {
         this.renderer.render(this.scene, this.camera);
     }
 
