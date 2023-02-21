@@ -1,17 +1,12 @@
 {
   "name": "portfolio",
-  "version": "2.4.0",
+  "version": "4.0.0",
   "description": "Portfolio Development Environment",
-  "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "npm run postinstall && next build && next export",
-    "serve": "serve -p 8080",
-    "postinstall": "npm run getcontent",
-    "getcontent": "babel-node src/helpers/getContent.js install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
@@ -28,24 +23,17 @@
   },
   "homepage": "https://github.com/Nismit/portfolio#readme",
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/styled": "^10.0.27",
-    "contentful": "^7.14.6",
-    "gsap": "^3.4.2",
-    "next": "^9.3.2",
-    "next-page-transitions": "^1.0.0-beta.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-markdown": "^4.3.1",
-    "react-redux": "^7.2.1",
-    "redux": "^4.0.5",
-    "smooth-scrollbar": "^8.5.2",
-    "three": "^0.119.1"
+    "@next/font": "13.1.6",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/node": "^7.10.5",
-    "@babel/preset-env": "^7.11.0",
-    "dotenv": "^8.2.0"
+    "@types/node": "18.14.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "typescript": "4.9.5"
   }
 }

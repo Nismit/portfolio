@@ -1,22 +1,6 @@
-const data = require('./src/data/projects');
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+};
 
-module.exports = {
-  exportPathMap: async function () {
-    const projects = data.allProjects.reduce(
-      (projects, project, index) =>
-        Object.assign({}, projects, {
-          [`/project/${project.fields.title.replace(/\s/g, '-').toLowerCase()}`]: {
-            page: '/project',
-            query: { id: index }
-          }
-        }),
-      {}
-    );
-
-    return Object.assign({}, projects, {
-      '/': { page: '/' },
-      '/about': { page: '/about' },
-      '/projects': { page: '/projects' },
-    })
-  }
-}
+module.exports = nextConfig;
