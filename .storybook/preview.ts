@@ -1,7 +1,10 @@
+// Set global style into Storybook
+import "src/styles.css";
+
 export const parameters = {
-  backgrounds: {
-    default: 'light',
-  },
+  // backgrounds: {
+  //   default: "light",
+  // },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
@@ -9,4 +12,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};

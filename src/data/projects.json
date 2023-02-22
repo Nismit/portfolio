@@ -1,0 +1,49 @@
+{
+  "projects": [
+    {
+      "id": "local-public-eatery",
+      "title": "Local Public Eatery",
+      "stack": "WordPress",
+      "images": [
+        "/images/projects/lpe/lpe-hero.png",
+        "/images/projects/lpe/lpe-image-1.png",
+        "/images/projects/lpe/lpe-image-2.png",
+        "/images/projects/lpe/lpe-image-3.png"
+      ]
+    },
+    {
+      "id": "eden-empire",
+      "title": "Eden Empire",
+      "stack": "WordPress",
+      "images": [
+        "/images/projects/edenempire/eden-hero.png",
+        "/images/projects/edenempire/eden-1.png",
+        "/images/projects/edenempire/eden-2.png"
+      ]
+    },
+    {
+      "id": "little-potato-company",
+      "title": "Little Potato Compnay",
+      "stack": "WordPress/Vue.js",
+      "images": [
+        "/images/projects/lpc/lpc-hero.png",
+        "/images/projects/lpc/lpc-1.png",
+        "/images/projects/lpc/lpc-2.png",
+        "/images/projects/lpc/lpc-3.png",
+        "/images/projects/lpc/lpc-4.png",
+        "/images/projects/lpc/lpc-5.png"
+      ]
+    },
+    {
+      "id": "major-tom",
+      "title": "Major Tom",
+      "stack": "WordPress/Three.js/GSAP",
+      "images": [
+        "/images/projects/majortom/major-tom-hero.png",
+        "/images/projects/majortom/major-tom-1.png",
+        "/images/projects/majortom/major-tom-2.png",
+        "/images/projects/majortom/major-tom-3.png"
+      ]
+    }
+  ]
+}
