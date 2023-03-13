@@ -1,0 +1,24 @@
+{
+  "social": [
+    {
+      "type": "external",
+      "title": "Twitter",
+      "link": "https://twitter.com/nismit_"
+    },
+    {
+      "type": "external",
+      "title": "GitHub",
+      "link": "https://github.com/Nismit"
+    },
+    {
+      "type": "external",
+      "title": "LinkedIn",
+      "link": "https://www.linkedin.com/in/nismit/"
+    },
+    {
+      "type": "email",
+      "title": "Email",
+      "link": "mailto:nismit.dev@gmail.com?subject=Hello%20Mitch"
+    }
+  ]
+}
