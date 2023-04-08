@@ -7,8 +7,10 @@
       "groupName": "types"
     },
     {
-      "matchPackagePatterns": ["@storybook"],
+      "matchPackagePatterns": ["storybook"],
       "groupName": "storybook"
     }
-  ]
+  ],
+  "reviewers": ["Nismit"],
+  "rangeStrategy": "replace"
 }
