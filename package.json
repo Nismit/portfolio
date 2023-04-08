@@ -50,7 +50,7 @@
     "@storybook/blocks": "^7.0.0-rc.8",
     "@storybook/nextjs": "^7.0.0-rc.8",
     "@storybook/react": "^7.0.0-rc.8",
-    "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/testing-library": "^0.1.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
