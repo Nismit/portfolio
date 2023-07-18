@@ -49,35 +49,38 @@ const rehypePrism = (): any => {
   refractor.register(html);
 
   const transformer = (tree: any) => {
-    visit(tree, "element", (node: any, index: number | null, parent: any) => {
-      if (!parent || parent.tagName !== "pre" || node.tagName !== "code") {
-        return;
-      }
-
-      const lang = getLanguage(node);
-
-      if (lang === null) {
-        return;
-      }
-
-      let result;
-      try {
-        parent.properties.className = (
-          parent.properties.className || []
-        ).concat("language-" + lang);
-
-        result = refractor.highlight(toString(node), lang);
-      } catch (err) {
-        if (err instanceof Error && /Unknown language/.test(err.message)) {
-          console.warn(err.message);
+    visit(
+      tree,
+      (node: any, _: number | null | undefined, parent: any): undefined => {
+        if (!parent || parent.tagName !== "pre" || node.tagName !== "code") {
           return;
         }
 
-        throw err;
-      }
+        const lang = getLanguage(node);
 
-      node.children = result.children;
-    });
+        if (lang === null) {
+          return;
+        }
+
+        let result;
+        try {
+          parent.properties.className = (
+            parent.properties.className || []
+          ).concat("language-" + lang);
+
+          result = refractor.highlight(toString(node), lang);
+        } catch (err) {
+          if (err instanceof Error && /Unknown language/.test(err.message)) {
+            console.warn(err.message);
+            return;
+          }
+
+          throw err;
+        }
+
+        node.children = result.children;
+      }
+    );
   };
 
   return transformer;
