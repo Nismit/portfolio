@@ -52,7 +52,7 @@
     "@types/node": "18.17.5",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
-    "chromatic": "^6.19.9",
+    "chromatic": "^7.0.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
     "eslint-plugin-storybook": "^0.6.12",
