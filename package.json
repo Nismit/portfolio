@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Portfolio Development Environment",
   "scripts": {
     "dev": "next dev",
