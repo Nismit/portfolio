@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Portfolio Development Environment",
   "scripts": {
     "dev": "next dev",
@@ -53,8 +53,8 @@
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
     "chromatic": "^11.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-next": "^14.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.2.3",
     "eslint-plugin-storybook": "^0.8.0",
     "fast-glob": "^3.3.0",
     "storybook": "^8.0.0",
