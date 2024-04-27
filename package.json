@@ -55,7 +55,7 @@
     "chromatic": "^10.0.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "^14.0.0",
-    "eslint-plugin-storybook": "^0.6.12",
+    "eslint-plugin-storybook": "^0.8.0",
     "fast-glob": "^3.3.0",
     "storybook": "^8.0.0",
     "typescript": "5.3.3"
