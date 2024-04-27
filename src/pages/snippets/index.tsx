@@ -14,7 +14,6 @@ import { getAllPosts, Post } from "@/lib/api";
 
 const rehypeReactOptions: Options = {
   passNode: true,
-  // @ts-expect-error: the react types are missing.
   Fragment: production.Fragment,
   // @ts-expect-error: the react types are missing.
   jsx: production.jsx,
