@@ -1,11 +1,6 @@
-import type { FC } from "react";
-import type {
-  Margins,
-  AlignType,
-  TypographyComponent,
-  Variant,
-} from "./styledComponents";
-import { TypographyRoot } from "./styledComponents";
+import type { FC } from 'react';
+import type { AlignType, Margins, TypographyComponent, Variant } from './styledComponents';
+import { TypographyRoot } from './styledComponents';
 
 type Props = {
   component?: TypographyComponent;
@@ -18,8 +13,8 @@ type Props = {
 };
 
 const Typography: FC<Props> = ({
-  component = "span",
-  variant = "body",
+  component = 'span',
+  variant = 'body',
   align,
   margin,
   color,

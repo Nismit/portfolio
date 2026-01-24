@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Arrow } from ".";
+import styled from '@emotion/styled';
+import { Arrow } from '.';
 
 export const ExternalArrow = styled(Arrow)<{ $isSmall?: boolean }>`
   transform: rotate(-45deg);

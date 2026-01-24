@@ -1,7 +1,7 @@
-import type { FC } from "react";
-import { Twitter, GitHub, LinkedIn, Email } from "@/components/Icons";
-import SocialData from "@/data/social.json";
-import { Container, Link } from "./styledComponents";
+import type { FC } from 'react';
+import { Email, GitHub, LinkedIn, Twitter } from '@/components/Icons';
+import SocialData from '@/data/social.json';
+import { Container, Link } from './styledComponents';
 
 const IconMapping: Record<string, JSX.Element> = {
   Twitter: <Twitter />,

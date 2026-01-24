@@ -1,7 +1,7 @@
-import type { FC } from "react";
-import Head from "../Head";
-import Header from "../Header";
-import { Container } from "./styledComponents";
+import type { FC } from 'react';
+import Head from '../Head';
+import Header from '../Header';
+import { Container } from './styledComponents';
 
 type Props = {
   children: React.ReactElement;

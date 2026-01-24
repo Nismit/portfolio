@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import Link from "next/link";
-import { Arrow } from "@/components/Icons/";
-import { ExternalArrow } from "@/components/Icons/styledComponents";
-import Typography from "@/components/Typography";
-import { LinkItem, LinkTextContainer } from "./styledComponents";
+import Link from 'next/link';
+import type { FC } from 'react';
+import { Arrow } from '@/components/Icons/';
+import { ExternalArrow } from '@/components/Icons/styledComponents';
+import Typography from '@/components/Typography';
+import { LinkItem, LinkTextContainer } from './styledComponents';
 
 type Props = {
   title: string;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const ListItem: FC<Props> = ({ title, description, href }) => {
-  const isExternal = href.includes("https://");
+  const isExternal = href.includes('https://');
   return (
     <Link href={href} passHref legacyBehavior>
       <LinkItem>

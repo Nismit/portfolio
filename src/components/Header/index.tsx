@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { useState } from "react";
-import type { FC } from "react";
-import { Logo } from "@/components/Icons";
-import Typography from "@/components/Typography";
-import Shortcut from "@/components/Shortcut";
-import CommandMenu from "@/components/Command";
-import { _Header, Commands, TextButton } from "./styledComponents";
+import Link from 'next/link';
+import type { FC } from 'react';
+import { useState } from 'react';
+import CommandMenu from '@/components/Command';
+import { Logo } from '@/components/Icons';
+import Shortcut from '@/components/Shortcut';
+import Typography from '@/components/Typography';
+import { _Header, Commands, TextButton } from './styledComponents';
 
 const HeaderMenu: FC = () => {
   const [open, setOpen] = useState(false);

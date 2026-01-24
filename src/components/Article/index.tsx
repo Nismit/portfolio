@@ -1,8 +1,8 @@
-import type { FC, ReactNode } from "react";
-import Link from "next/link";
-import Typography from "@/components/Typography";
-import { Post } from "@/lib/api";
-import { _Article, CategoryLink } from "./styledComponents";
+import Link from 'next/link';
+import type { FC, ReactNode } from 'react';
+import Typography from '@/components/Typography';
+import type { Post } from '@/lib/api';
+import { _Article, CategoryLink } from './styledComponents';
 
 type Props = {
   post: Post;
@@ -12,7 +12,7 @@ type Props = {
 const Article: FC<Props> = ({ post, children }) => {
   return (
     <_Article>
-      <Typography variant="title" component="h2" margin={[0, 0, "1.5rem", 0]}>
+      <Typography variant="title" component="h2" margin={[0, 0, '1.5rem', 0]}>
         {post.title}
       </Typography>
       {children}

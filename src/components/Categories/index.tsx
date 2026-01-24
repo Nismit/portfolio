@@ -1,7 +1,7 @@
-import type { FC } from "react";
-import Link from "next/link";
-import Typography from "@/components/Typography";
-import { Container, CategoryList } from "./styledComponents";
+import Link from 'next/link';
+import type { FC } from 'react';
+import Typography from '@/components/Typography';
+import { CategoryList, Container } from './styledComponents';
 
 type Props = {
   categories: string[];

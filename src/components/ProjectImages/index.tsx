@@ -1,6 +1,6 @@
-import type { FC } from "react";
-import Image from "next/image";
-import { Container } from "./styledComponents";
+import Image from 'next/image';
+import type { FC } from 'react';
+import { Container } from './styledComponents';
 
 type Props = {
   images: string[];
@@ -18,7 +18,7 @@ const ProjectImages: FC<Props> = ({ images }) => {
             src={image}
             width={1100}
             height={598}
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: '100%', height: 'auto' }}
           />
         ))}
     </Container>

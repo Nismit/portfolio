@@ -1,8 +1,8 @@
-import type { ReactElement } from "react";
-import type { NextPageWithLayout } from "@/pages/_app";
-import Layout from "@/components/Layout";
-import Typography from "@/components/Typography";
-import ListItem from "@/components/ListItem";
+import type { ReactElement } from 'react';
+import Layout from '@/components/Layout';
+import ListItem from '@/components/ListItem';
+import Typography from '@/components/Typography';
+import type { NextPageWithLayout } from '@/pages/_app';
 
 const Page: NextPageWithLayout = () => {
   return (
@@ -15,7 +15,7 @@ const Page: NextPageWithLayout = () => {
           variant="subHeadline"
           component="h2"
           color="rgba(var(--secondary), 1.0)"
-          margin={["4rem", 0, "1rem", 0]}
+          margin={['4rem', 0, '1rem', 0]}
         >
           Active
         </Typography>
@@ -49,7 +49,7 @@ const Page: NextPageWithLayout = () => {
           variant="subHeadline"
           component="h2"
           color="rgba(var(--secondary), 1.0)"
-          margin={["3rem", 0, "1rem", 0]}
+          margin={['3rem', 0, '1rem', 0]}
         >
           Archived Projects
         </Typography>

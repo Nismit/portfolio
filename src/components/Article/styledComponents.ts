@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const _Article = styled.article`
   margin-bottom: 3rem;

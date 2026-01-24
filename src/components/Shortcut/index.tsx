@@ -1,5 +1,5 @@
-import type { FC } from "react";
-import { Command } from "./styledComponents";
+import type { FC } from 'react';
+import { Command } from './styledComponents';
 
 type Props = {
   content: string;

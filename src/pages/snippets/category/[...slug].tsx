@@ -1,18 +1,18 @@
-import type { ReactElement } from "react";
-import React, { useId } from "react";
-import * as production from "react/jsx-runtime";
-import { GetStaticProps } from "next";
-import { unified } from "unified";
-import rehypeParse from "rehype-parse";
-import rehypeReact, { Options } from "rehype-react";
-import type { NextPageWithLayout } from "@/pages/_app";
-import Layout from "@/components/Layout";
-import Typography from "@/components/Typography";
-import Article from "@/components/Article";
-import { markdownToHtml } from "@/lib/transpiler";
-import { getPostsFromCategory, getAllCategories, Post } from "@/lib/api";
+import type { GetStaticProps } from 'next';
+import type { ReactElement } from 'react';
+import React, { useId } from 'react';
+import * as production from 'react/jsx-runtime';
+import rehypeParse from 'rehype-parse';
+import rehypeReact, { type Options } from 'rehype-react';
+import { unified } from 'unified';
+import Article from '@/components/Article';
+import Layout from '@/components/Layout';
+import Typography from '@/components/Typography';
+import { getAllCategories, getPostsFromCategory, type Post } from '@/lib/api';
+import { markdownToHtml } from '@/lib/transpiler';
+import type { NextPageWithLayout } from '@/pages/_app';
 
-const SNIPPETS_CATEGORY_PATH_PREFIX = "/snippets/category/";
+const SNIPPETS_CATEGORY_PATH_PREFIX = '/snippets/category/';
 
 const rehypeReactOptions: Options = {
   passNode: true,
@@ -37,10 +37,10 @@ const Page: NextPageWithLayout<Props> = ({ tag, posts }) => {
   const postId = useId();
   return (
     <>
-      <Typography variant="headline" component="h1" margin={[0, 0, "4rem", 0]}>
+      <Typography variant="headline" component="h1" margin={[0, 0, '4rem', 0]}>
         Snippets
       </Typography>
-      <Typography variant="body" component="p" margin={[0, 0, "2rem", 0]}>
+      <Typography variant="body" component="p" margin={[0, 0, '2rem', 0]}>
         Tag: {tag}
       </Typography>
       {posts.map((post) => (
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<{
   posts: Post[];
 }> = async (context) => {
   const slug = context.params?.slug;
-  const tag = slug && typeof slug !== "string" ? slug?.[0] : "";
+  const tag = slug && typeof slug !== 'string' ? slug?.[0] : '';
 
   const posts = await getPostsFromCategory(tag);
   const parsedPosts = await Promise.all(

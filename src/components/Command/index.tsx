@@ -1,12 +1,12 @@
-import type { FC, Dispatch, SetStateAction, ReactElement } from "react";
-import { useEffect, useCallback } from "react";
-import { Command } from "cmdk";
-import { useRouter } from "next/router";
-import Typography from "@/components/Typography";
-import Shortcut from "@/components/Shortcut";
-import { Twitter, GitHub, LinkedIn, Email } from "@/components/Icons";
-import { ExternalArrow } from "@/components/Icons/styledComponents";
-import { IconContainer } from "./styledComponents";
+import { Command } from 'cmdk';
+import { useRouter } from 'next/router';
+import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
+import { useCallback, useEffect } from 'react';
+import { Email, GitHub, LinkedIn, Twitter } from '@/components/Icons';
+import { ExternalArrow } from '@/components/Icons/styledComponents';
+import Shortcut from '@/components/Shortcut';
+import Typography from '@/components/Typography';
+import { IconContainer } from './styledComponents';
 
 const CommandItem = ({
   content,
@@ -41,7 +41,7 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
 
   const keyDown = useCallback(
     (e: KeyboardEvent) => {
-      if ((e.key === "k" && e.metaKey) || (e.key === "/" && e.metaKey)) {
+      if ((e.key === 'k' && e.metaKey) || (e.key === '/' && e.metaKey)) {
         setOpen((open) => !open);
       }
     },
@@ -49,8 +49,8 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", keyDown);
-    return () => document.removeEventListener("keydown", keyDown);
+    document.addEventListener('keydown', keyDown);
+    return () => document.removeEventListener('keydown', keyDown);
   }, [keyDown]);
 
   return (
@@ -68,7 +68,7 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
           <Command.Item
             onSelect={() => {
               setOpen(false);
-              router.push("/");
+              router.push('/');
             }}
           >
             <CommandItem content="About" command="A" />
@@ -76,7 +76,7 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
           <Command.Item
             onSelect={() => {
               setOpen(false);
-              router.push("/projects");
+              router.push('/projects');
             }}
           >
             <CommandItem content="Projects" command="P" />
@@ -84,7 +84,7 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
           <Command.Item
             onSelect={() => {
               setOpen(false);
-              router.push("/uses");
+              router.push('/uses');
             }}
           >
             <CommandItem content="Uses" command="U" />
@@ -92,7 +92,7 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
           <Command.Item
             onSelect={() => {
               setOpen(false);
-              router.push("/snippets");
+              router.push('/snippets');
             }}
           >
             <CommandItem content="Snippets" command="S" />
@@ -101,41 +101,25 @@ const CommandMenu: FC<Props> = ({ open, setOpen }) => {
 
         <Command.Group heading="Social">
           <Command.Item
-            onSelect={() =>
-              window.open("https://twitter.com/nismit_", "_blank", "noopener")
-            }
+            onSelect={() => window.open('https://twitter.com/nismit_', '_blank', 'noopener')}
           >
             <CommandItem content="Twitter" isExternalLink icon={<Twitter />} />
           </Command.Item>
           <Command.Item
-            onSelect={() =>
-              window.open("https://github.com/Nismit", "_blank", "noopener")
-            }
+            onSelect={() => window.open('https://github.com/Nismit', '_blank', 'noopener')}
           >
             <CommandItem content="GitHub" isExternalLink icon={<GitHub />} />
           </Command.Item>
           <Command.Item
             onSelect={() =>
-              window.open(
-                "https://www.linkedin.com/in/nismit/",
-                "_blank",
-                "noopener"
-              )
+              window.open('https://www.linkedin.com/in/nismit/', '_blank', 'noopener')
             }
           >
-            <CommandItem
-              content="LinkedIn"
-              isExternalLink
-              icon={<LinkedIn />}
-            />
+            <CommandItem content="LinkedIn" isExternalLink icon={<LinkedIn />} />
           </Command.Item>
           <Command.Item
             onSelect={() =>
-              window.open(
-                "mailto:nismit.dev@gmail.com?subject=Hello%20Mitch",
-                "_blank",
-                "noopener"
-              )
+              window.open('mailto:nismit.dev@gmail.com?subject=Hello%20Mitch', '_blank', 'noopener')
             }
           >
             <CommandItem content="Email" isExternalLink icon={<Email />} />

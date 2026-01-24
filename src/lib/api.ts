@@ -1,7 +1,7 @@
-import fs from "fs";
-import fg from "fast-glob";
-import { join } from "path";
-import matter from "gray-matter";
+import fg from 'fast-glob';
+import fs from 'fs';
+import matter from 'gray-matter';
+import { join } from 'path';
 
 export type Post = {
   slug: string;
@@ -12,13 +12,13 @@ export type Post = {
 };
 
 export async function getAllSnippetsPath() {
-  return await fg("src/data/snippets/**/*.md");
+  return await fg('src/data/snippets/**/*.md');
 }
 
 export function getPostBySlug(slug: string): Post {
-  const realSlug = slug.replace(/src\/data\//, "").replace(/\.md$/, "");
+  const realSlug = slug.replace(/src\/data\//, '').replace(/\.md$/, '');
   const filePath = join(process.cwd(), `src/data/${realSlug}.md`);
-  const fileContents = fs.readFileSync(filePath, "utf8");
+  const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
 
   return {
@@ -34,14 +34,12 @@ export async function getAllPosts() {
   const allPostPaths = await getAllSnippetsPath();
   const posts = allPostPaths
     .map((path) => getPostBySlug(path))
-    .sort((a, b) =>
-      new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1
-    );
+    .sort((a, b) => (new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1));
   return [...posts];
 }
 
 export function getTagsFromPosts(slug: string) {
-  const fileContents = fs.readFileSync(slug, "utf8");
+  const fileContents = fs.readFileSync(slug, 'utf8');
   const { data } = matter(fileContents);
   return data?.category;
 }
@@ -51,9 +49,7 @@ export async function getAllCategories() {
   const allCategories: Array<string | undefined> = allPostPaths.map((slug) =>
     getTagsFromPosts(slug)
   );
-  const filter = allCategories.filter(
-    (category): category is string => !!category
-  );
+  const filter = allCategories.filter((category): category is string => !!category);
   const categories = [...new Set(filter.flat())];
   return categories;
 }
@@ -62,9 +58,7 @@ export async function getPostsFromCategory(category: string) {
   const allPostPaths = await getAllSnippetsPath();
   const posts = allPostPaths
     .map((path) => getPostBySlug(path))
-    .sort((a, b) =>
-      new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1
-    );
+    .sort((a, b) => (new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1));
   const filteredPosts = posts.filter((post) => post.category === category);
   return [...filteredPosts];
 }
