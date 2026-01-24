@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import React, { useId } from 'react';
+import { useId } from 'react';
 import * as production from 'react/jsx-runtime';
 import rehypeParse from 'rehype-parse';
 import rehypeReact, { type Options } from 'rehype-react';

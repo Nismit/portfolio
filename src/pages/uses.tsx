@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import type { ReactElement } from 'react';
 import Layout from '@/components/Layout';
 import Typography from '@/components/Typography';
