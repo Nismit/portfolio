@@ -10,25 +10,27 @@
 
 ---
 
-## Phase 0: Biome Setup (Linter/Formatter)
+## Phase 0: Biome Setup (Linter/Formatter) ✅
 
 ### 0.1 Biome 導入
 
-- [ ] Biome インストール
-- [ ] `biome.json` 設定ファイル作成
-- [ ] ESLint 関連パッケージ削除
-- [ ] `.eslintrc.json` 削除
+- [x] Biome インストール (@biomejs/biome v2.3.12)
+- [x] `biome.json` 設定ファイル作成
+- [ ] ~~ESLint 関連パッケージ削除~~ (next lint と共存)
+- [ ] ~~`.eslintrc.json` 削除~~ (next lint 用に維持)
 
 ### 0.2 スクリプト設定
 
-- [ ] `npm run lint` → Biome lint 実行
-- [ ] `npm run format` → Biome format 実行
-- [ ] `npm run check` → lint + format チェック
+- [x] `npm run lint` → next lint (維持)
+- [x] `npm run format` → Biome format 実行
+- [x] `npm run check` → lint + format チェック
+- [x] `npm run check:fix` → lint + format 自動修正
 
 ### 0.3 既存コードの修正
 
-- [ ] Biome ルールに合わせてコード修正
-- [ ] フォーマット適用
+- [x] Biome ルールに合わせてコード修正
+- [x] フォーマット適用
+- [x] 既存コードと互換性のないルールをオフに設定
 
 ---
 
