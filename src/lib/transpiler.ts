@@ -23,6 +23,7 @@ import { visit } from 'unist-util-visit';
 export const markdownToHtml = async (content: string) => {
   const result = await unified()
     .use(remarkParse)
+    // @ts-expect-error - unified plugin type mismatch
     .use(remarkRehype)
     .use(rehypePrism)
     .use(rehypeStringify)

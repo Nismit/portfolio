@@ -61,5 +61,5 @@ export const TypographyRoot = styled.span<{
     return getMargins($margin);
   }};
 
-  ${({ $variant }) => $variant && VariantMapping[$variant]}
+  ${({ $variant }) => $variant !== undefined && VariantMapping[$variant as Variant]}
 `;
