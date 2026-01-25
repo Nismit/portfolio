@@ -34,23 +34,23 @@
 
 ## Phase 2: Testing with Vitest
 
-### 2.1 Vitest セットアップ
+### 2.1 Vitest セットアップ ✅
 
-- [ ] Vitest インストール・設定
-- [ ] React Testing Library インストール
-- [ ] テスト用設定ファイル作成（`vitest.config.ts`）
-- [ ] テストスクリプト追加（`package.json`）
+- [x] Vitest インストール・設定
+- [x] React Testing Library インストール
+- [x] テスト用設定ファイル作成（`vitest.config.ts`）
+- [x] テストスクリプト追加（`package.json`）
 
-### 2.2 ユーティリティ関数テスト
+### 2.2 ユーティリティ関数テスト ✅
 
-- [ ] `lib/api.ts` - データ取得関数
-  - [ ] `getAllSnippetsPath()`
-  - [ ] `getPostBySlug()`
-  - [ ] `getAllPosts()`
-  - [ ] `getAllCategories()`
-  - [ ] `getPostsFromCategory()`
-- [ ] `lib/transpiler.ts` - Markdown変換
-- [ ] `lib/gtag.ts` - Analytics関数
+- [x] `lib/api.ts` - データ取得関数
+  - [x] `getAllSnippetsPath()`
+  - [x] `getPostBySlug()`
+  - [x] `getAllPosts()`
+  - [x] `getAllCategories()`
+  - [x] `getPostsFromCategory()`
+- [x] `lib/transpiler.ts` - Markdown変換
+- [x] `lib/gtag.ts` - Analytics関数
 
 ### 2.3 コンポーネントテスト
 
