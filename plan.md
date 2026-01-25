@@ -21,13 +21,14 @@
 
 ---
 
-## Phase 1: Storybook 廃止
+## Phase 1: Storybook 廃止 ✅
 
-- [ ] Storybook 関連パッケージ削除
-- [ ] `.storybook/` ディレクトリ削除
-- [ ] `*.stories.ts` / `*.stories.tsx` ファイル削除
-- [ ] Chromatic 関連削除
-- [ ] package.json スクリプト削除
+- [x] Storybook 関連パッケージ削除
+- [x] `.storybook/` ディレクトリ削除
+- [x] `*.stories.ts` / `*.stories.tsx` ファイル削除
+- [x] Chromatic 関連削除
+- [x] package.json スクリプト削除
+- [x] `--legacy-peer-deps` 不要に（脆弱性 0）
 
 ---
 
