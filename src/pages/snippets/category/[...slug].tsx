@@ -17,9 +17,7 @@ const SNIPPETS_CATEGORY_PATH_PREFIX = '/snippets/category/';
 const rehypeReactOptions: Options = {
   passNode: true,
   Fragment: production.Fragment,
-  // @ts-expect-error: the react types are missing.
   jsx: production.jsx,
-  // @ts-expect-error: the react types are missing.
   jsxs: production.jsxs,
   components: {},
 };

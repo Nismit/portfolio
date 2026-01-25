@@ -7,10 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "chromatic --exit-zero-on-changes --project-token=CHROMATIC_PROJECT_TOKEN"
+    "format": "biome format --write"
   },
   "repository": {
     "type": "git",
@@ -46,17 +43,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.12",
-    "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-links": "^8.0.0",
-    "@storybook/nextjs": "^8.0.0",
-    "@storybook/react": "^8.0.0",
-    "@storybook/testing-library": "^0.2.0",
     "@types/node": "20.12.7",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
-    "chromatic": "^11.0.0",
     "fast-glob": "^3.3.0",
-    "storybook": "^8.0.0",
     "typescript": "5.4.5"
   }
 }
