@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @font-face {
   font-family: 'PPNeueMontreal';
   src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
@@ -14,6 +16,31 @@
   font-family: 'PPNeueMontreal';
   src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
   font-weight: 700;
+}
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Custom Colors */
+  --color-background: rgb(11 16 26);
+  --color-primary: rgb(243 244 246);
+  --color-secondary: rgb(152 161 179);
+  --color-primary-fade: rgb(102 104 109);
+  --color-tertiary: rgb(62 70 89);
+  --color-cmdk-bg: rgb(19 26 38);
+  --color-cmdk-selected: rgb(32 44 64);
+
+  /* Custom Font Family */
+  --font-sans: "PPNeueMontreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Custom Font Sizes */
+  --text-headline: 2.5rem;
+  --text-subheadline: 1.2rem;
+  --text-title: 1rem;
+  --text-body: 1rem;
+  --text-description: 0.85rem;
 }
 
 :root {
