@@ -32,6 +32,31 @@ export const Arrow = ({ className }: { className?: string }) => (
   </svg>
 );
 
+export const ExternalArrow = ({ isSmall }: { isSmall?: boolean }) => (
+  <svg
+    width={isSmall ? 12 : 16}
+    height={isSmall ? 12 : 15}
+    viewBox="0 0 16 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="-rotate-45"
+  >
+    <g clipPath="url(#clip0_28_132_ext)">
+      <path
+        d="M8.53356 1.07144L14.9336 7.50001L8.53356 13.9286M14.0447 7.50001H1.06689"
+        stroke="#F3F4F6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_28_132_ext">
+        <rect width="16" height="15" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 export const Twitter = () => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path

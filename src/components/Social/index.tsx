@@ -1,9 +1,6 @@
-'use client';
-
 import type { FC, ReactElement } from 'react';
 import { Email, GitHub, LinkedIn, Twitter } from '@/components/Icons';
 import SocialData from '@/data/social.json';
-import { Container, Link } from './styledComponents';
 
 const IconMapping: Record<string, ReactElement> = {
   Twitter: <Twitter />,
@@ -14,19 +11,20 @@ const IconMapping: Record<string, ReactElement> = {
 
 const Social: FC = () => {
   return (
-    <Container>
+    <div className="flex gap-4 mt-12 pt-4 border-t border-primary-fade/80">
       {SocialData.social.map((data, index: number) => (
-        <Link
+        <a
           title={data.title}
           href={data.link}
           key={`${index}-${data.title}`}
           target="_blank"
           rel="noopener noreferrer"
+          className="text-primary hover:text-primary/70 no-underline"
         >
           {IconMapping[data.title]}
-        </Link>
+        </a>
       ))}
-    </Container>
+    </div>
   );
 };
 

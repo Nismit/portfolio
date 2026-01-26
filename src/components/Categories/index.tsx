@@ -1,9 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import type { FC } from 'react';
 import Typography from '@/components/Typography';
-import { CategoryList, Container } from './styledComponents';
 
 type Props = {
   categories: string[];
@@ -11,10 +8,10 @@ type Props = {
 
 const Categories: FC<Props> = ({ categories }) => {
   return (
-    <Container>
-      <CategoryList>
+    <div className="relative">
+      <ul className="p-0 m-0 flex flex-col gap-2 list-none fixed ml-[-150px]">
         {categories.map((category, index) => (
-          <li key={`${index}-${category}`}>
+          <li key={`${index}-${category}`} className="capitalize">
             <Link href={`/snippets/category/${category}`}>
               <Typography variant="body" component="span">
                 {category}
@@ -22,8 +19,8 @@ const Categories: FC<Props> = ({ categories }) => {
             </Link>
           </li>
         ))}
-      </CategoryList>
-    </Container>
+      </ul>
+    </div>
   );
 };
 

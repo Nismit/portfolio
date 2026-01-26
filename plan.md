@@ -99,20 +99,20 @@
 - [x] カスタムカラー設定（既存のCSS変数を移行）
 - [x] カスタムフォント設定（PPNeueMontreal）
 
-### 4.2 コンポーネント移行
+### 4.2 コンポーネント移行 ✅
 
-- [ ] Layout / Container
-- [ ] Header
-- [ ] Typography
-- [ ] Command
-- [ ] Article
-- [ ] Categories
-- [ ] ListItem
-- [ ] ProjectInformation
-- [ ] ProjectImages
-- [ ] Social
-- [ ] Icons
-- [ ] Shortcut
+- [x] Layout / Container
+- [x] Header
+- [x] Typography
+- [x] Command
+- [x] Article
+- [x] Categories
+- [x] ListItem
+- [x] ProjectInformation
+- [x] ProjectImages
+- [x] Social
+- [x] Icons
+- [x] Shortcut
 
 ### 4.3 クリーンアップ
 

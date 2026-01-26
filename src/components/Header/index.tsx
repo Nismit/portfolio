@@ -7,25 +7,27 @@ import CommandMenu from '@/components/Command';
 import { Logo } from '@/components/Icons';
 import Shortcut from '@/components/Shortcut';
 import Typography from '@/components/Typography';
-import { _Header, Commands, TextButton } from './styledComponents';
 
 const HeaderMenu: FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <div>
-      <TextButton onClick={() => setOpen(true)}>
+      <button
+        onClick={() => setOpen(true)}
+        className="all-unset cursor-pointer underline underline-offset-[0.3rem] transition-colors duration-300 hover:text-primary/70 hover:no-underline"
+      >
         <Typography variant="body" component="span">
           Menu
         </Typography>
-      </TextButton>
+      </button>
       <Typography variant="body" component="span" margin={[0, 5]}>
         &nbsp;|&nbsp;
       </Typography>
-      <Commands>
+      <div className="inline-flex gap-1">
         <Shortcut content="⌘" />
         <Shortcut content="/" />
-      </Commands>
+      </div>
       <CommandMenu open={open} setOpen={setOpen} />
     </div>
   );
@@ -33,12 +35,12 @@ const HeaderMenu: FC = () => {
 
 const Header: FC = () => {
   return (
-    <_Header>
-      <Link href="/" title="Home" className="home">
+    <header className="flex justify-between my-16 mx-auto max-w-[1024px] px-4">
+      <Link href="/" title="Home" className="[&>svg]:text-primary hover:[&>svg]:text-primary/50 no-underline">
         <Logo />
       </Link>
       <HeaderMenu />
-    </_Header>
+    </header>
   );
 };
 

@@ -4,11 +4,9 @@ import { Command } from 'cmdk';
 import { useRouter } from 'next/navigation';
 import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 import { useCallback, useEffect } from 'react';
-import { Email, GitHub, LinkedIn, Twitter } from '@/components/Icons';
-import { ExternalArrow } from '@/components/Icons/styledComponents';
+import { Email, ExternalArrow, GitHub, LinkedIn, Twitter } from '@/components/Icons';
 import Shortcut from '@/components/Shortcut';
 import Typography from '@/components/Typography';
-import { IconContainer } from './styledComponents';
 
 const CommandItem = ({
   content,
@@ -22,14 +20,14 @@ const CommandItem = ({
   icon?: ReactElement;
 }) => (
   <>
-    <IconContainer>
+    <div className="flex items-center justify-between gap-4">
       {icon}
       <Typography variant="body" component="span">
         {content}
       </Typography>
-    </IconContainer>
+    </div>
     {command && <Shortcut content={command} />}
-    {isExternalLink && <ExternalArrow $isSmall />}
+    {isExternalLink && <ExternalArrow isSmall />}
   </>
 );
 

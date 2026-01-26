@@ -1,8 +1,5 @@
-'use client';
-
 import type { FC } from 'react';
 import Typography from '@/components/Typography';
-import { Container } from './styledComponents';
 
 type Props = {
   client: string;
@@ -12,7 +9,7 @@ type Props = {
 
 const ProjectInformation: FC<Props> = ({ client, stack, role = 'Front-end' }) => {
   return (
-    <Container>
+    <div className="flex gap-6 my-16">
       <div>
         <Typography variant="title" component="p" margin={[0, 0, '0.3rem', 0]}>
           Client
@@ -37,7 +34,7 @@ const ProjectInformation: FC<Props> = ({ client, stack, role = 'Front-end' }) =>
           {role}
         </Typography>
       </div>
-    </Container>
+    </div>
   );
 };
 
