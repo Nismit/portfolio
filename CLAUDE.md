@@ -2,119 +2,116 @@
 
 ## Project Overview
 
-Next.js 15 App Router + Tailwind CSS + TypeScript のポートフォリオサイト。
-静的サイト生成（SSG）で出力する。
+Portfolio site built with Next.js 16 App Router + Tailwind CSS v4 + TypeScript.
+Output as Static Site Generation (SSG).
 
-参照: @overview.md, @plan.md
+Reference: @overview.md, @plan.md
 
 ## Commands
 
 ```bash
 # Development
-npm run dev          # 開発サーバー起動
+npm run dev          # Start development server
 
 # Lint & Format
-npm run lint         # Biome lint実行
-npm run format       # Biome format実行
-npm run check        # lint + format チェック
+npm run lint         # Run Biome lint
+npm run format       # Run Biome format
 
 # Build
-npm run build        # 本番ビルド
-npm run start        # 本番サーバー起動
+npm run build        # Production build (SSG)
+npm run start        # Start production server
 
 # Test
-npm run test         # Vitest実行
-npm run test:watch   # Vitest watchモード
-
-# Storybook
-npm run storybook    # Storybook開発
+npm run test         # Run Vitest
+npm run test:watch   # Run Vitest in watch mode
 ```
 
 ## Code Style
 
 ### TypeScript
-- `import type { X }` で型のみのインポートを分離
-- 型は明示的に定義、`any` は使用禁止
-- `interface` より `type` を優先
+- Use `import type { X }` to separate type-only imports
+- Define types explicitly, never use `any`
+- Prefer `type` over `interface`
 
-### React / Next.js 15 App Router
+### React / Next.js 16 App Router
 
-**Server Components（デフォルト）:**
-- データ取得、DB接続、機密情報処理に使用
-- `async/await` で直接データフェッチ可能
-- クライアントJSバンドルに含まれない
+**Server Components (default):**
+- Use for data fetching, DB connections, handling sensitive data
+- Can fetch data directly with `async/await`
+- Not included in client JS bundle
 
 **Client Components:**
-- `'use client'` ディレクティブを先頭に記述
-- useState, useEffect, イベントハンドラーが必要な場合のみ
-- localStorage等ブラウザAPIアクセス時
+- Add `'use client'` directive at the top
+- Only when useState, useEffect, or event handlers are needed
+- When accessing browser APIs like localStorage
 
-**重要: Next.js 15の変更点:**
-- `params` と `searchParams` は `Promise` になった
-- 使用時は `const { slug } = await params` のように await する
+**Important: Next.js 15+ changes:**
+- `params` and `searchParams` are now `Promise`
+- Must use `const { slug } = await params` to access values
 
-**ディレクトリ構造:**
+**Directory Structure:**
 ```
 src/
 ├── app/                    # App Router
-│   ├── layout.tsx          # Root Layout（必須）
+│   ├── layout.tsx          # Root Layout (required)
 │   ├── page.tsx            # Home page
 │   ├── [route]/
 │   │   └── page.tsx
-│   └── _components/        # Route専用コンポーネント
-├── components/             # 共有コンポーネント
+│   └── _components/        # Route-specific components
+├── components/             # Shared components
 │   └── [Name]/index.tsx
-└── lib/                    # ユーティリティ
+└── lib/                    # Utilities
 ```
 
-**ファイル規約:**
-- `layout.tsx` - 共有レイアウト（状態保持）
-- `page.tsx` - ページコンポーネント
-- `loading.tsx` - ローディングUI
-- `error.tsx` - エラーバウンダリ（`'use client'`必須）
-- `not-found.tsx` - 404ページ
+**File Conventions:**
+- `layout.tsx` - Shared layout (preserves state)
+- `page.tsx` - Page component
+- `loading.tsx` - Loading UI
+- `error.tsx` - Error boundary (`'use client'` required)
+- `not-found.tsx` - 404 page
 
-### Tailwind CSS
-- インラインで `className` に記述
-- 長くなる場合は変数に分離（例: `const containerStyles = "..."` ）
-- カスタムカラーは `tailwind.config.ts` の theme.extend で定義
+### Tailwind CSS v4
+- Write styles inline in `className`
+- Extract to variables when too long (e.g., `const containerStyles = "..."`)
+- Custom colors defined in `@theme` block in `src/styles.css`
+- No `tailwind.config.ts` file - configuration is in CSS
 
 ### File Naming
-- コンポーネント: PascalCase (`Button.tsx`)
-- ユーティリティ: camelCase (`formatDate.ts`)
-- 定数: UPPER_SNAKE_CASE (`const MAX_COUNT = 10`)
+- Components: PascalCase (`Button.tsx`)
+- Utilities: camelCase (`formatDate.ts`)
+- Constants: UPPER_SNAKE_CASE (`const MAX_COUNT = 10`)
 
 ## Static Generation (SSG)
 
-- 動的ルートは `generateStaticParams` で事前生成
-- `output: 'export'` で完全静的出力
-- Server-only機能（cookies, headers at runtime）は使用不可
+- Dynamic routes pre-generated with `generateStaticParams`
+- Full static output with `output: 'export'`
+- Server-only features (cookies, headers at runtime) not available
 
 ## Testing
 
-- テストファイルは `*.test.ts` または `*.test.tsx`
-- コンポーネントテストは React Testing Library を使用
-- モックは最小限に、実際の動作をテスト
+- Test files: `*.test.ts` or `*.test.tsx`
+- Component tests use React Testing Library
+- Keep mocks minimal, test actual behavior
 
 ## Git
 
-### コミットルール
-- コミットメッセージは英語
-- Conventional Commits 形式: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
-- 作業ブランチ: `v5`
+### Commit Rules
+- Commit messages in English
+- Conventional Commits format: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
+- Working branch: `v5`
 
-### コミットタイミング
-- **Claudeが自動でコミット**する
-- 小さな変更でも動作確認できたらすぐコミット
-- 1コミット = 1つの理解可能な変更
+### Commit Timing
+- **Claude commits automatically**
+- Commit as soon as changes are verified working
+- 1 commit = 1 understandable change
 
-### コミット粒度の目安
-- ページ移行: 1ページ完了で1コミット
-- コンポーネント移行: 1コンポーネント完了で1コミット
-- 設定変更: 1つの設定完了で1コミット
-- リファクタリング: 1つの改善で1コミット
+### Commit Granularity Guidelines
+- Page migration: 1 commit per completed page
+- Component migration: 1 commit per completed component
+- Config changes: 1 commit per completed config
+- Refactoring: 1 commit per improvement
 
-### コミットメッセージ例
+### Commit Message Examples
 ```
 feat: add root layout for App Router
 feat: migrate about page to App Router
@@ -123,7 +120,7 @@ chore: setup Biome linter
 test: add tests for api utility functions
 ```
 
-### 禁止事項
-- 複数の無関係な変更を1コミットにまとめない
-- ビルドが通らない状態でコミットしない
-- WIP（作業中）コミットは避ける
+### Prohibited Actions
+- Do not combine unrelated changes in one commit
+- Do not commit when build is broken
+- Avoid WIP (work in progress) commits

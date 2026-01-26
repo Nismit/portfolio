@@ -2,9 +2,9 @@
 
 ## Project Info
 
-- **Version**: v4.2.1
+- **Version**: v5.0.0
 - **Type**: Static Site Generator (SSG)
-- **Framework**: Next.js 14.2.3
+- **Framework**: Next.js 16.1.4 (App Router)
 
 ---
 
@@ -13,16 +13,21 @@
 ```
 portfolio/
 ├── src/
-│   ├── components/          # React UI components
-│   ├── pages/               # Next.js pages (routing)
-│   ├── lib/                 # Utility functions & libraries
-│   ├── data/                # JSON & Markdown data
-│   ├── styles.css           # Global styles
-│   └── prism-night-owl.css  # Syntax highlighting theme
-├── public/                  # Static files (images, fonts, PDF)
-├── .storybook/              # Storybook configuration
-├── .github/                 # GitHub configuration
-└── node_modules/            # npm dependencies
+│   ├── app/                    # App Router pages
+│   │   ├── layout.tsx          # Root layout
+│   │   ├── page.tsx            # Home page
+│   │   ├── projects/           # Projects route
+│   │   ├── snippets/           # Snippets route
+│   │   ├── uses/               # Uses route
+│   │   └── _components/        # Route-specific components
+│   ├── components/             # Shared React components
+│   ├── lib/                    # Utility functions
+│   ├── data/                   # JSON & Markdown data
+│   ├── styles.css              # Global styles + Tailwind
+│   └── prism-night-owl.css     # Syntax highlighting theme
+├── public/                     # Static files (images, fonts, PDF)
+├── .github/                    # GitHub configuration
+└── node_modules/               # npm dependencies
 ```
 
 ---
@@ -33,15 +38,15 @@ portfolio/
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| Next.js | v14.2.3 | React framework |
-| React | v18.3.1 | UI library |
+| Next.js | v16.1.4 | React framework (App Router) |
+| React | v19.2.3 | UI library |
 | TypeScript | v5.4.5 | Type safety |
 
 ### Styling
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| Emotion | v11.11.1 | CSS-in-JS |
+| Tailwind CSS | v4.1.18 | Utility-first CSS |
 | CSS Variables | - | Color scheme management |
 
 ### Markdown Processing (for Snippets)
@@ -55,14 +60,14 @@ portfolio/
 | refractor | Syntax highlighting |
 | gray-matter | YAML frontmatter extraction |
 
-### UI & Development Tools
+### Development Tools
 
-| Technology | Purpose |
-|------------|---------|
-| cmdk | Command palette |
-| Storybook v8 | Component development |
-| ESLint | Code quality |
-| Chromatic | Visual testing |
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Biome | v2.3.12 | Linting & formatting |
+| Vitest | v4.0.18 | Unit & component testing |
+| React Testing Library | v16.3.2 | Component testing utilities |
+| cmdk | v1.0.0 | Command palette |
 
 ### Analytics
 
@@ -74,12 +79,12 @@ portfolio/
 
 | Path | File | Description |
 |------|------|-------------|
-| `/` | `pages/index.tsx` | About page - Self introduction |
-| `/projects` | `pages/projects/index.tsx` | Project list |
-| `/projects/[id]` | `pages/projects/[id].tsx` | Dynamic project detail page |
-| `/snippets` | `pages/snippets/index.tsx` | Snippet list (markdown) |
-| `/snippets/category/[...slug]` | `pages/snippets/category/[...slug].tsx` | Category-filtered snippets |
-| `/uses` | `pages/uses.tsx` | Uses page (hardware/software) |
+| `/` | `app/page.tsx` | About page - Self introduction |
+| `/projects` | `app/projects/page.tsx` | Project list |
+| `/projects/[id]` | `app/projects/[id]/page.tsx` | Dynamic project detail page |
+| `/snippets` | `app/snippets/page.tsx` | Snippet list (markdown) |
+| `/snippets/category/[...slug]` | `app/snippets/category/[...slug]/page.tsx` | Category-filtered snippets |
+| `/uses` | `app/uses/page.tsx` | Uses page (hardware/software) |
 
 ---
 
@@ -89,9 +94,7 @@ portfolio/
 
 | Component | Location | Purpose |
 |-----------|----------|---------|
-| Layout | `/src/components/Layout/` | Main layout wrapper |
-| Container | `/src/components/Layout/` | Grid-based content area |
-| Head | `/src/components/Head/` | Meta data management |
+| MainContainer | `/src/app/_components/` | Grid-based content area |
 | Header | `/src/components/Header/` | Navigation header |
 
 ### Typography
@@ -136,29 +139,36 @@ portfolio/
 
 ### CSS Strategy
 
-- **Emotion (CSS-in-JS)**: Scoped component styles
+- **Tailwind CSS v4**: Utility-first styling with `@theme` directive
 - **Global CSS**: `/src/styles.css`
 - **Color Scheme**: CSS variables (dark theme)
 
-### CSS Variables (Color Palette)
+### Tailwind v4 Theme (`src/styles.css`)
 
 ```css
---background: 11, 16, 26;        /* Deep navy background */
---primary: 243, 244, 246;        /* Light gray text */
---secondary: 152, 161, 179;      /* Gray text */
---primary-fade: 102, 104, 109;   /* Faded gray */
---tertiary: 62, 70, 89;          /* Dark gray */
+@theme {
+  --color-background: rgb(11 16 26);
+  --color-primary: rgb(243 244 246);
+  --color-secondary: rgb(152 161 179);
+  --color-primary-fade: rgb(102 104 109);
+  --color-tertiary: rgb(62 70 89);
+  --color-cmdk-bg: rgb(19 26 38);
+  --color-cmdk-selected: rgb(32 44 64);
+
+  --font-sans: "PPNeueMontreal", ...;
+
+  --text-headline: 2.5rem;
+  --text-subheadline: 1.2rem;
+  --text-title: 1rem;
+  --text-body: 1rem;
+  --text-description: 0.85rem;
+}
 ```
 
 ### Typography
 
 - **Font**: `PPNeueMontreal` (custom font)
-- **Sizes**:
-  - headline: 2.25rem (36px)
-  - subHeadline: 1.125rem (18px)
-  - body: 16px
-  - title: 1.125rem
-  - description: 16px
+- **Font Weights**: 400 (Regular), 500 (Medium), 700 (Bold)
 
 ### Layout Design
 
@@ -255,7 +265,8 @@ Markdown → (remark-parse) → Markdown AST
 
 ```javascript
 {
-  reactStrictMode: true
+  reactStrictMode: true,
+  output: "export"  // Static site generation
 }
 ```
 
@@ -272,38 +283,55 @@ NEXT_PUBLIC_GA_ID=G-YS3RFKVG58
 | Script | Command | Purpose |
 |--------|---------|---------|
 | dev | `next dev` | Development server |
-| build | `next build` | Production build |
+| build | `next build` | Production build (SSG) |
 | start | `next start` | Production server |
-| lint | `next lint` | ESLint execution |
-| storybook | `storybook dev` | Storybook development |
-| build-storybook | `storybook build` | Storybook production build |
-| chromatic | `chromatic --exit-zero-on-changes` | Visual testing |
+| lint | `biome check` | Biome linting |
+| format | `biome format --write` | Biome formatting |
+| test | `vitest run` | Run tests |
+| test:watch | `vitest` | Watch mode testing |
 
 ---
 
-## Pre-rendering Strategy
+## Static Generation Strategy
 
-- **getStaticProps**: Data fetching at build time
-- **getStaticPaths**: Dynamic route pre-generation
-  - Project details: Generated from `projects.json`
-  - Snippet categories: Generated from markdown files
+- **generateStaticParams**: Pre-generate dynamic routes at build time
+- **output: 'export'**: Full static HTML export
+- Server-only features (cookies, headers at runtime) are not available
 
 ---
 
 ## Analytics
 
 - **Google Analytics**: `gtag.js` pageview tracking
-- Route change monitoring via `routeChangeComplete` event in `_app.tsx`
+- Configured in root `layout.tsx` using Next.js `Script` component
 
 ---
 
 ## Key Files Summary
 
+### App Router
+
+```
+/src/app/
+├── layout.tsx              # Root layout (Header, Analytics)
+├── page.tsx                # Home / About
+├── projects/
+│   ├── page.tsx            # Project list
+│   └── [id]/page.tsx       # Project detail
+├── snippets/
+│   ├── page.tsx            # Snippet list
+│   └── category/
+│       └── [...slug]/page.tsx  # Category filter
+├── uses/
+│   └── page.tsx            # Uses page
+└── _components/
+    └── MainContainer.tsx   # Content wrapper
+```
+
 ### Components
 
 ```
 /src/components/
-├── Layout/
 ├── Header/
 ├── Typography/
 ├── Command/
@@ -314,25 +342,7 @@ NEXT_PUBLIC_GA_ID=G-YS3RFKVG58
 ├── Social/
 ├── ListItem/
 ├── Icons/
-├── Shortcut/
-└── Head/
-```
-
-### Pages
-
-```
-/src/pages/
-├── index.tsx           # About
-├── projects/
-│   ├── index.tsx       # Project list
-│   └── [id].tsx        # Project detail
-├── snippets/
-│   ├── index.tsx       # Snippet list
-│   └── category/
-│       └── [...slug].tsx  # Category filter
-├── uses.tsx            # Uses
-├── _app.tsx            # App wrapper
-└── _document.tsx       # Document customization
+└── Shortcut/
 ```
 
 ### Utilities
@@ -348,6 +358,6 @@ NEXT_PUBLIC_GA_ID=G-YS3RFKVG58
 
 ```
 /src/
-├── styles.css          # Global styles
+├── styles.css          # Global styles + Tailwind v4 theme
 └── prism-night-owl.css # Syntax highlighting
 ```
