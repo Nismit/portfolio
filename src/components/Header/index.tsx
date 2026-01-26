@@ -36,7 +36,7 @@ const HeaderMenu: FC = () => {
 
 const Header: FC = () => {
   return (
-    <header className="flex justify-between my-16 mx-auto max-w-[1024px] px-4">
+    <header className="flex justify-between mx-auto mt-16 mb-16 max-w-5xl px-4">
       <Link
         href="/"
         title="Home"

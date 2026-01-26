@@ -29,7 +29,7 @@ type Props = {
 };
 
 const variantClasses: Record<Variant, string> = {
-  headline: 'text-4xl leading-[43.2px] tracking-[1.2px]',
+  headline: 'text-4xl leading-[43.2px] tracking-[1.2px] font-bold',
   subHeadline: 'text-lg font-normal leading-8 tracking-[0.9px]',
   body: 'text-base font-normal leading-[25.8px] tracking-[0.9px]',
   title: 'text-lg font-medium',

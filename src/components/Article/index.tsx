@@ -15,17 +15,18 @@ const Article: FC<Props> = ({ post, children }) => {
         {post.title}
       </Typography>
       {children}
-      <Typography variant="body" component="p">
+      <Typography variant="body" component="p" margin={[0, 0, '1rem', 0]}>
         <Link
           href={`/snippets/category/${post.category}`}
           title={`Snippet Category of ${post.category}`}
+          className="text-primary transition-colors duration-300 ease-[cubic-bezier(0.1,1.06,0.87,0.71)] hover:text-primary/70"
         >
           <span className="inline-block py-0.5 px-5 bg-tertiary/80 rounded-3xl mt-4 before:content-['#']">
             {post.category}
           </span>
         </Link>
       </Typography>
-      <Typography variant="body" component="p" color="rgb(var(--tertiary))">
+      <Typography variant="body" component="p" className="text-primary-fade">
         Last Updated: {post.date}
       </Typography>
     </article>

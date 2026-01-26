@@ -13,14 +13,18 @@ export default function HomePage() {
         My portfolio site never get updated every time after I create it, so I want to make
         something functional and something useful.
       </Typography>
-      <Typography variant="body" component="p">
+      <Typography variant="body" component="p" margin={[0, 0, '1rem', 0]}>
         I am Michinobu Nishimoto, a front-end developer based in Vancouver. I had worked in several
         design agencies for several years. I currently work at AgentsOnly. I am interested in
         software engineering as well as creative coding and new ways of expressing the web using
         WebGL.
       </Typography>
 
-      <Typography variant="body" component="p">
+      <Typography
+        variant="body"
+        component="p"
+        className="text-primary underline underline-offset-[0.3rem] transition-colors duration-300 ease-[cubic-bezier(0.1,1.06,0.87,0.71)] hover:text-primary/70 hover:no-underline"
+      >
         <a href="/resume-v1.0.1.pdf" target="_blank" rel="noopener noreferrer">
           Resume
         </a>
@@ -35,7 +39,7 @@ export default function HomePage() {
         Spare Time/Personality
       </Typography>
 
-      <Typography variant="body" component="p">
+      <Typography variant="body" component="p" margin={[0, 0, '1rem', 0]}>
         I watch movies and dramas on Netflix and play video games like FPS, action genre on my PC on
         my days off or when I have time. I also love coffee ☕. I wish I had an espresso machine.
         (Not enough space in the kitchen)
