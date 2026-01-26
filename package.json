@@ -26,8 +26,6 @@
   },
   "homepage": "https://github.com/Nismit/portfolio#readme",
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "cmdk": "^1.0.0",
     "gray-matter": "^4.0.3",
     "hast-util-to-string": "^3.0.0",
