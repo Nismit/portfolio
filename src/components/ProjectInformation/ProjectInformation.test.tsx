@@ -4,13 +4,7 @@ import ProjectInformation from './index';
 
 describe('ProjectInformation', () => {
   it('renders client, stack, and role information', () => {
-    render(
-      <ProjectInformation
-        client="Test Client"
-        stack="React, TypeScript"
-        role="Full-stack"
-      />
-    );
+    render(<ProjectInformation client="Test Client" stack="React, TypeScript" role="Full-stack" />);
 
     expect(screen.getByText('Client')).toBeInTheDocument();
     expect(screen.getByText('Test Client')).toBeInTheDocument();
@@ -21,24 +15,13 @@ describe('ProjectInformation', () => {
   });
 
   it('uses default role when not provided', () => {
-    render(
-      <ProjectInformation
-        client="Another Client"
-        stack="Next.js"
-      />
-    );
+    render(<ProjectInformation client="Another Client" stack="Next.js" />);
 
     expect(screen.getByText('Front-end')).toBeInTheDocument();
   });
 
   it('renders all three sections', () => {
-    render(
-      <ProjectInformation
-        client="Acme Corp"
-        stack="Vue, Nuxt"
-        role="Designer"
-      />
-    );
+    render(<ProjectInformation client="Acme Corp" stack="Vue, Nuxt" role="Designer" />);
 
     // Check that all section labels exist
     expect(screen.getByText('Client')).toBeInTheDocument();

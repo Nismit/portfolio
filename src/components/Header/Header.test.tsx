@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import Header from './index';
 
-// Mock next/router for CommandMenu
-vi.mock('next/router', () => ({
+// Mock next/navigation for CommandMenu
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),
   }),

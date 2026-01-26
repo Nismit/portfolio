@@ -1,5 +1,7 @@
+'use client';
+
 import { Command } from 'cmdk';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 import { useCallback, useEffect } from 'react';
 import { Email, GitHub, LinkedIn, Twitter } from '@/components/Icons';

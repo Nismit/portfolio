@@ -6,7 +6,7 @@ import CommandMenu from './index';
 const mockPush = vi.fn();
 const mockWindowOpen = vi.fn();
 
-vi.mock('next/router', () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: mockPush,
   }),

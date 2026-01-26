@@ -1,10 +1,7 @@
-import type { ReactElement } from 'react';
-import Layout from '@/components/Layout';
 import Social from '@/components/Social';
 import Typography from '@/components/Typography';
-import type { NextPageWithLayout } from '@/pages/_app';
 
-const Page: NextPageWithLayout = () => {
+export default function HomePage() {
   return (
     <>
       <Typography variant="headline" component="h1" margin={[0, 0, '4rem', 0]}>
@@ -53,10 +50,4 @@ const Page: NextPageWithLayout = () => {
       <Social />
     </>
   );
-};
-
-Page.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
-export default Page;
+}

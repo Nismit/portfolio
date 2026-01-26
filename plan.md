@@ -65,29 +65,29 @@
 
 ---
 
-## Phase 3: App Router Migration
+## Phase 3: App Router Migration ✅
 
-### 3.1 App Router 構造への移行
+### 3.1 App Router 構造への移行 ✅
 
-- [ ] `src/app/` ディレクトリ作成
-- [ ] レイアウト構造の設計
-  - [ ] `app/layout.tsx` (Root Layout)
-  - [ ] 共通ヘッダー・フッター
-- [ ] ページ移行
-  - [ ] `/` → `app/page.tsx`
-  - [ ] `/projects` → `app/projects/page.tsx`
-  - [ ] `/projects/[id]` → `app/projects/[id]/page.tsx`
-  - [ ] `/snippets` → `app/snippets/page.tsx`
-  - [ ] `/snippets/category/[...slug]` → `app/snippets/category/[...slug]/page.tsx`
-  - [ ] `/uses` → `app/uses/page.tsx`
-- [ ] メタデータ管理の移行（Head → Metadata API）
-- [ ] 静的生成の設定（`generateStaticParams`）
+- [x] `src/app/` ディレクトリ作成
+- [x] レイアウト構造の設計
+  - [x] `app/layout.tsx` (Root Layout)
+  - [x] 共通ヘッダー・フッター
+- [x] ページ移行
+  - [x] `/` → `app/page.tsx`
+  - [x] `/projects` → `app/projects/page.tsx`
+  - [x] `/projects/[id]` → `app/projects/[id]/page.tsx`
+  - [x] `/snippets` → `app/snippets/page.tsx`
+  - [x] `/snippets/category/[...slug]` → `app/snippets/category/[...slug]/page.tsx`
+  - [x] `/uses` → `app/uses/page.tsx`
+- [x] メタデータ管理の移行（Head → Metadata API）
+- [x] 静的生成の設定（`generateStaticParams`）
 
-### 3.2 機能移行
+### 3.2 機能移行 ✅
 
-- [ ] Google Analytics 対応（App Router用に調整）
-- [ ] コマンドパレット（cmdk）動作確認
-- [ ] テストで動作確認
+- [x] Google Analytics 対応（App Router用に調整）
+- [x] コマンドパレット（cmdk）動作確認
+- [x] テストで動作確認
 
 ---
 

@@ -1,16 +1,12 @@
-import type { ReactElement } from 'react';
-import { useId } from 'react';
 import * as production from 'react/jsx-runtime';
 import rehypeParse from 'rehype-parse';
 import rehypeReact, { type Options } from 'rehype-react';
 import { unified } from 'unified';
 import Article from '@/components/Article';
 import Categories from '@/components/Categories';
-import Layout from '@/components/Layout';
 import Typography from '@/components/Typography';
-import { getAllPosts, type Post } from '@/lib/api';
+import { getAllPosts } from '@/lib/api';
 import { markdownToHtml } from '@/lib/transpiler';
-import type { NextPageWithLayout } from '@/pages/_app';
 
 const rehypeReactOptions: Options = {
   passNode: true,
@@ -24,13 +20,20 @@ const processor = unified()
   .use(rehypeParse, { fragment: true })
   .use(rehypeReact, rehypeReactOptions);
 
-type Props = {
-  categories: string[];
-  posts: Post[];
-};
+export default async function SnippetsPage() {
+  const posts = await getAllPosts();
+  const parsedPosts = await Promise.all(
+    posts.map(async (post) => ({
+      ...post,
+      content: await markdownToHtml(post.content),
+    }))
+  );
 
-const Page: NextPageWithLayout<Props> = ({ categories, posts }) => {
-  const postId = useId();
+  const allCategories = posts
+    .map((post) => post.category)
+    .filter((category): category is string => !!category);
+  const categories = [...new Set(allCategories)];
+
   return (
     <>
       <Typography variant="headline" component="h1" margin={[0, 0, '4rem', 0]}>
@@ -42,40 +45,11 @@ const Page: NextPageWithLayout<Props> = ({ categories, posts }) => {
         various places.
       </Typography>
       <Categories categories={categories} />
-      {posts.map((post) => (
-        <Article key={`${postId}-${post.slug}`} post={post}>
+      {parsedPosts.map((post) => (
+        <Article key={post.slug} post={post}>
           {processor.processSync(post.content).result}
         </Article>
       ))}
     </>
   );
-};
-
-Page.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
-
-export default Page;
-
-export async function getStaticProps() {
-  const posts = await getAllPosts();
-  const parsedPosts = await Promise.all(
-    posts.map(async (post) => {
-      return {
-        ...post,
-        ...{ content: await markdownToHtml(post.content) },
-      };
-    })
-  );
-  const allCategories = posts
-    .map((post) => post.category)
-    .filter((category): category is string => !!category);
-  const categories = [...new Set(allCategories)];
-
-  return {
-    props: {
-      categories,
-      posts: parsedPosts,
-    },
-  };
 }

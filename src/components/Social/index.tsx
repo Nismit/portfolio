@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC, ReactElement } from 'react';
 import { Email, GitHub, LinkedIn, Twitter } from '@/components/Icons';
 import SocialData from '@/data/social.json';

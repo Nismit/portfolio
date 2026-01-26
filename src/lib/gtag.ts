@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    gtag: (command: string, targetId: string | undefined, config?: Record<string, unknown>) => void;
+  }
+}
+
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages

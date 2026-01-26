@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC } from 'react';
 import type { AlignType, Margins, TypographyComponent, Variant } from './styledComponents';
 import { TypographyRoot } from './styledComponents';
