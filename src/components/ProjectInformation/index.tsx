@@ -4,10 +4,10 @@ import Typography from '@/components/Typography';
 type Props = {
   client: string;
   stack: string;
-  role?: string;
+  projectRole?: string;
 };
 
-const ProjectInformation: FC<Props> = ({ client, stack, role = 'Front-end' }) => {
+const ProjectInformation: FC<Props> = ({ client, stack, projectRole = 'Front-end' }) => {
   return (
     <div className="flex gap-6 my-16">
       <div>
@@ -31,7 +31,7 @@ const ProjectInformation: FC<Props> = ({ client, stack, role = 'Front-end' }) =>
           Role
         </Typography>
         <Typography variant="body" component="p" color="rgb(var(--primary-fade))">
-          {role}
+          {projectRole}
         </Typography>
       </div>
     </div>

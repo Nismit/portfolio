@@ -4,7 +4,9 @@ import ProjectInformation from './index';
 
 describe('ProjectInformation', () => {
   it('renders client, stack, and role information', () => {
-    render(<ProjectInformation client="Test Client" stack="React, TypeScript" role="Full-stack" />);
+    render(
+      <ProjectInformation client="Test Client" stack="React, TypeScript" projectRole="Full-stack" />
+    );
 
     expect(screen.getByText('Client')).toBeInTheDocument();
     expect(screen.getByText('Test Client')).toBeInTheDocument();
@@ -21,7 +23,7 @@ describe('ProjectInformation', () => {
   });
 
   it('renders all three sections', () => {
-    render(<ProjectInformation client="Acme Corp" stack="Vue, Nuxt" role="Designer" />);
+    render(<ProjectInformation client="Acme Corp" stack="Vue, Nuxt" projectRole="Designer" />);
 
     // Check that all section labels exist
     expect(screen.getByText('Client')).toBeInTheDocument();

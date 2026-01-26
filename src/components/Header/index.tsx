@@ -14,6 +14,7 @@ const HeaderMenu: FC = () => {
   return (
     <div>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="all-unset cursor-pointer underline underline-offset-[0.3rem] transition-colors duration-300 hover:text-primary/70 hover:no-underline"
       >
@@ -36,7 +37,11 @@ const HeaderMenu: FC = () => {
 const Header: FC = () => {
   return (
     <header className="flex justify-between my-16 mx-auto max-w-[1024px] px-4">
-      <Link href="/" title="Home" className="[&>svg]:text-primary hover:[&>svg]:text-primary/50 no-underline">
+      <Link
+        href="/"
+        title="Home"
+        className="[&>svg]:text-primary hover:[&>svg]:text-primary/50 no-underline"
+      >
         <Logo />
       </Link>
       <HeaderMenu />

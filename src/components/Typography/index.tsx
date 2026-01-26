@@ -3,7 +3,19 @@ import type { FC } from 'react';
 type Margin = number | string;
 type Margins = [Margin, Margin?, Margin?, Margin?];
 type AlignType = 'center' | 'inherit' | 'justify' | 'left' | 'right';
-type TypographyComponent = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'blockquote' | 'em' | 'strong' | 'b';
+type TypographyComponent =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'blockquote'
+  | 'em'
+  | 'strong'
+  | 'b';
 type Variant = 'headline' | 'subHeadline' | 'body' | 'title' | 'description';
 
 type Props = {

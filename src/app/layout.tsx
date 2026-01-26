@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Header from '@/components/Header';
-import MainContainer from './_components/MainContainer';
 import * as gtag from '@/lib/gtag';
+import MainContainer from './_components/MainContainer';
 import '@/styles.css';
 import '@/prism-night-owl.css';
 
