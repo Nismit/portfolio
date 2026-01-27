@@ -67,7 +67,7 @@ portfolio/
 | Biome | v2.3.12 | Linting & formatting |
 | Vitest | v4.0.18 | Unit & component testing |
 | React Testing Library | v16.3.2 | Component testing utilities |
-| cmdk | v1.0.0 | Command palette |
+| Radix UI Dialog | - | Command menu dialog base |
 
 ### Analytics
 
@@ -108,7 +108,7 @@ portfolio/
 | Component | Location | Features |
 |-----------|----------|----------|
 | Header | `/src/components/Header/` | Logo, menu button, command menu |
-| Command | `/src/components/Command/` | cmdk-based command palette (Cmd+K or Cmd+/) |
+| CommandMenu | `/src/components/CommandMenu/` | Command palette (Cmd+K or Cmd+/) |
 
 ### Content Display
 
@@ -334,7 +334,7 @@ NEXT_PUBLIC_GA_ID=G-YS3RFKVG58
 /src/components/
 ├── Header/
 ├── Typography/
-├── Command/
+├── CommandMenu/
 ├── Article/
 ├── Categories/
 ├── ProjectInformation/

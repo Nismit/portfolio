@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import CommandMenu from './index';
+import { CommandMenu } from './CommandMenu';
 
 const mockPush = vi.fn();
 const mockWindowOpen = vi.fn();
@@ -15,7 +15,6 @@ vi.mock('next/navigation', () => ({
 describe('CommandMenu', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    // Mock window.open
     vi.stubGlobal('open', mockWindowOpen);
   });
 

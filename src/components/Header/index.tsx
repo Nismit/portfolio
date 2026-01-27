@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 import { useState } from 'react';
-import CommandMenu from '@/components/Command';
+import { CommandMenu } from '@/components/CommandMenu';
 import { Logo } from '@/components/Icons';
 import Shortcut from '@/components/Shortcut';
 import Typography from '@/components/Typography';
