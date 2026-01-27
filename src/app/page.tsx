@@ -7,7 +7,7 @@ export default function HomePage() {
       <Typography variant="headline" component="h1" margin={[0, 0, '4rem', 0]}>
         About
       </Typography>
-      <Typography variant="body" component="p">
+      <Typography variant="body" component="p" margin={[0, 0, '1rem', 0]}>
         Hello 👋
         <br />
         My portfolio site never get updated every time after I create it, so I want to make
