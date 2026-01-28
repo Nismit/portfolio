@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 18
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
       - name: Install dependencies
