@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @font-face {
   font-family: 'PPNeueMontreal';
   src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
@@ -14,6 +16,55 @@
   font-family: 'PPNeueMontreal';
   src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
   font-weight: 700;
+}
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Custom Colors */
+  --color-background: rgb(11 16 26);
+  --color-primary: rgb(243 244 246);
+  --color-secondary: rgb(152 161 179);
+  --color-primary-fade: rgb(102 104 109);
+  --color-tertiary: rgb(62 70 89);
+  --color-cmdk-bg: rgb(19 26 38);
+  --color-cmdk-selected: rgb(32 44 64);
+
+  /* Custom Font Family */
+  --font-sans: "PPNeueMontreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Custom Font Sizes */
+  --text-headline: 2.5rem;
+  --text-subheadline: 1.2rem;
+  --text-title: 1rem;
+  --text-body: 1rem;
+  --text-description: 0.85rem;
+
+  /* Dialog Animations */
+  --animate-overlay-show: overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-content-show: content-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes overlay-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-show {
+  from {
+    opacity: 0;
+    scale: 0.96;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
 }
 
 :root {
@@ -60,357 +111,3 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
-}
-
-[tabindex="-1"]:focus:not(:focus-visible) {
-  outline: 0 !important;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-abbr[title],
-abbr[data-original-title] {
-  text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
-  cursor: help;
-  border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
-  text-decoration-skip-ink: none;
-}
-
-address {
-  margin-bottom: 1rem;
-  font-style: normal;
-  line-height: inherit;
-}
-
-ol,
-ul,
-dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-}
-
-ol ol,
-ul ul,
-ol ul,
-ul ol {
-  margin-bottom: 0;
-  padding-left: 1em;
-}
-
-dt {
-  font-weight: 700;
-}
-
-dd {
-  margin-bottom: .5rem;
-  margin-left: 0;
-}
-
-blockquote {
-  margin: 0 0 1rem;
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
-  position: relative;
-  font-size: 75%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -.25em;
-}
-
-sup {
-  top: -.5em;
-}
-
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-a:not([href]) {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:not([href]):hover {
-  color: inherit;
-  text-decoration: none;
-}
-
-pre,
-code,
-kbd,
-samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1em;
-}
-
-pre {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  overflow: auto;
-}
-
-figure {
-  margin: 0 0 1rem;
-}
-
-img {
-  vertical-align: middle;
-  border-style: none;
-}
-
-svg {
-  overflow: hidden;
-  vertical-align: middle;
-}
-
-table {
-  border-collapse: collapse;
-}
-
-caption {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  color: #6c757d;
-  text-align: left;
-  caption-side: bottom;
-}
-
-th {
-    text-align: inherit;
-}
-
-label {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
-button {
-  border-radius: 0;
-}
-
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
-input,
-button,
-select,
-optgroup,
-textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-button,
-input {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-[role="button"] {
-  cursor: pointer;
-}
-
-select {
-  word-wrap: normal;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  appearance: button;
-}
-
-button:not(:disabled),
-[type="button"]:not(:disabled),
-[type="reset"]:not(:disabled),
-[type="submit"]:not(:disabled) {
-    cursor: pointer;
-}
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-    box-sizing: border-box;
-    padding: 0;
-}
-
-textarea {
-    overflow: auto;
-    resize: vertical;
-}
-
-/* Global Link Color */
-
-a {
-  color: rgba(var(--primary), 1.0);
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-  transition: color 300ms cubic-bezier(0.1, 1.06, 0.87, 0.71);
-}
-
-a:hover {
-  color: rgba(var(--primary), 0.7);
-  text-decoration: none;
-}
-
-[cmdk-overlay] {
-  background: rgba(11, 16, 26, 0.7);
-  backdrop-filter: blur(3px);
-  position: fixed;
-  inset: 0;
-}
-
-[cmdk-dialog] {
-  width: 90vw;
-  max-width: 640px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-[cmdk-root] {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 0.1);
-  background-color: rgba(19, 26, 38, 1.0);
-}
-
-[cmdk-separator] {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(var(--primary-fade), 0.8);
-}
-
-[cmdk-input] {
-  font-weight: var(--font-weight-medium);
-  border: none;
-  width: 100%;
-  font-size: 18px;
-  padding: 1rem 1.5rem;
-  outline: none;
-  margin: 0;
-  background-color: transparent;
-  color: rgba(var(--primary), 1.0);
-  border-bottom: 1px solid rgba(var(--primary-fade), 0.8);
-  /* caret-color: #6e5ed2; */
-}
-
-[cmdk-input]::placeholder {
-  color: rgba(var(--secondary), 1.0);
-}
-
-[cmdk-item] {
-  content-visibility: auto;
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 0.8rem 1.5rem;
-  user-select: none;
-  will-change: background, color;
-  transition: all 150ms ease;
-  transition-property: none;
-  position: relative;
-}
-
-[cmdk-item][aria-selected="true"] {
-  background-color: rgba(32, 44, 64, 1.0);
-}
-
-[cmdk-item][aria-disabled="true"] {
-  cursor: not-allowed;
-}
-
-[cmdk-item]:active {
-  transition-property: background;
-  background-color: rgba(32, 44, 64, 1.0);
-}
-
-[cmdk-list] {
-  height: min(300px, var(--cmdk-list-height));
-  max-height: 400px;
-  overflow: auto;
-  overscroll-behavior: contain;
-  transition: 100ms ease;
-  transition-property: height;
-  scroll-padding-block-start: 8px;
-  scroll-padding-block-end: 8px;
-}
-
-[cmdk-group-heading] {
-  user-select: none;
-  color: rgba(var(--secondary), 1.0);
-  padding: 1.5rem 1.5rem 0.5rem;
-  display: flex;
-  align-items: center;
-}
-
-[cmdk-empty] {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 64px;
-  white-space: pre-wrap;
-}

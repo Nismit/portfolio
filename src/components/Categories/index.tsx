@@ -1,7 +1,6 @@
-import type { FC } from "react";
-import Link from "next/link";
-import Typography from "@/components/Typography";
-import { Container, CategoryList } from "./styledComponents";
+import Link from 'next/link';
+import type { FC } from 'react';
+import Typography from '@/components/Typography';
 
 type Props = {
   categories: string[];
@@ -9,19 +8,22 @@ type Props = {
 
 const Categories: FC<Props> = ({ categories }) => {
   return (
-    <Container>
-      <CategoryList>
+    <div className="relative">
+      <ul className="p-0 m-0 flex flex-col gap-2 list-none fixed -ml-37.5">
         {categories.map((category, index) => (
-          <li key={`${index}-${category}`}>
-            <Link href={`/snippets/category/${category}`}>
+          <li key={`${index}-${category}`} className="capitalize">
+            <Link
+              href={`/snippets/category/${category}`}
+              className="text-primary underline underline-offset-[0.3rem] transition-colors duration-300 ease-[cubic-bezier(0.1,1.06,0.87,0.71)] hover:text-primary/70 hover:no-underline"
+            >
               <Typography variant="body" component="span">
                 {category}
               </Typography>
             </Link>
           </li>
         ))}
-      </CategoryList>
-    </Container>
+      </ul>
+    </div>
   );
 };
 

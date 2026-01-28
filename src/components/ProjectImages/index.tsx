@@ -1,6 +1,5 @@
-import type { FC } from "react";
-import Image from "next/image";
-import { Container } from "./styledComponents";
+import Image from 'next/image';
+import type { FC } from 'react';
 
 type Props = {
   images: string[];
@@ -9,7 +8,7 @@ type Props = {
 const ProjectImages: FC<Props> = ({ images }) => {
   const contentImages = images.slice(1);
   return (
-    <Container className="full-bleed">
+    <div className="full-bleed flex flex-col justify-center gap-24 pb-12 [&_img]:max-w-275 [&_img]:mx-auto">
       {contentImages.length > 0 &&
         contentImages.map((image, index) => (
           <Image
@@ -18,10 +17,10 @@ const ProjectImages: FC<Props> = ({ images }) => {
             src={image}
             width={1100}
             height={598}
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: '100%', height: 'auto' }}
           />
         ))}
-    </Container>
+    </div>
   );
 };
 

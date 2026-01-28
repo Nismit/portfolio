@@ -1,29 +1,34 @@
-import Link from "next/link";
-import { useState } from "react";
-import type { FC } from "react";
-import { Logo } from "@/components/Icons";
-import Typography from "@/components/Typography";
-import Shortcut from "@/components/Shortcut";
-import CommandMenu from "@/components/Command";
-import { _Header, Commands, TextButton } from "./styledComponents";
+'use client';
+
+import Link from 'next/link';
+import type { FC } from 'react';
+import { useState } from 'react';
+import { CommandMenu } from '@/components/CommandMenu';
+import { Logo } from '@/components/Icons';
+import Shortcut from '@/components/Shortcut';
+import Typography from '@/components/Typography';
 
 const HeaderMenu: FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <div>
-      <TextButton onClick={() => setOpen(true)}>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="all-unset cursor-pointer underline underline-offset-[0.3rem] transition-colors duration-300 hover:text-primary/70 hover:no-underline"
+      >
         <Typography variant="body" component="span">
           Menu
         </Typography>
-      </TextButton>
+      </button>
       <Typography variant="body" component="span" margin={[0, 5]}>
         &nbsp;|&nbsp;
       </Typography>
-      <Commands>
+      <div className="inline-flex gap-1">
         <Shortcut content="⌘" />
         <Shortcut content="/" />
-      </Commands>
+      </div>
       <CommandMenu open={open} setOpen={setOpen} />
     </div>
   );
@@ -31,12 +36,16 @@ const HeaderMenu: FC = () => {
 
 const Header: FC = () => {
   return (
-    <_Header>
-      <Link href="/" title="Home" className="home">
+    <header className="flex justify-between mx-auto mt-16 mb-16 max-w-5xl px-4">
+      <Link
+        href="/"
+        title="Home"
+        className="[&>svg]:text-primary hover:[&>svg]:text-primary/50 no-underline"
+      >
         <Logo />
       </Link>
       <HeaderMenu />
-    </_Header>
+    </header>
   );
 };
 
