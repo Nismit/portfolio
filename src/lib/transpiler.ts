@@ -1,9 +1,9 @@
 import { toString } from 'hast-util-to-string';
+import { refractor } from 'refractor/core';
 import css from 'refractor/css';
 import javascript from 'refractor/javascript';
 import html from 'refractor/markup';
 import typescript from 'refractor/typescript';
-import { refractor } from 'refractor/core';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
