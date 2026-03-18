@@ -10,9 +10,9 @@ const ProjectImages: FC<Props> = ({ images }) => {
   return (
     <div className="full-bleed flex flex-col justify-center gap-24 pb-12 [&_img]:max-w-275 [&_img]:mx-auto">
       {contentImages.length > 0 &&
-        contentImages.map((image, index) => (
+        contentImages.map((image) => (
           <Image
-            key={`${index}-${image}`}
+            key={image}
             alt={`Image`}
             src={image}
             width={1100}

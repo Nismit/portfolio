@@ -12,11 +12,11 @@ const IconMapping: Record<string, ReactElement> = {
 const Social: FC = () => {
   return (
     <div className="flex gap-4 mt-12 pt-4 border-t border-primary-fade/80">
-      {SocialData.social.map((data, index: number) => (
+      {SocialData.social.map((data) => (
         <a
           title={data.title}
           href={data.link}
-          key={`${index}-${data.title}`}
+          key={data.title}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:text-primary/70 no-underline"
