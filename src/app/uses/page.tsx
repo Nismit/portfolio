@@ -8,7 +8,7 @@ export default function UsesPage() {
       </Typography>
       <Typography variant="body" component="p">
         What I use for work, creative something. Inspired from{' '}
-        <a href="https://wesbos.com/uses" target="_blank" rel="noopener noreferrer">
+        <a href="https://wesbos.com/uses" target="_blank" className="underline hover:decoration-transparent transition-colors duration-300">
           Wes Bos Uses page
         </a>
         .
@@ -26,7 +26,7 @@ export default function UsesPage() {
         <ul>
           <li>
             <Typography variant="body">
-              Macbook Pro (13-inch, Intel, 2020) for work in my home
+              Mac Mini (Apple, M4 2024) for work in my home
             </Typography>
           </li>
           <li>
@@ -112,7 +112,12 @@ export default function UsesPage() {
             <Typography variant="body">Sony WH-CH700N</Typography>
           </li>
           <li>
-            <Typography variant="body">Custom Build Mechanical Keyboard (Crkbd)</Typography>
+            <Typography variant="body">Custom Build Mechanical Keyboard: &nbsp;
+              <a href="https://github.com/foostan/crkbd/blob/755ab698ffe4911fcdf7b206d085c26efee2f182/docs/corne-cherry/v3/buildguide_en.md" target="_blank" className="underline hover:decoration-transparent transition-colors duration-300">
+                Corne keyboard v3
+              </a>
+
+            </Typography>
           </li>
         </ul>
       </section>
