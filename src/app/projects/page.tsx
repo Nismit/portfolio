@@ -15,21 +15,25 @@ export default function ProjectsPage() {
       >
         Active
       </Typography>
+
+      <ListItem
+        title="Beatty"
+        description="Real-time Sound/Visual shader editor"
+        href="https://beatty.pages.dev"
+      />
+
+      <ListItem
+        title="ChottoGL"
+        description="Minimal WebGL2 framework"
+        href="https://github.com/Nismit/chottogl"
+      />
+
       <ListItem
         title="Framed"
         description="GLSL Gallery For Framed* Mono X7"
         href="https://github.com/Nismit/framed"
       />
-      <ListItem
-        title="Sketch"
-        description="WebGL Sketch Template"
-        href="https://github.com/Nismit/sketch"
-      />
-      <ListItem
-        title="nisgl-ts"
-        description="WebGL Small Wrapper Library With TypeScript"
-        href="https://github.com/Nismit/nisgl-ts"
-      />
+
       <ListItem
         title="Nislog"
         description="Personal Blog Written In Japanese"
@@ -49,6 +53,18 @@ export default function ProjectsPage() {
       >
         Archived Projects
       </Typography>
+
+      <ListItem
+        title="Sketch"
+        description="WebGL Sketch Template"
+        href="https://github.com/Nismit/sketch"
+      />
+
+      <ListItem
+        title="nisgl-ts"
+        description="WebGL Small Wrapper Library With TypeScript"
+        href="https://github.com/Nismit/nisgl-ts"
+      />
 
       <ListItem
         title="Local Public Eatery (Website)"
