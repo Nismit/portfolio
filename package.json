@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/Nismit/portfolio#readme",
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.16",
+    "@radix-ui/react-dialog": "^1.1.17",
     "gray-matter": "^4.0.3",
     "hast-util-to-string": "^3.0.1",
     "next": "^16.2.9",
